@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://hhsqdw.github.io/2025/01/12/articles/遇到报错解决不了/"/>
+  <link rel="canonical" href="https://hhsqdw.github.io/2025/05/11/articles/每日一篇/springboot启动流程/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,20 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Hexo</title>
-  <meta name="keywords" content="null">
+  <title>SpringBoot启动流程 - Hexo</title>
+  <meta name="keywords" content="面试八股文,null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://hhsqdw.github.io/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/index.html">
+<meta property="og:title" content="SpringBoot启动流程">
+<meta property="og:url" content="https://hhsqdw.github.io/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="遇到报错，实在解决不了，就降低版本">
+<meta property="og:description" content="首先需要一个加了 @SpringBootApplication 注解的启动类，这个注解本质上就是由 @EnableAutoConfiguration 、@SpringBootConfiguration 和 @ComponentScanner 连起来构成。  @EnableAutoConfiguration 的作用是在启动时自动加载一个类，这个类会将所以符合条件的 @Configuration 配置">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-01-12T13:00:52.043Z">
-<meta property="article:modified_time" content="2025-01-12T13:01:23.732Z">
+<meta property="article:published_time" content="2025-05-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-11T15:18:19.257Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="面试八股文">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2517,7 +2518,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/01/12/articles/遇到报错解决不了/">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/11/articles/每日一篇/SpringBoot启动流程/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2537,16 +2538,65 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        SpringBoot启动流程
+      </h1>
+      <div class='new-meta-box'>
         
-      </span>
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-05-11T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 11, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="遇到报错，实在解决不了，就降低版本"><a href="#遇到报错，实在解决不了，就降低版本" class="headerlink" title="遇到报错，实在解决不了，就降低版本"></a>遇到报错，实在解决不了，就降低版本</h1>
+    <p>首先需要一个加了 <code>@SpringBootApplication</code> 注解的启动类，这个注解本质上就是由 <code>@EnableAutoConfiguration</code> 、<code>@SpringBootConfiguration</code> 和 <code>@ComponentScanner</code> 连起来构成。</p>
+<ul>
+<li><p><code>@EnableAutoConfiguration</code> 的作用是在启动时自动加载一个类，这个类会将所以符合条件的 <code>@Configuration</code> 配置都进行加载，如果启动类中不需要添加配置内容，也不需要扫描路径，可以将 <code>@SpringBootApplication</code> 换成 <code>@EnableAutoConfiguration</code></p>
+</li>
+<li><p><code>@SpringBootConfiguration</code> 等同于 <code>@Configuration</code>，就是将这个类标记为配置类，会被加载到容器中</p>
+</li>
+<li><p><code>@ComponentScanner</code> 就是自动扫描并加载所有符合条件的 Bean</p>
+</li>
+</ul>
+<p>注解完成后，运行的起点就是 <code>SpringApplication.run(类名.class, args)</code>，在 run 开始执行后会经历四个阶段：服务构建、环境准备、容器创建和填充容器</p>
+
   </div>
   
   
@@ -2570,10 +2620,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-01-12T21:01:23+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-11T23:18:19+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jan 12, 2025</p>
+    <p>更新于：May 11, 2025</p>
   </a>
 </div>
 
@@ -2581,6 +2631,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>面试八股文</p></a></div>
+  <span hidden itemprop="keywords">面试八股文</span>
+
 
         
       
@@ -2592,7 +2646,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/&title= - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/&title=SpringBoot启动流程 - Hexo&summary="
           
           >
           
@@ -2604,7 +2658,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/&title= - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/&title=SpringBoot启动流程 - Hexo&summary="
           
           >
           
@@ -2616,7 +2670,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/&title= - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/&title=SpringBoot启动流程 - Hexo&summary="
           
           >
           
@@ -2649,45 +2703,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/01/15/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.Git/Git/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Git</p>
-          <p class='content'>项目初始化在study文件下创建一个git，名字叫blog
-123mkdir studycd studygit init blog
+        <a class='prev' href='/2025/05/12/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringApplication.run%20%E6%89%A7%E8%A1%8C%E5%90%8E%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>SpringApplication.run 执行后的四个阶段</p>
+          <p class='content'>四阶段分别为：服务构建、环境准备、容器创建和填充容器
+服务构建
 
-其他参数
-123--initial-branch  初始化的...</p>
+首先把传入的资源加载器、主方法类记录到内存中，然后逐一判断对应的服务类是否存在来确定web服务的类型
+默认是基于servlet的...</p>
         </a>
       
       
-        <a class='next' href='/2024/12/24/articles/md%E7%9A%84%E4%BD%BF%E7%94%A8/'>
-          <p class='title'>Jan 12, 2025<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>插入图片
-
-小点
-
-**加粗
-&#x3D;&#x3D;标记&#x3D;&#x3D;
-#标签
-Tab 
-
-红色的字
-
-
-
-表头
-表头
-
-
-
-单元格
-单元格
-
-
-单元格
-单元格
-
-
-</p>
+        <a class='next' href='/2025/05/10/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/MySQL%E4%BA%8B%E7%89%A9%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/'>
+          <p class='title'>MySQL事物的原理是什么<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>MySQL满足ACID的特性，所以MySQL事物的原理就是innodb是如何去实现ACID的特性。
+首先A就是原子性，就是要保证DML数据库操作语言要么都成功，要么都失败，都成功好理解，如果都失...</p>
         </a>
       
     </div>
@@ -2703,7 +2732,7 @@ Tab
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2735,19 +2764,9 @@ Tab
   
 
 
-  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
-    
-  <header>
-    
-      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        
-    </div>
-  </section>
+  <div class="">
+    <!-- pjax占位 -->
+  </div>
 
   
 
@@ -2801,7 +2820,7 @@ Tab
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3315,7 +3334,7 @@ Tab
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2025/01/12/articles/遇到报错解决不了/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/","wordCount":0,"datePublished":"2025-01-12T13:00:52.043Z","dateModified":"2025-01-12T13:01:23.732Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2025/05/11/articles/每日一篇/SpringBoot启动流程/","name":"SpringBoot启动流程"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SpringBoot启动流程","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/","wordCount":0,"datePublished":"2025-05-10T16:00:00.000Z","dateModified":"2025-05-11T15:18:19.257Z","keywords":"面试八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
