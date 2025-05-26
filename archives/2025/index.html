@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747929498342),
+    lastupdate: new Date(1748273495947),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2545,6 +2545,63 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/26/articles/每日一篇/什么是消息队列（Kafka）/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/26/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88Kafka%EF%BC%89/"  itemprop="url">
+        什么是消息队列，常用消息队列的区别
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        模拟场景假如现在我需要维护两个服务A和B，B服务每秒能处理100个消息，但A服务每秒能发两百个消息
+结果我们也能想到，B服务非常容器就爆炸了，聪明的我一定能想到，我在B里面加一个队列来存放A发来的消息，用offset偏移量来记录消息的位置，B服务看能力来处理消息，不断更新offset值
+但这又产生了一个新问题，来不及处理的消息放在内存里，如果在服务B里面的消息没有处理完的情况下B服务关机或者...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-26T00:00:00+08:00">2025-05-26</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/26/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88Kafka%EF%BC%89/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/22/articles/每日一篇/redis主从复制的理解/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -3050,62 +3107,6 @@ ArrayList基于动态数组实现的非线程安全的集合；LinkedList基于�
       
         <div>
           <a class='readmore' href='/2025/05/08/articles/Substitute%20driver/Redis%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/03/articles/Substitute driver/莫名其妙的报错/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/03/articles/Substitute%20driver/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%8A%A5%E9%94%99/"  itemprop="url">
-        莫名其妙的报错
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        太吓人了可恶，今天写完运行的时候报了两个错
-123456D:\Desktop\hhsqdmz\Project\Substitute driver\代码\daijia-parent\service-client\service-map-client\src\main\java\com\atguigu\daijia\map\client\MapFeignClient.java:19:5java:...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-03T00:00:00+08:00">2025-05-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/03/articles/Substitute%20driver/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%8A%A5%E9%94%99/' itemprop="url">
             Read More
           </a>
         </div>
