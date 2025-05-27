@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://hhsqdw.github.io/archives/2024/03/"/>
+  
+  <link rel="canonical" href="https://hhsqdw.github.io/2025/05/27/articles/每日一篇/什么是循环依赖/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,16 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive: 2024/3 - Hexo</title>
-  <meta name="keywords" content="null">
+  <title>什么是循环依赖 - Hexo</title>
+  <meta name="keywords" content="面试八股文,null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://hhsqdw.github.io/archives/2024/03/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是循环依赖">
+<meta property="og:url" content="https://hhsqdw.github.io/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是循环依赖现在我们有两个类 ClassA 与 ClassB，但他们互相引用，直接或间接依赖对方，例如例如A类里有B的对象，B类中又有A的对象 public class ClassA &#123;     private ClassB classB;     &#x2F;&#x2F; 构造方法、getter 和 setter 等 &#125;  public class ClassB &#123;     priv">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-05-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-27T14:49:18.412Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="面试八股文">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2168,7 +2173,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2437,7 +2442,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
 
@@ -2512,22 +2517,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2024/03/16/articles/docker/docker/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/27/articles/每日一篇/什么是循环依赖/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2536,58 +2527,269 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/03/16/articles/docker/docker/"  itemprop="url">
-        docker学习记录
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        Docker学习记录因为在学习MySQL的时候需要用到多台客户端，如果使用VMware来一个个创建就太过于麻烦，因此我在网上冲浪的时候发现了Docker，Docker是一个 基于go语言 的开源应用引擎，通过利用Docker的方法来快速交付，测试和部署代码，可以大大减少编写代码和在生产环境中运行代码之间的延迟。
-Docker的安装因为我用的是centOS，所以我在这里展示的也是centOS的...
-      
+    
+      <h1 class="title" itemprop="name headline">
+        什么是循环依赖
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-05-27T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 27, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="什么是循环依赖"><a href="#什么是循环依赖" class="headerlink" title="什么是循环依赖"></a>什么是循环依赖</h2><p>现在我们有两个类 ClassA 与 ClassB，但他们互相引用，直接或间接依赖对方，例如例如A类里有B的对象，B类中又有A的对象</p>
+<pre><code class="java">public class ClassA &#123;
+    private ClassB classB;
+    // 构造方法、getter 和 setter 等
+&#125;
+
+public class ClassB &#123;
+    private ClassA classA;
+    // 构造方法、getter 和 setter 等
+&#125;```
+
+这种依赖不仅限于出现在类上，也可能会出现在包上或者模块上
+
+- **出现在包层面的危害：
+    - 增加了代码的耦合度，降低了代码的可维护性和可读性
+    - 在编译时可能会出现编译顺序的问题，难以确定先编译哪个包。
+    - 在后续的开发和维护过程中，增加了维护的难度和风险。
+
+- **出现在模块层面的危害：
+    - 会导致模块之间的边界变得模糊，无法清晰地划分模块的职责。在构建和部署项目时，可能会出现循环加载的问题，影响项目的启动效率和运行性能。
+
+## Spring中的循环依赖
+
+当两个或多个 Bean 之间存在构造器注入的循环依赖时，Spring 无法解决这种依赖关系。例如，`BeanA` 的构造器需要 `BeanB`，而 `BeanB` 的构造器又需要 `BeanA`。Spring 容器在创建这些 Bean 的过程中会陷入死循环，无法确定先创建哪个 Bean，从而抛出 `BeanCurrentlyInCreationException` 或 `BeanCurrentlyInCreationException` 等异常。
+
+解决方法：
+- Spring 通过单例 Bean 的提前暴露机制来解决基于 Setter 注入的循环依赖问题
+- **创建 BeanA 的壳对象并存入三级缓存** ：当创建 `BeanA` 时，Spring 会先创建一个 `BeanA` 的壳对象（即一个未完全初始化的实例，只是构造函数执行完成，属性还没有填充），并将其存入三级缓存（`SingletonObjects`、`earlySingletonObjects` 和 `singletonFactories` 组成的缓存体系）中的 `singletonFactories`。
+    
+- **创建 BeanB 并注入依赖** ：接着创建 `BeanB`，在创建 `BeanB` 的过程中，发现 `BeanB` 依赖 `BeanA`，此时 Spring 会尝试从缓存中获取 `BeanA`。虽然 `BeanA` 还没有完全初始化（只是壳对象在 `singletonFactories` 中），但 Spring 会将其从 `singletonFactories` 中取出，放入 `earlySingletonObjects` 中，并将其作为依赖注入到 `BeanB` 中。
+    
+- **完成 BeanA 的初始化并注入到 BeanB** ：`BeanA` 的壳对象被注入到 `BeanB` 后，Spring 会继续完成 `BeanA` 的初始化（填充属性等操作）。当 `BeanA` 初始化完成后，会将它放入 `SingletonObjects` 中。在后续的操作中，如果 `BeanB` 还需要访问 `BeanA`，可以直接从 `SingletonObjects` 中获取已经完全初始化的 `BeanA`。
+
+## 三级缓存
+
+### 一级缓存（`singletonObjects`）
+
+一级缓存也被称为单例池，存储的是已经完全初始化好的单例 Bean 实例。当需要获取一个单例 Bean 时，Spring 会优先从这个缓存中查找，其数据结构为 `Map&lt;String, Object&gt;`，键是 Bean 的名称，值是对应的 Bean 实例。
+
+### 二级缓存（`singletonFactories`）
+
+当 Bean 实例化完成，但还未完成属性注入和初始化时，会将一个创建该 Bean 代理对象的工厂存入二级缓存。其数据结构为 `Map&lt;String, ObjectFactory&lt;?&gt;&gt;`，键为 Bean 的名称，值是用于创建 Bean 的工厂对象。如果从一级缓存中未找到所需的 Bean，Spring 会尝试从二级缓存中获取对应的工厂对象，并通过该工厂创建 Bean 的早期暴露实例。
+
+### 三级缓存（`earlySingletonObjects`）
+
+三级缓存存储的是提前暴露的单例 Bean 实例，这些 Bean 虽然还未完成全部的初始化流程，但已经可以被引用。通过这个缓存，其他 Bean 在依赖该 Bean 时可以获取到一个早期的实例。其数据结构为 `Map&lt;String, Object&gt;`，键是 Bean 的名称，值是早期暴露的 Bean 实例。如果从二级缓存中获取到工厂对象后，会使用该工厂生成一个早期的 Bean 实例，并将其存入三级缓存中，以便其他 Bean 可以引用。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-03-16T00:00:00+08:00">2024-03-16</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2024/03/16/articles/docker/docker/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-27T22:49:18+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：May 27, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>面试八股文</p></a></div>
+  <span hidden itemprop="keywords">面试八股文</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/&title=什么是循环依赖 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/&title=什么是循环依赖 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/&title=什么是循环依赖 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/05/26/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88Kafka%EF%BC%89/'>
+          <p class='title'>什么是消息队列（Kafka）<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>模拟场景假如现在我需要维护两个服务A和B，B服务每秒能处理100个消息，但A服务每秒能发两百个消息
+结果我们也能想到，B服务非常容器就爆炸了，聪明的我一定能想到，我在B里面加一个队列来存放A发来...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
   
 
 
-	
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2596,112 +2798,48 @@ Docker的安装因为我用的是centOS，所以我在这里展示的也是centO
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/project/" style="font-size: 14px; color: #999">project</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 24px; color: #555">字节青训营</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 19px; color: #777">面试八股文</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96"><span class="toc-text">什么是循环依赖</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2729,13 +2867,14 @@ Docker的安装因为我用的是centOS，所以我在这里展示的也是centO
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2744,14 +2883,14 @@ Docker的安装因为我用的是centOS，所以我在这里展示的也是centO
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3249,7 +3388,7 @@ Docker的安装因为我用的是centOS，所以我在这里展示的也是centO
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://hhsqdw.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/archives/2024/","name":"2024"}},{"@type":"ListItem","position":4,"item":{"@id":"https://hhsqdw.github.io/archives/2024/3/","name":"3"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2025/05/27/articles/每日一篇/什么是循环依赖/","name":"什么是循环依赖"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"什么是循环依赖","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/","wordCount":0,"datePublished":"2025-05-26T16:00:00.000Z","dateModified":"2025-05-27T14:49:18.412Z","keywords":"面试八股文","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

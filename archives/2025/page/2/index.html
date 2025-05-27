@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1748273735845),
+    lastupdate: new Date(1748357532499),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2521,6 +2521,65 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/08/articles/Substitute driver/Redis常见的几个问题/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/08/articles/Substitute%20driver/Redis%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/"  itemprop="url">
+        Redis常见的几个问题
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        缓存雪崩当大量缓存在同一时间失效或者过期，亦或者Redis故障宕机时，如果此时有大量用户数据访问，Redis 无法处理，于是全部请求都会直接访问数据库，导致数据库压力剧增，严重会导致数据库宕机，从而出现更严重的问题
+常见解决方法：
+
+给各数据设置不相同的过期时间，尽量让他们不要在同一时间过期
+设置互斥锁，当发现需要查找的数据在Redis中找不到，就加上一个互斥锁，保证一个时间只有规定的次数查...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-08T00:00:00+08:00">2025-05-08</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/08/articles/Substitute%20driver/Redis%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/03/articles/Substitute driver/莫名其妙的报错/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -3088,70 +3147,6 @@ C10K问题（Concurrent 10,000 Connection）：服务器如何支持10K个并发
       
         <div>
           <a class='readmore' href='/2025/02/14/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13.%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%89%96%E6%9E%90/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E7%9A%84%E5%89%96%E6%9E%90/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/02/13/articles/MarsCode学习笔记/12.后端的开发于迭代/后端开发与迭代/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/13/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12.%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BC%80%E5%8F%91%E4%BA%8E%E8%BF%AD%E4%BB%A3/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%8E%E8%BF%AD%E4%BB%A3/"  itemprop="url">
-        后端开发与迭代
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        了解开发流程
-复杂项目没有流程会有什么问题
-
-需求阶段:每个人都有自己的想法，团队决策需要有一个过程
-开发阶段:多人&#x2F;多端协作开发，每个人有自己的安排，相互配合需要有一个流程
-测试阶段:产物怎样交付，测试如何开展，BUG怎么修都需要流程
-发布阶段:怎样确保发布过程平稳丝滑，版本和流量如何控制，需要有规范
-运维阶段:线上问题如何应急响应，处理用户反馈和线上问题需要有流程
-
-瀑布模型需...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-02-13T00:00:00+08:00">2025-02-13</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/02/13/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12.%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BC%80%E5%8F%91%E4%BA%8E%E8%BF%AD%E4%BB%A3/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%8E%E8%BF%AD%E4%BB%A3/' itemprop="url">
             Read More
           </a>
         </div>
