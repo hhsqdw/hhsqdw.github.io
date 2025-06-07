@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1748357532499),
+    lastupdate: new Date(1749290936759),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2520,6 +2520,119 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/11/articles/每日一篇/SpringBoot启动流程/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/"  itemprop="url">
+        SpringBoot启动流程
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        首先需要一个加了 @SpringBootApplication 注解的启动类，这个注解本质上就是由 @EnableAutoConfiguration 、@SpringBootConfiguration 和 @ComponentScanner 连起来构成。
+
+@EnableAutoConfiguration 的作用是在启动时自动加载一个类，这个类会将所有符合条件的 @Configuration...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-11T00:00:00+08:00">2025-05-11</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/10/articles/每日一篇/MySQL事物的原理是什么/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/10/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/MySQL%E4%BA%8B%E7%89%A9%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/"  itemprop="url">
+        MySQL事物的原理是什么
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        MySQL满足ACID的特性，所以MySQL事物的原理就是innodb是如何去实现ACID的特性。
+首先A就是原子性，就是要保证DML数据库操作语言要么都成功，要么都失败，都成功好理解，如果都失败就意味着要把原本执行的操作都回滚，所以innodb里面设计了一个undo log表，在事物执行的过程中把执行数据的快照保存在undo log表里，例如执行一个insert语句，在undo log表里...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-10T00:00:00+08:00">2025-05-10</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/10/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/MySQL%E4%BA%8B%E7%89%A9%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/08/articles/Substitute driver/Redis常见的几个问题/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -3009,143 +3122,6 @@ ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，
       
         <div>
           <a class='readmore' href='/2025/02/18/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15.%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/02/17/articles/MarsCode学习笔记/14.定时任务/定时计划/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/17/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/%E5%AE%9A%E6%97%B6%E8%AE%A1%E5%88%92/"  itemprop="url">
-        定时计划
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        基本的定时任务
-Windows运行批处理文件
-
-Windows任务计划程序（右键我的电脑）
-
-Linux命令—CronJob
-
-应用程序编码层—单机定时任务（Timer—Java、Ticker—Go、ScheduledExecutorService—线程池技术）
-
-任务调度—Quartz（单任务极致控制、没有负载均衡机制）
-
-分布式定时任务（平台化管理、分布式部署、支持海量数据）
-
-
-分布式...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-02-17T00:00:00+08:00">2025-02-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/02/17/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/%E5%AE%9A%E6%97%B6%E8%AE%A1%E5%88%92/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/02/14/articles/MarsCode学习笔记/13.后端框架剖析/后端框架的剖析/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/14/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13.%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%89%96%E6%9E%90/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E7%9A%84%E5%89%96%E6%9E%90/"  itemprop="url">
-        后端框架的剖析
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        架构架构，又称软件架构
-
-是有关软件整体结构与组件的抽象描述
-用于指导软件系统各个方面的设计
-
-单机架构软件系统需要具备对外提供服务，单机，就是把所有功能都实现在一个进程里，并部署在一台机器上
-优点:
-
-简单
-
-问题
-
-
-C10K问题（Concurrent 10,000 Connection）：服务器如何支持10K个并发连接，进行高性能网络编程。解决方式：采用IO复用模型epoll方法，在调...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-02-14T00:00:00+08:00">2025-02-14</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/02/14/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13.%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%89%96%E6%9E%90/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E7%9A%84%E5%89%96%E6%9E%90/' itemprop="url">
             Read More
           </a>
         </div>

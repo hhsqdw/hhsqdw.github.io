@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://hhsqdw.github.io/archives/page/2/"/>
+  
+  <link rel="canonical" href="https://hhsqdw.github.io/2025/06/07/articles/substitute driver/分布式事物锁/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,16 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive - Hexo</title>
-  <meta name="keywords" content="null">
+  <title>分布式事物锁 - Hexo</title>
+  <meta name="keywords" content="project,null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://hhsqdw.github.io/archives/page/2/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式事物锁">
+<meta property="og:url" content="https://hhsqdw.github.io/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="分布式锁解决司机抢单因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题 **解决方案  第一种 设置数据库事务的隔离级别，设置为Serializable，效率低下  第二种 使用乐观锁解决，通过版本号进行控制  第三种  加锁解决，学习过synchronized 及lock锁，本地锁，目前微服务架构，分布式部署方式。   本地锁的局限性 我们使用锁一般都是，synchronized 及loc">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-06-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-07T06:41:59.490Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="project">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2168,7 +2173,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2437,7 +2442,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
 
@@ -2512,754 +2517,294 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-	  <article id="arc" class="post article white-box reveal shadow floatable blur">
-			
-			
-				
-				
-					
-						
-						<h2>2025</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/">
-									<time>06-07</time>
-									
-										分布式事物锁
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/">
-									<time>05-31</time>
-									
-										快速上手xxl-job
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/">
-									<time>05-27</time>
-									
-										什么是循环依赖
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/26/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88Kafka%EF%BC%89/">
-									<time>05-26</time>
-									
-										什么是消息队列（Kafka）
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/22/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3/">
-									<time>05-22</time>
-									
-										redis主从复制的理解
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/21/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/ArrayList%20%E5%92%8C%20LinkedList%20%E7%9A%84%E5%8C%BA%E5%88%AB/">
-									<time>05-21</time>
-									
-										ArrayList 和 LinkedList 的区别
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/20/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Kafka%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/">
-									<time>05-20</time>
-									
-										Kafka如何避免重复消费问题
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/19/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AFSpringMVC/">
-									<time>05-19</time>
-									
-										什么是SpringMVC
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/13/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">
-									<time>05-13</time>
-									
-										JVM垃圾回收器
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/12/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringApplication.run%20%E6%89%A7%E8%A1%8C%E5%90%8E%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5/">
-									<time>05-12</time>
-									
-										SpringApplication.run 执行后的四个阶段
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
-									<time>05-11</time>
-									
-										SpringBoot启动流程
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/10/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/MySQL%E4%BA%8B%E7%89%A9%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/">
-									<time>05-10</time>
-									
-										MySQL事物的原理是什么
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/08/articles/Substitute%20driver/Redis%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/">
-									<time>05-08</time>
-									
-										Redis常见的几个问题
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/03/articles/Substitute%20driver/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%8A%A5%E9%94%99/">
-									<time>05-03</time>
-									
-										莫名其妙的报错
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/30/articles/Substitute%20driver/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/">
-									<time>04-30</time>
-									
-										规则引擎
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/18/articles/Substitute%20driver/mybatis-plus%20%E7%BB%84%E4%BB%B6%E7%AD%96%E7%95%A5/">
-									<time>04-18</time>
-									
-										mybatis-plus 组件策略
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/17/articles/Substitute%20driver/%E6%A0%A1%E5%9B%AD%E9%97%AA%E9%80%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">
-									<time>04-17</time>
-									
-										校园闪送项目笔记
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/21/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/17.%E5%BC%80%E6%BA%90%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8/%E5%BC%80%E6%BA%90%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8/">
-									<time>02-21</time>
-									
-										开源实践入门
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/20/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/16.Go%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
-									<time>02-20</time>
-									
-										性能优化及自动内存管理
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/18/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15.%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">
-									<time>02-18</time>
-									
-										微服务架构
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/17/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/%E5%AE%9A%E6%97%B6%E8%AE%A1%E5%88%92/">
-									<time>02-17</time>
-									
-										定时计划
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/14/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13.%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%89%96%E6%9E%90/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E7%9A%84%E5%89%96%E6%9E%90/">
-									<time>02-14</time>
-									
-										后端框架的剖析
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/13/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12.%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BC%80%E5%8F%91%E4%BA%8E%E8%BF%AD%E4%BB%A3/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%8E%E8%BF%AD%E4%BB%A3/">
-									<time>02-13</time>
-									
-										后端开发与迭代
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/12/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/11.%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5/%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5/">
-									<time>02-12</time>
-									
-										网络接入
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/10/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/10.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
-									<time>02-10</time>
-									
-										消息队列
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/07/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/9.Go%20%E6%A1%86%E6%9E%B6%E4%B8%89%E4%BB%B6%E5%A5%97%E8%AF%A6%E8%A7%A3(Web%20RPC%20ORM)/Gorm%20%E6%A1%86%E6%9E%B6/">
-									<time>02-07</time>
-									
-										Go 框架三件套
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/02/06/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%20TOS/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%20TOS/">
-									<time>02-06</time>
-									
-										对象存储
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/25/articles/SpringBoot/SpringBoot/">
-									<time>01-25</time>
-									
-										SpringBoot学习笔记
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/24/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-									<time>01-24</time>
-									
-										数据结构与算法
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/23/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/">
-									<time>01-23</time>
-									
-										代码优化
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/21/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.Go/Go%E8%AF%AD%E8%A8%80/">
-									<time>01-21</time>
-									
-										Go语言
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/20/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.RDBMS/RDBMS/">
-									<time>01-20</time>
-									
-										RDBMS
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/17/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.DataBase/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-									<time>01-17</time>
-									
-										数据库
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/15/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.Git/Git/">
-									<time>01-15</time>
-									
-										Git
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/01/12/articles/%E9%81%87%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E4%B8%8D%E4%BA%86/">
-									<time>01-12</time>
-									
-										2025-01-12
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						
-						<h2>2024</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/24/articles/md%E7%9A%84%E4%BD%BF%E7%94%A8/">
-									<time>12-24</time>
-									
-										2024-12-24
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/24/articles/SpringMVC/SpringMVC/">
-									<time>12-24</time>
-									
-										SpringMVC学习笔记
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/20/articles/%E6%A8%A1%E6%9D%BF/123/">
-									<time>12-20</time>
-									
-										[object Object]
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/12/20/articles/Spring/SpringLeaning/">
-									<time>12-20</time>
-									
-										SpringFramework学习笔记
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/10/19/hello-world/">
-									<time>10-19</time>
-									
-										2024-10-19
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/10/06/articles/Mybatis/test2/">
-									<time>10-06</time>
-									
-										2024-10-06
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/09/20/articles/Mybatis/Mybatis/">
-									<time>09-20</time>
-									
-										Mybatis学习记录
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/09/14/articles/JavaScript/text/">
-									<time>09-14</time>
-									
-										2024-09-14
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/09/11/articles/MySQL/MySQL/">
-									<time>09-11</time>
-									
-										2024-09-11
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/09/05/articles/JDBC/JDBC/">
-									<time>09-05</time>
-									
-										JDBC学习笔记
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2024/03/16/articles/docker/docker/">
-									<time>03-16</time>
-									
-										docker学习记录
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/07/articles/Substitute driver/分布式事物锁/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        分布式事物锁
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-07T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 7, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="分布式锁解决司机抢单"><a href="#分布式锁解决司机抢单" class="headerlink" title="分布式锁解决司机抢单"></a>分布式锁解决司机抢单</h1><p>因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题</p>
+<p>**解决方案</p>
+<ul>
+<li><p><strong>第一种 设置数据库事务的隔离级别</strong>，设置为Serializable，效率低下</p>
+</li>
+<li><p><strong>第二种 使用乐观锁解决</strong>，通过版本号进行控制</p>
+</li>
+<li><p><strong>第三种  加锁解决</strong>，学习过synchronized 及lock锁，本地锁，目前微服务架构，分布式部署方式。</p>
+</li>
+</ul>
+<h2 id="本地锁的局限性"><a href="#本地锁的局限性" class="headerlink" title="本地锁的局限性"></a>本地锁的局限性</h2><ul>
+<li>我们使用锁一般都是，synchronized 及lock锁，这些都是本地锁，只在当前jvm生效，在微服务里面就是只有当个微服务生效</li>
+<li>举例演示<br>TestController<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Tag(name = &quot;测试接口&quot;)</span>  </span><br><span class="line"><span class="meta">@RestController</span>  </span><br><span class="line"><span class="meta">@RequestMapping(&quot;/order/test&quot;)</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Autowired</span>  </span><br><span class="line">    <span class="keyword">private</span> TestService testService;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@GetMapping(&quot;testLock&quot;)</span>  </span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">testLock</span><span class="params">()</span> &#123;  </span><br><span class="line">        testService.testLock();  </span><br><span class="line">        <span class="keyword">return</span> Result.ok();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>TestServiceImpl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">TestService</span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Autowired</span>  </span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate redisTemplate;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">testLock</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="comment">//从redis里面获取数据  </span></span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;num&quot;</span>);  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span>(StringUtils.isBlank(value)) &#123;  </span><br><span class="line">            <span class="keyword">return</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">//把从redis获取数据+1  </span></span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(value);  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">//数据+1之后放回到redis里面  </span></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;num&quot;</span>,String.valueOf(++num));  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>测试，模拟200个请求并发过程</p>
+</li>
+<li><p>在redis添加初始值，num &#x3D; 0</p>
+</li>
+</ul>
+<p>使用测试工具 <code>jmeter</code> 实现功能测试</p>
+<p>![[Pasted image 20250605203137.png]]<br>![[Pasted image 20250605203153.png]]</p>
+<p>加上锁 synchronized 后是没有问题</p>
+<ul>
+<li>上面的测试方式是在一个服务内进行的，单机测试，但是如果部署到集群下这个锁不一定会生效</li>
+</ul>
+<h2 id="实现分布式锁-redis"><a href="#实现分布式锁-redis" class="headerlink" title="实现分布式锁-redis"></a>实现分布式锁-redis</h2><p>设置过期时间，到时间之后自动释放锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLock</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="comment">//从redis里面获取数据</span></span><br><span class="line">	<span class="comment">//1 获取当前锁  setnx</span></span><br><span class="line">	<span class="type">Boolean</span> <span class="variable">ifAbsent</span> <span class="operator">=</span> redisTemplate.opsForValue().setIfAbsent(<span class="string">&quot;lock&quot;</span>, <span class="string">&quot;lock&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2 如果获取到锁，从redis获取数据 数据+1 放回redis里面</span></span><br><span class="line">	<span class="keyword">if</span>(ifAbsent) &#123;</span><br><span class="line">		<span class="comment">//获取锁成功，执行业务代码</span></span><br><span class="line">		<span class="comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;num&quot;</span>);</span><br><span class="line">		<span class="comment">//2.如果值为空则非法直接返回即可</span></span><br><span class="line">		<span class="keyword">if</span> (StringUtils.isBlank(value)) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3.对num值进行自增加一</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(value);</span><br><span class="line">		redisTemplate.opsForValue().set(<span class="string">&quot;num&quot;</span>, String.valueOf(++num));</span><br><span class="line"></span><br><span class="line">		<span class="comment">//3 释放锁</span></span><br><span class="line">		redisTemplate.delete(<span class="string">&quot;lock&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(<span class="number">100</span>);</span><br><span class="line">			<span class="built_in">this</span>.testLock();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>问题：如果锁的删除时间小于事物的执行时间<br>例如：</p>
+<ul>
+<li>场景：如果业务逻辑执行的时间是7s</li>
+<li>index1业务逻辑没执行完，3秒后释放</li>
+<li>index2获取到锁，执行业务逻辑，3秒后锁会被自动释放</li>
+<li>index3获取到锁，执行业务逻辑</li>
+<li>index1业务逻辑完成，开始调用del释放锁，这是释放的是index3的锁，导致index3的业务只执行1s就被别人释放</li>
+</ul>
+<p>修改后的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//uuid防止误删</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLock</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//从redis里面获取数据</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">uuid</span> <span class="operator">=</span> UUID.randomUUID().toString();</span><br><span class="line">    <span class="comment">//1 获取当前锁  setnx  + 设置过期时间</span></span><br><span class="line">    <span class="comment">//        Boolean ifAbsent = redisTemplate.opsForValue().setIfAbsent(&quot;lock&quot;, &quot;lock&quot;);</span></span><br><span class="line">    <span class="type">Boolean</span> <span class="variable">ifAbsent</span> <span class="operator">=</span></span><br><span class="line">            redisTemplate.opsForValue()</span><br><span class="line">                    .setIfAbsent(<span class="string">&quot;lock&quot;</span>, uuid,<span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2 如果获取到锁，从redis获取数据 数据+1 放回redis里面</span></span><br><span class="line">    <span class="keyword">if</span>(ifAbsent) &#123;</span><br><span class="line">        <span class="comment">//获取锁成功，执行业务代码</span></span><br><span class="line">        <span class="comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;num&quot;</span>);</span><br><span class="line">        <span class="comment">//2.如果值为空则非法直接返回即可</span></span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(value)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//3.对num值进行自增加一</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(value);</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;num&quot;</span>, String.valueOf(++num));</span><br><span class="line">        <span class="comment">//出现异常</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3 释放锁</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">redisUuid</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;lock&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(uuid.equals(redisUuid)) &#123;</span><br><span class="line">            redisTemplate.delete(<span class="string">&quot;lock&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            <span class="built_in">this</span>.testLock();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过LUA脚本保证原子性"><a href="#通过LUA脚本保证原子性" class="headerlink" title="通过LUA脚本保证原子性"></a>通过LUA脚本保证原子性</h3><p>通过uuid防止误删，但是还是有问题，不具备原子性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLock</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="comment">//从redis里面获取数据</span></span><br><span class="line">	<span class="type">String</span> <span class="variable">uuid</span> <span class="operator">=</span> UUID.randomUUID().toString();</span><br><span class="line">	<span class="comment">//1 获取当前锁  setnx  + 设置过期时间</span></span><br><span class="line">	<span class="comment">//        Boolean ifAbsent = redisTemplate.opsForValue().setIfAbsent(&quot;lock&quot;, &quot;lock&quot;);</span></span><br><span class="line">	<span class="type">Boolean</span> <span class="variable">ifAbsent</span> <span class="operator">=</span></span><br><span class="line">			redisTemplate.opsForValue()</span><br><span class="line">					.setIfAbsent(<span class="string">&quot;lock&quot;</span>, uuid,<span class="number">3</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2 如果获取到锁，从redis获取数据 数据+1 放回redis里面</span></span><br><span class="line">	<span class="keyword">if</span>(ifAbsent) &#123;</span><br><span class="line">		<span class="comment">//获取锁成功，执行业务代码</span></span><br><span class="line">		<span class="comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;num&quot;</span>);</span><br><span class="line">		<span class="comment">//2.如果值为空则非法直接返回即可</span></span><br><span class="line">		<span class="keyword">if</span> (StringUtils.isBlank(value)) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3.对num值进行自增加一</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(value);</span><br><span class="line">		redisTemplate.opsForValue().set(<span class="string">&quot;num&quot;</span>, String.valueOf(++num));</span><br><span class="line">		<span class="comment">//出现异常</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//3 释放锁 lua脚本实现</span></span><br><span class="line">		DefaultRedisScript&lt;Long&gt; redisScript = <span class="keyword">new</span> <span class="title class_">DefaultRedisScript</span>&lt;&gt;();</span><br><span class="line">		<span class="comment">// lua脚本</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">script</span> <span class="operator">=</span> <span class="string">&quot;if redis.call(\&quot;get\&quot;,KEYS[1]) == ARGV[1]\n&quot;</span> +</span><br><span class="line">				<span class="string">&quot;then\n&quot;</span> +</span><br><span class="line">				<span class="string">&quot;    return redis.call(\&quot;del\&quot;,KEYS[1])\n&quot;</span> +</span><br><span class="line">				<span class="string">&quot;else\n&quot;</span> +</span><br><span class="line">				<span class="string">&quot;    return 0\n&quot;</span> +</span><br><span class="line">				<span class="string">&quot;end&quot;</span>;</span><br><span class="line">		redisScript.setScriptText(script);</span><br><span class="line">		<span class="comment">// 设置返回结果</span></span><br><span class="line">		redisScript.setResultType(Long.class);</span><br><span class="line">		redisTemplate.execute(redisScript, Arrays.asList(<span class="string">&quot;lock&quot;</span>), uuid);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(<span class="number">100</span>);</span><br><span class="line">			<span class="built_in">this</span>.testLock();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1、加锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 从Redis中获取锁,set k1 v1 px 20000 nx</span></span><br><span class="line"><span class="type">String</span> <span class="variable">uuid</span> <span class="operator">=</span> UUID.randomUUID().toString();</span><br><span class="line"><span class="type">Boolean</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="built_in">this</span>.redisTemplate.opsForValue()</span><br><span class="line">      .setIfAbsent(<span class="string">&quot;lock&quot;</span>, uuid, <span class="number">2</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<p>2、使用lua释放锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 释放锁 del</span></span><br><span class="line"><span class="type">String</span> <span class="variable">script</span> <span class="operator">=</span> <span class="string">&quot;if redis.call(&#x27;get&#x27;, KEYS[1]) == ARGV[1] then return redis.call(&#x27;del&#x27;, KEYS[1]) else return 0 end&quot;</span>;</span><br><span class="line"><span class="comment">// 设置lua脚本返回的数据类型</span></span><br><span class="line">DefaultRedisScript&lt;Long&gt; redisScript = <span class="keyword">new</span> <span class="title class_">DefaultRedisScript</span>&lt;&gt;();</span><br><span class="line"><span class="comment">// 设置lua脚本返回类型为Long</span></span><br><span class="line">redisScript.setResultType(Long.class);</span><br><span class="line">redisScript.setScriptText(script);</span><br><span class="line">redisTemplate.execute(redisScript, Arrays.asList(<span class="string">&quot;lock&quot;</span>),uuid);</span><br></pre></td></tr></table></figure>
+
+<p>3、重试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(<span class="number">500</span>); </span><br><span class="line">testLock();</span><br></pre></td></tr></table></figure>
+
+<p>为了确保分布式锁可用，我们至少要确保锁的实现同时满足以下四个条件：</p>
+<p><strong>第一个：互斥性</strong>，在任何时刻，只有一个客户端能持有锁。</p>
+<p><strong>第二个：不会发生死锁</strong>，即使有一个客户端在获取锁操作时候崩溃了，也能保证其他客户端能获取到锁。</p>
+<p><strong>第三个：解铃还须系铃人</strong>，解锁加锁必须同一个客户端操作。</p>
+<p><strong>第四个：加锁和解锁必须具备原子性</strong></p>
+<h2 id="实现分布式锁-Redisson"><a href="#实现分布式锁-Redisson" class="headerlink" title="实现分布式锁-Redisson"></a>实现分布式锁-Redisson</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a><strong>引入依赖</strong></h4><p>在common里service-utils引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.redisson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>redisson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建Redisson配置类"><a href="#创建Redisson配置类" class="headerlink" title="创建Redisson配置类"></a><strong>创建Redisson配置类</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span>  </span><br><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;spring.data.redis&quot;)</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedissonConfig</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> String host;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> String password;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> String port;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">timeout</span> <span class="operator">=</span> <span class="number">3000</span>;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">ADDRESS_PREFIX</span> <span class="operator">=</span> <span class="string">&quot;redis://&quot;</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    RedissonClient <span class="title function_">redissonSingle</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="type">Config</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Config</span>();  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span>(!StringUtils.hasText(host))&#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;host is  empty&quot;</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="type">SingleServerConfig</span> <span class="variable">serverConfig</span> <span class="operator">=</span> config.useSingleServer()  </span><br><span class="line">                .setAddress(ADDRESS_PREFIX + <span class="built_in">this</span>.host + <span class="string">&quot;:&quot;</span> + port)  </span><br><span class="line">                .setTimeout(<span class="built_in">this</span>.timeout);  </span><br><span class="line">        <span class="keyword">if</span>(StringUtils.hasText(<span class="built_in">this</span>.password)) &#123;  </span><br><span class="line">            serverConfig.setPassword(<span class="built_in">this</span>.password);  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> Redisson.create(config);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="在业务方法编写加锁和解锁"><a href="#在业务方法编写加锁和解锁" class="headerlink" title="在业务方法编写加锁和解锁"></a><strong>在业务方法编写加锁和解锁</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Redisson实现  </span></span><br><span class="line"><span class="meta">@Override</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLock</span><span class="params">()</span> &#123;  </span><br><span class="line"></span><br><span class="line">	<span class="comment">// 通过redisson创建锁对象  </span></span><br><span class="line">	<span class="type">RLock</span> <span class="variable">lock</span> <span class="operator">=</span> redissonClient.getLock(<span class="string">&quot;lock1&quot;</span>);  </span><br><span class="line"></span><br><span class="line">	<span class="comment">// 尝试获取锁  </span></span><br><span class="line">	<span class="comment">// 阻塞一直等待直到获取到，获取锁之后设置锁的超时时间为10秒，没有参数默认是30秒  </span></span><br><span class="line">	lock.lock(<span class="number">10</span>, TimeUnit.SECONDS);  </span><br><span class="line"></span><br><span class="line">	<span class="comment">// tryLock，设置等待时间为30秒，超时时间为10秒  </span></span><br><span class="line"><span class="comment">//        try &#123;  </span></span><br><span class="line"><span class="comment">//            boolean b = lock.tryLock(30, 10, TimeUnit.SECONDS);  </span></span><br><span class="line"><span class="comment">//        &#125; catch (InterruptedException e) &#123;  </span></span><br><span class="line"><span class="comment">//            throw new RuntimeException(e);  </span></span><br><span class="line"><span class="comment">//        &#125;  </span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//编写业务代码  </span></span><br><span class="line">	<span class="comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0  </span></span><br><span class="line">	<span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;num&quot;</span>);  </span><br><span class="line">	<span class="comment">//2.如果值为空则非法直接返回即可  </span></span><br><span class="line">	<span class="keyword">if</span> (StringUtils.isBlank(value)) &#123;  </span><br><span class="line">		<span class="keyword">return</span>;  </span><br><span class="line">	&#125;  </span><br><span class="line">	<span class="comment">//3.对num值进行自增加一  </span></span><br><span class="line">	<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(value);  </span><br><span class="line">	redisTemplate.opsForValue().set(<span class="string">&quot;num&quot;</span>, String.valueOf(++num));  </span><br><span class="line"></span><br><span class="line">	<span class="comment">//释放锁  </span></span><br><span class="line">	lock.unlock();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="看门狗原理"><a href="#看门狗原理" class="headerlink" title="看门狗原理"></a>看门狗原理</h3><p>只要线程加锁成功，就会启动一个<code>watch dog</code>看门狗，它是一个后台进程，每隔十秒检查一下，如果线程还持有锁，那么就会不断延长锁<code>key</code>的生存时间，因此可以解决锁过期释放，业务还没完成的问题</p>
+<ul>
+<li>若使用 <code>tryLock()</code> 方法并指定了租约时间，则不会启动看门狗</li>
+<li>如果我们未指定超时时间，就会使用 <code>lockwatchdogTimeout = 30 * 1000</code></li>
+</ul>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-07T14:41:59+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 7, 2025</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/project/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>project</p></a></div>
+  <span hidden itemprop="keywords">project</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/&title=分布式事物锁 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/&title=分布式事物锁 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/&title=分布式事物锁 - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/'>
+          <p class='title'>快速上手xxl-job<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>XXL-JOB入门案例第一步下载XXL-JOB示例代码，解压，使用idea打开
+**项目组成：
+
+admin：调度中心
+core：公共依赖
+sample
+sample-frameless：不带框...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3268,112 +2813,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/project/" style="font-size: 14px; color: #999">project</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 24px; color: #555">字节青训营</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 19px; color: #777">面试八股文</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%94%81%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">本地锁的局限性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-redis"><span class="toc-text">实现分布式锁-redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87LUA%E8%84%9A%E6%9C%AC%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-text">通过LUA脚本保证原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-Redisson"><span class="toc-text">实现分布式锁-Redisson</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BARedisson%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">创建Redisson配置类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E4%B8%9A%E5%8A%A1%E6%96%B9%E6%B3%95%E7%BC%96%E5%86%99%E5%8A%A0%E9%94%81%E5%92%8C%E8%A7%A3%E9%94%81"><span class="toc-text">在业务方法编写加锁和解锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E9%97%A8%E7%8B%97%E5%8E%9F%E7%90%86"><span class="toc-text">看门狗原理</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3401,13 +2882,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3416,14 +2898,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3921,7 +3403,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://hhsqdw.github.io/archives/","name":"Archive"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2025/06/07/articles/Substitute driver/分布式事物锁/","name":"分布式事物锁"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"分布式事物锁","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/","wordCount":0,"datePublished":"2025-06-06T16:00:00.000Z","dateModified":"2025-06-07T06:41:59.490Z","keywords":"project","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

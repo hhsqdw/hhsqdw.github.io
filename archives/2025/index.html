@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1748357532499),
+    lastupdate: new Date(1749290936759),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2545,6 +2545,139 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/07/articles/Substitute driver/分布式事物锁/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/"  itemprop="url">
+        分布式事物锁
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        分布式锁解决司机抢单因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题
+**解决方案
+
+第一种 设置数据库事务的隔离级别，设置为Serializable，效率低下
+
+第二种 使用乐观锁解决，通过版本号进行控制
+
+第三种  加锁解决，学习过synchronized 及lock锁，本地锁，目前微服务架构，分布式部署方式。
+
+
+本地锁的局限性
+我们使用锁一般都是，synchronized 及...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-06-07T00:00:00+08:00">2025-06-07</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/31/articles/Substitute driver/快速上手xxl-job/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/"  itemprop="url">
+        快速上手xxl-job
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        XXL-JOB入门案例第一步下载XXL-JOB示例代码，解压，使用idea打开
+**项目组成：
+
+admin：调度中心
+core：公共依赖
+sample
+sample-frameless：不带框架的
+sample-springboot：带springboot框架的
+
+
+
+第二步创建XXL-JOB使用数据库和相关表
+在示例代码文件里面doc文件夹下的db里面有相关的sql语句，直接拉到数据库即...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-31T00:00:00+08:00">2025-05-31</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/27/articles/每日一篇/什么是循环依赖/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -2997,119 +3130,6 @@ ArrayList基于动态数组实现的非线程安全的集合；LinkedList基于�
       
         <div>
           <a class='readmore' href='/2025/05/12/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringApplication.run%20%E6%89%A7%E8%A1%8C%E5%90%8E%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/11/articles/每日一篇/SpringBoot启动流程/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/"  itemprop="url">
-        SpringBoot启动流程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        首先需要一个加了 @SpringBootApplication 注解的启动类，这个注解本质上就是由 @EnableAutoConfiguration 、@SpringBootConfiguration 和 @ComponentScanner 连起来构成。
-
-@EnableAutoConfiguration 的作用是在启动时自动加载一个类，这个类会将所有符合条件的 @Configuration...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-11T00:00:00+08:00">2025-05-11</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/11/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringBoot%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/10/articles/每日一篇/MySQL事物的原理是什么/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/10/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/MySQL%E4%BA%8B%E7%89%A9%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/"  itemprop="url">
-        MySQL事物的原理是什么
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        MySQL满足ACID的特性，所以MySQL事物的原理就是innodb是如何去实现ACID的特性。
-首先A就是原子性，就是要保证DML数据库操作语言要么都成功，要么都失败，都成功好理解，如果都失败就意味着要把原本执行的操作都回滚，所以innodb里面设计了一个undo log表，在事物执行的过程中把执行数据的快照保存在undo log表里，例如执行一个insert语句，在undo log表里...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-10T00:00:00+08:00">2025-05-10</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/10/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/MySQL%E4%BA%8B%E7%89%A9%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/' itemprop="url">
             Read More
           </a>
         </div>

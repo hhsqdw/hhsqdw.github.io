@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1748357532499),
+    lastupdate: new Date(1749290936759),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2530,9 +2530,146 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/07/articles/Substitute driver/分布式事物锁/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/"  itemprop="url">
+        分布式事物锁
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        分布式锁解决司机抢单因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题
+**解决方案
+
+第一种 设置数据库事务的隔离级别，设置为Serializable，效率低下
+
+第二种 使用乐观锁解决，通过版本号进行控制
+
+第三种  加锁解决，学习过synchronized 及lock锁，本地锁，目前微服务架构，分布式部署方式。
+
+
+本地锁的局限性
+我们使用锁一般都是，synchronized 及...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-06-07T00:00:00+08:00">2025-06-07</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/31/articles/Substitute driver/快速上手xxl-job/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/"  itemprop="url">
+        快速上手xxl-job
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        XXL-JOB入门案例第一步下载XXL-JOB示例代码，解压，使用idea打开
+**项目组成：
+
+admin：调度中心
+core：公共依赖
+sample
+sample-frameless：不带框架的
+sample-springboot：带springboot框架的
+
+
+
+第二步创建XXL-JOB使用数据库和相关表
+在示例代码文件里面doc文件夹下的db里面有相关的sql语句，直接拉到数据库即...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-31T00:00:00+08:00">2025-05-31</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
