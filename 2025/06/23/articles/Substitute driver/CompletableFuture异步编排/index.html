@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://hhsqdw.github.io/2024/10/06/articles/mybatis/test2/"/>
+  <link rel="canonical" href="https://hhsqdw.github.io/2025/06/23/articles/substitute driver/completablefuture异步编排/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,20 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Hexo</title>
-  <meta name="keywords" content="null">
+  <title>CompletableFuture异步编排 - Hexo</title>
+  <meta name="keywords" content="project,null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/index.html">
+<meta property="og:title" content="CompletableFuture异步编排">
+<meta property="og:url" content="https://hhsqdw.github.io/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Mybatis的小笔记association 与 collectionassociation用于一对一或多对一，当一个对象包含另一个对象作为其属性时，可以使用association例如：一个User类有一个Address类的属性，表示用户有一个地址 collection用于一对多，当一个对象包含多个相同类型的对象作为其属性时，可以使用collection例如：一个User类有一个Order列表的属">
+<meta property="og:description" content="简介 CompletableFuture是java.utils.concurrent里的一个类  作用：把串行执行的代码变为并行执行，提高代码执行速度   快速上手创建异步编排对象12345public static &lt;U&gt; CompletableFuture&lt;U&gt; supplyAsync(Supplier&lt;U&gt; supplier);public static">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-10-06T08:47:13.737Z">
-<meta property="article:modified_time" content="2024-10-06T08:56:50.736Z">
+<meta property="article:published_time" content="2025-06-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-23T15:39:15.354Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="project">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2517,7 +2518,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/23/articles/Substitute driver/CompletableFuture异步编排/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2537,20 +2538,69 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        CompletableFuture异步编排
+      </h1>
+      <div class='new-meta-box'>
         
-      </span>
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-23T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 23, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="Mybatis的小笔记"><a href="#Mybatis的小笔记" class="headerlink" title="Mybatis的小笔记"></a>Mybatis的小笔记</h1><h2 id="association-与-collection"><a href="#association-与-collection" class="headerlink" title="association 与 collection"></a>association 与 collection</h2><h3 id="association"><a href="#association" class="headerlink" title="association"></a>association</h3><p>用于一对一或多对一，当一个对象包含另一个对象作为其属性时，可以使用association<br>例如：一个User类有一个Address类的属性，表示用户有一个地址</p>
-<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>用于一对多，当一个对象包含多个相同类型的对象作为其属性时，可以使用collection<br>例如：一个User类有一个Order列表的属性，表示一个用户可以有多个订单</p>
-<h2 id="javaType-与-ofType"><a href="#javaType-与-ofType" class="headerlink" title="javaType 与 ofType"></a>javaType 与 ofType</h2><p>在MyBatis的映射文件中，javaType和ofType是两个经常与association和collection元素一起使用的属性，它们用于指定映射的目标类型，但它们的使用场景和含义有所不同。</p>
-<p>javaType：用来指定实体类（JavaBean）中属性的类型<br>ofType：用来指定映射容器里面实体类（JavaBean）中的类型，泛型中的约束类型</p>
+    <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li><p>CompletableFuture是java.utils.concurrent里的一个类</p>
+</li>
+<li><p>作用：把串行执行的代码变为并行执行，提高代码执行速度</p>
+</li>
+</ul>
+<h3 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h3><h4 id="创建异步编排对象"><a href="#创建异步编排对象" class="headerlink" title="创建异步编排对象"></a>创建异步编排对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier)</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier, Executor executor)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title function_">runAsync</span><span class="params">(Runnable runnable)</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title function_">runAsync</span><span class="params">(Runnable runnable, Executor executor)</span>;</span><br></pre></td></tr></table></figure>
 
+
+
+<h4 id="线程串行方法"><a href="#线程串行方法" class="headerlink" title="线程串行方法"></a>线程串行方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使线程串行执行，无入参，无返回值</span></span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Void&gt; <span class="title function_">thenRun</span><span class="params">(Runnable action)</span>;</span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Void&gt; <span class="title function_">thenRunAsync</span><span class="params">(Runnable action)</span>;</span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Void&gt; <span class="title function_">thenRunAsync</span><span class="params">(Runnable action, Executor executor)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使线程串行执行，有入参，无返回值</span></span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Void&gt; <span class="title function_">thenAccept</span><span class="params">(Consumer&lt;? <span class="built_in">super</span> T&gt; action)</span>;</span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Void&gt; <span class="title function_">thenAcceptAsync</span><span class="params">(Consumer&lt;? <span class="built_in">super</span> T&gt; action)</span>;</span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Void&gt; <span class="title function_">thenAcceptAsync</span><span class="params">(Consumer&lt;? <span class="built_in">super</span> T&gt; action, Executor executor)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使线程串行执行，有入参，有返回值</span></span><br><span class="line"><span class="keyword">public</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">thenApply</span><span class="params">(Function&lt;? <span class="built_in">super</span> T,? extends U&gt; fn)</span>;</span><br><span class="line"><span class="keyword">public</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">thenApplyAsync</span><span class="params">(Function&lt;? <span class="built_in">super</span> T,? extends U&gt; fn)</span>;</span><br><span class="line"><span class="keyword">public</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">thenApplyAsync</span><span class="params">(Function&lt;? <span class="built_in">super</span> T,? extends U&gt; fn, Executor executor)</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多任务组合"><a href="#多任务组合" class="headerlink" title="多任务组合"></a>多任务组合</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title function_">allOf</span><span class="params">(CompletableFuture&lt;?&gt;... cfs)</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CompletableFutureTest5</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//动态获取服务器核数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">processors</span> <span class="operator">=</span> Runtime.getRuntime().availableProcessors();</span><br><span class="line">        <span class="type">ThreadPoolExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">                processors+<span class="number">1</span>, <span class="comment">// 核心线程个数 io:2n ,cpu: n+1  n:内核数据</span></span><br><span class="line">                processors+<span class="number">1</span>,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                TimeUnit.SECONDS,</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">10</span>),</span><br><span class="line">                Executors.defaultThreadFactory(),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy()</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        CompletableFuture&lt;String&gt; future01 = CompletableFuture.supplyAsync(() -&gt; <span class="string">&quot;任务1&quot;</span>, executor);</span><br><span class="line">        CompletableFuture&lt;String&gt; future02 = CompletableFuture.supplyAsync(() -&gt; <span class="string">&quot;任务2&quot;</span>, executor);</span><br><span class="line">        CompletableFuture&lt;String&gt; future03 = CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;任务3&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 串联起若干个线程任务, 没有返回值</span></span><br><span class="line">        CompletableFuture&lt;Void&gt; all = CompletableFuture.allOf(future01, future02, future03);</span><br><span class="line">        <span class="comment">// 等待所有线程执行完成</span></span><br><span class="line">        <span class="comment">// .join()和.get()都会阻塞并获取线程的执行情况</span></span><br><span class="line">        <span class="comment">// .join()会抛出未经检查的异常，不会强制开发者处理异常 .get()会抛出检查异常，需要开发者处理</span></span><br><span class="line">        all.join();</span><br><span class="line">        all.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
   </div>
   
   
@@ -2574,10 +2624,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-06T16:56:50+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-23T23:39:15+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 6, 2024</p>
+    <p>更新于：Jun 23, 2025</p>
   </a>
 </div>
 
@@ -2585,6 +2635,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/project/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>project</p></a></div>
+  <span hidden itemprop="keywords">project</span>
+
 
         
       
@@ -2596,7 +2650,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/&title= - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/&title=CompletableFuture异步编排 - Hexo&summary="
           
           >
           
@@ -2608,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/&title= - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/&title=CompletableFuture异步编排 - Hexo&summary="
           
           >
           
@@ -2620,7 +2674,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/&title= - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/&title=CompletableFuture异步编排 - Hexo&summary="
           
           >
           
@@ -2653,17 +2707,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/10/19/hello-world/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Oct 6, 2024</p>
-          <p class='content'>
-
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get an...</p>
-        </a>
       
-      
-        <a class='next' href='/2024/09/20/articles/Mybatis/Mybatis/'>
-          <p class='title'>Mybatis学习记录<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Mybatis简介Mybatis是一个持久层的框架，支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。可以使用XML或注解...</p>
+        <a class='next' href='/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/'>
+          <p class='title'>MongoDB<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>概述
+MongoDB 与传统关系型数据库相比更加简单，架构为key-value结构
+MySQL数据库：数据库-表-记录MongoDB      ：数据库-集合-文档（记录）
+文档类似于JSON对...</p>
         </a>
       
     </div>
@@ -2679,7 +2729,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/10/06/articles/Mybatis/test2/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2721,7 +2771,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#association-%E4%B8%8E-collection"><span class="toc-text">association 与 collection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#association"><span class="toc-text">association</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#collection"><span class="toc-text">collection</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javaType-%E4%B8%8E-ofType"><span class="toc-text">javaType 与 ofType</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-text">快速上手</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建异步编排对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%B2%E8%A1%8C%E6%96%B9%E6%B3%95"><span class="toc-text">线程串行方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88"><span class="toc-text">多任务组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E4%BE%8B"><span class="toc-text">代码实例</span></a></li></ol>
     </div>
   </section>
 
@@ -2777,7 +2827,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3291,7 +3341,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/","wordCount":0,"datePublished":"2024-10-06T08:47:13.737Z","dateModified":"2024-10-06T08:56:50.736Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2025/06/23/articles/Substitute driver/CompletableFuture异步编排/","name":"CompletableFuture异步编排"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"CompletableFuture异步编排","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/","wordCount":0,"datePublished":"2025-06-22T16:00:00.000Z","dateModified":"2025-06-23T15:39:15.354Z","keywords":"project","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

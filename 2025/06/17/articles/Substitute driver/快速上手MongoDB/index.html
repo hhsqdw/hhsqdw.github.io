@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://hhsqdw.github.io/2024/10/06/articles/mybatis/test2/"/>
+  <link rel="canonical" href="https://hhsqdw.github.io/2025/06/17/articles/substitute driver/快速上手mongodb/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,20 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Hexo</title>
-  <meta name="keywords" content="null">
+  <title>MongoDB - Hexo</title>
+  <meta name="keywords" content="project,null">
   <meta desc name="description" content="Hexo - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/index.html">
+<meta property="og:title" content="MongoDB">
+<meta property="og:url" content="https://hhsqdw.github.io/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Mybatis的小笔记association 与 collectionassociation用于一对一或多对一，当一个对象包含另一个对象作为其属性时，可以使用association例如：一个User类有一个Address类的属性，表示用户有一个地址 collection用于一对多，当一个对象包含多个相同类型的对象作为其属性时，可以使用collection例如：一个User类有一个Order列表的属">
+<meta property="og:description" content="概述 MongoDB 与传统关系型数据库相比更加简单，架构为key-value结构 MySQL数据库：数据库-表-记录MongoDB      ：数据库-集合-文档（记录） 文档类似于JSON对象，结构成为BSON  安装与启动1. 导入 MongoDB 官方 GPG 密钥首先需要导入 MongoDB 官方的 GPG 密钥，以便系统能够验证下载包的完整性。 123curl -fsSL https:">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-10-06T08:47:13.737Z">
-<meta property="article:modified_time" content="2024-10-06T08:56:50.736Z">
+<meta property="article:published_time" content="2025-06-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-21T16:26:14.198Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="project">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2517,7 +2518,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/17/articles/Substitute driver/快速上手MongoDB/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2537,19 +2538,197 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        MongoDB
+      </h1>
+      <div class='new-meta-box'>
         
-      </span>
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-17T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 17, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="Mybatis的小笔记"><a href="#Mybatis的小笔记" class="headerlink" title="Mybatis的小笔记"></a>Mybatis的小笔记</h1><h2 id="association-与-collection"><a href="#association-与-collection" class="headerlink" title="association 与 collection"></a>association 与 collection</h2><h3 id="association"><a href="#association" class="headerlink" title="association"></a>association</h3><p>用于一对一或多对一，当一个对象包含另一个对象作为其属性时，可以使用association<br>例如：一个User类有一个Address类的属性，表示用户有一个地址</p>
-<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>用于一对多，当一个对象包含多个相同类型的对象作为其属性时，可以使用collection<br>例如：一个User类有一个Order列表的属性，表示一个用户可以有多个订单</p>
-<h2 id="javaType-与-ofType"><a href="#javaType-与-ofType" class="headerlink" title="javaType 与 ofType"></a>javaType 与 ofType</h2><p>在MyBatis的映射文件中，javaType和ofType是两个经常与association和collection元素一起使用的属性，它们用于指定映射的目标类型，但它们的使用场景和含义有所不同。</p>
-<p>javaType：用来指定实体类（JavaBean）中属性的类型<br>ofType：用来指定映射容器里面实体类（JavaBean）中的类型，泛型中的约束类型</p>
+    <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>MongoDB 与传统关系型数据库相比更加简单，架构为key-value结构</li>
+<li>MySQL数据库：数据库-表-记录<br>MongoDB      ：数据库-集合-文档（记录）</li>
+<li>文档类似于JSON对象，结构成为BSON</li>
+</ul>
+<h1 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h1><h2 id="1-导入-MongoDB-官方-GPG-密钥"><a href="#1-导入-MongoDB-官方-GPG-密钥" class="headerlink" title="1. 导入 MongoDB 官方 GPG 密钥"></a>1. 导入 MongoDB 官方 GPG 密钥</h2><p>首先需要导入 MongoDB 官方的 GPG 密钥，以便系统能够验证下载包的完整性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \</span><br><span class="line">   <span class="built_in">sudo</span> gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \</span><br><span class="line">   --dearmor</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-添加-MongoDB-软件源"><a href="#2-添加-MongoDB-软件源" class="headerlink" title="2. 添加 MongoDB 软件源"></a>2. 添加 MongoDB 软件源</h2><p>将 MongoDB 的软件源添加到系统的源列表中，这样就可以通过包管理器直接下载 MongoDB。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse&quot;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/mongodb-org-7.0.list</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-更新包索引"><a href="#3-更新包索引" class="headerlink" title="3. 更新包索引"></a>3. 更新包索引</h2><p>添加完软件源后，需要更新本地的包索引，让系统知道有哪些新的软件包可以安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-安装-MongoDB-7-0-0"><a href="#4-安装-MongoDB-7-0-0" class="headerlink" title="4. 安装 MongoDB 7.0.0"></a>4. 安装 MongoDB 7.0.0</h2><p>使用包管理器安装指定版本的 MongoDB。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install -y mongodb-org=7.0.0 mongodb-org-database=7.0.0 mongodb-org-server=7.0.0 mongodb-org-shell=7.0.0 mongodb-org-mongos=7.0.0 mongodb-org-tools=7.0.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-锁定-MongoDB-版本"><a href="#5-锁定-MongoDB-版本" class="headerlink" title="5. 锁定 MongoDB 版本"></a>5. 锁定 MongoDB 版本</h2><p>为了防止系统自动升级 MongoDB 版本，需要对其进行版本锁定。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mongodb-org hold&quot;</span> | <span class="built_in">sudo</span> dpkg --set-selections</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mongodb-org-database hold&quot;</span> | <span class="built_in">sudo</span> dpkg --set-selections</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mongodb-org-server hold&quot;</span> | <span class="built_in">sudo</span> dpkg --set-selections</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mongodb-org-shell hold&quot;</span> | <span class="built_in">sudo</span> dpkg --set-selections</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mongodb-org-mongos hold&quot;</span> | <span class="built_in">sudo</span> dpkg --set-selections</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mongodb-org-tools hold&quot;</span> | <span class="built_in">sudo</span> dpkg --set-selections</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-启动-MongoDB-服务"><a href="#6-启动-MongoDB-服务" class="headerlink" title="6. 启动 MongoDB 服务"></a>6. 启动 MongoDB 服务</h2><p>安装完成后，启动 MongoDB 服务并设置为开机自启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start mongod</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> mongod</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-验证安装结果"><a href="#7-验证安装结果" class="headerlink" title="7. 验证安装结果"></a>7. 验证安装结果</h2><p>通过以下命令检查 MongoDB 服务的运行状态，确认是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status mongod</span><br></pre></td></tr></table></figure>
+
+<p>Linux进入MongoDB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongosh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show dbs  # 查看数据库</span><br><span class="line">db.version() # 查看版本  </span><br><span class="line">db.getMongo()  # 查看当前db的链接机器地址</span><br><span class="line">db.help()    # 帮助</span><br><span class="line">quit()       # 退出</span><br></pre></td></tr></table></figure>
+
+<h1 id="命令行操作MongoDB"><a href="#命令行操作MongoDB" class="headerlink" title="命令行操作MongoDB"></a>命令行操作MongoDB</h1><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>创建数据库，如果数据库不存在，则创建数据库，否则切换数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 库名</span><br></pre></td></tr></table></figure>
+
+<p>查看当前数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.getName()</span><br></pre></td></tr></table></figure>
+
+<p>查看当前数据库状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.stats()</span><br></pre></td></tr></table></figure>
+
+<p>删除当前数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><p>创建集合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(&quot;User&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>删除集合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.drop()</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="文档操作"><a href="#文档操作" class="headerlink" title="文档操作"></a>文档操作</h3><p>注意：</p>
+<ul>
+<li>MongoDB区分类型和大小写</li>
+<li>MongoDB文档不能有重复的键</li>
+</ul>
+<p>insert，向集合插入一条记录。可以预先使用 <code>createCollection</code> 方法创建，也可以不先创建，直接插入，集合会自动创建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.insert(&#123;name:&#x27;zhangsan&#x27;,age:21,sex:true&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>find，查询当前集合中name是zhangsan的数据，空参的话是查询全部</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.find(&#123;name:zhangsan&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>update，只更新匹配到的第一条记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.update(&#123;age:21&#125;,&#123;$set:&#123;name:100&#125;)</span><br></pre></td></tr></table></figure>
+<p>更新匹配到的所有记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.update(&#123;age:21&#125;,&#123;set:&#123;name:100&#125;&#125;,&#123;multi:true&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>remove，删除一个文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.remove(id)</span><br></pre></td></tr></table></figure>
+<p>删除所有文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合名.remove(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="SpringBoot整合MongoDB"><a href="#SpringBoot整合MongoDB" class="headerlink" title="SpringBoot整合MongoDB"></a>SpringBoot整合MongoDB</h1><ul>
+<li>spring-data-mongodb提供了两种方式</li>
+</ul>
+<p>第一种 MongoTemplate（更灵活）</p>
+<p>第二种 MongoRepository（操作简单）</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>第一步 创建项目，导入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mongo_demo0<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>17<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>17<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--mongodb--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第二步 创建项目文件</p>
+<p>application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">data:</span></span><br><span class="line">    <span class="attr">mongodb:</span></span><br><span class="line">      <span class="attr">database:</span> <span class="string">daijia</span></span><br><span class="line">      <span class="attr">host:</span> <span class="number">47.107</span><span class="number">.42</span><span class="number">.25</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">27017</span></span><br></pre></td></tr></table></figure>
+
+<p>第三步 创建实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Document(&quot;user&quot;)</span> <span class="comment">//指定mongodb中的集合名字</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> ObjectId id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> Date createDate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="MongoRepository"><a href="#MongoRepository" class="headerlink" title="MongoRepository"></a>MongoRepository</h2><ul>
+<li>添加interface继承MongoRepository</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserRepository</span> <span class="keyword">extends</span> <span class="title class_">MongoRepository</span>&lt;User, ObjectId&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="普通方法"><a href="#普通方法" class="headerlink" title="普通方法"></a>普通方法</h4><ul>
+<li>编写测试类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MongoRepositoryTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setName(<span class="string">&quot;mary&quot;</span>);</span><br><span class="line">        user.setAge(<span class="number">30</span>);</span><br><span class="line">        user.setCreateDate(<span class="keyword">new</span> <span class="title class_">Date</span>());</span><br><span class="line">        userRepository.save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">findAll</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;User&gt; list = userRepository.findAll();</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据id查询</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFindById</span><span class="params">()</span> &#123;</span><br><span class="line">        Optional&lt;User&gt; optional =</span><br><span class="line">                userRepository.findById(<span class="keyword">new</span> <span class="title class_">ObjectId</span>(<span class="string">&quot;666a9a85f5294513720647ff&quot;</span>));</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">present</span> <span class="operator">=</span> optional.isPresent();</span><br><span class="line">        <span class="keyword">if</span>(present) &#123;</span><br><span class="line">            <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> optional.get();</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//条件查询 + 排序</span></span><br><span class="line">    <span class="comment">// age = 20</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFindCondition</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//封装条件</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setAge(<span class="number">20</span>);</span><br><span class="line">        Example&lt;User&gt; example = Example.of(user);</span><br><span class="line"></span><br><span class="line">        <span class="type">Sort</span> <span class="variable">sort</span> <span class="operator">=</span> Sort.by(Sort.Direction.DESC, <span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; list = userRepository.findAll(example, sort);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分页查询</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPage</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//第一页从0开始的</span></span><br><span class="line">        <span class="type">PageRequest</span> <span class="variable">pageable</span> <span class="operator">=</span> PageRequest.of(<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        Page&lt;User&gt; page = userRepository.findAll(pageable);</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; list = page.getContent();</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//更新</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testUpdateUser</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//注意：先查询，再更新</span></span><br><span class="line">        Optional&lt;User&gt; optional = userRepository.findById(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ObjectId</span>(<span class="string">&quot;64eee9dff317c823c62b4faf&quot;</span>)</span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span>(optional.isPresent())&#123;</span><br><span class="line">            <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> optional.get();</span><br><span class="line">            user.setAge(<span class="number">100</span>);</span><br><span class="line">            <span class="comment">//user中包含id，就会执行更新</span></span><br><span class="line">            userRepository.save(user);</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testDeleteUser</span><span class="params">()</span>&#123;</span><br><span class="line">        userRepository.deleteById(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ObjectId</span>(<span class="string">&quot;64eee9dff317c823c62b4faf&quot;</span>)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="命名方法"><a href="#命名方法" class="headerlink" title="命名方法"></a>命名方法</h4><ul>
+<li>MongoRepository也可以<strong>按照规则</strong>在把查询方法创建出来</li>
+</ul>
+<p>总体规模：</p>
+<ul>
+<li>查询方法 以  get   |   find   |   read开头</li>
+<li>后面街上查询字段名称，满足大驼峰命名</li>
+<li>字段查询条件添加关键字，比如like</li>
+</ul>
+<p>比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">OrderServiceLocationRepository</span> <span class="keyword">extends</span> <span class="title class_">MongoRepository</span>&lt;OrderServiceLocation, String&gt; &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 根据订单id获取位置信息，按照创建时间排序  </span></span><br><span class="line">    List&lt;OrderServiceLocation&gt; <span class="title function_">findByOrderIdOrderByCreateTimeAsc</span><span class="params">(Long orderId)</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="MongoTemplate"><a href="#MongoTemplate" class="headerlink" title="MongoTemplate"></a>MongoTemplate</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MongoTemplateTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MongoTemplate mongoTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setName(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">        user.setAge(<span class="number">20</span>);</span><br><span class="line">        user.setCreateDate(<span class="keyword">new</span> <span class="title class_">Date</span>());</span><br><span class="line">        mongoTemplate.insert(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">findAll</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;User&gt; list = mongoTemplate.findAll(User.class);</span><br><span class="line">        list.forEach(user-&gt;&#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据id查询</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFindId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> mongoTemplate.findById(<span class="string">&quot;666a9b5e9a3653796627bb3c&quot;</span>, User.class);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//条件查询</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testCondition</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// where name=? and age=?</span></span><br><span class="line">        <span class="type">Criteria</span> <span class="variable">criteria</span> <span class="operator">=</span></span><br><span class="line">                Criteria.where(<span class="string">&quot;name&quot;</span>).is(<span class="string">&quot;test&quot;</span>).and(<span class="string">&quot;age&quot;</span>).is(<span class="number">20</span>);</span><br><span class="line">        <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Query</span>(criteria);</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; list = mongoTemplate.find(query,User.class);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分页查询</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPage</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// limit 0,2</span></span><br><span class="line">        <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Query</span>();</span><br><span class="line">        List&lt;User&gt; list = mongoTemplate.find(query.skip(<span class="number">0</span>).limit(<span class="number">2</span>), User.class);</span><br><span class="line">        list.forEach(user-&gt;&#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改和删除</span></span><br><span class="line">    <span class="comment">//修改</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testUpdateUser</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Criteria</span> <span class="variable">criteria</span> <span class="operator">=</span> Criteria.where(<span class="string">&quot;_id&quot;</span>).is(<span class="string">&quot;64eeeae31711344f35635788&quot;</span>);</span><br><span class="line">        <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Query</span>(criteria);</span><br><span class="line">        <span class="type">Update</span> <span class="variable">update</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Update</span>();</span><br><span class="line">        update.set(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line">        update.set(<span class="string">&quot;age&quot;</span>, <span class="number">99</span>);</span><br><span class="line">        <span class="type">UpdateResult</span> <span class="variable">result</span> <span class="operator">=</span> mongoTemplate.upsert(query, update, User.class);<span class="comment">//改一条</span></span><br><span class="line">        <span class="comment">//UpdateResult result = mongoTemplate.updateMulti(query, update, User.class);//改多条</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> result.getModifiedCount();</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testRemove</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Criteria</span> <span class="variable">criteria</span> <span class="operator">=</span> Criteria.where(<span class="string">&quot;_id&quot;</span>).is(<span class="string">&quot;64eeeae31711344f35635788&quot;</span>);</span><br><span class="line">        <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Query</span>(criteria);</span><br><span class="line">        <span class="type">DeleteResult</span> <span class="variable">result</span> <span class="operator">=</span> mongoTemplate.remove(query, User.class);</span><br><span class="line">        <span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> result.getDeletedCount();</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   </div>
   
@@ -2574,10 +2753,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-10-06T16:56:50+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-22T00:26:14+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Oct 6, 2024</p>
+    <p>更新于：Jun 22, 2025</p>
   </a>
 </div>
 
@@ -2585,6 +2764,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/project/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>project</p></a></div>
+  <span hidden itemprop="keywords">project</span>
+
 
         
       
@@ -2596,7 +2779,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/&title= - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hhsqdw.github.io/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/&title=MongoDB - Hexo&summary="
           
           >
           
@@ -2608,7 +2791,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/&title= - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hhsqdw.github.io/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/&title=MongoDB - Hexo&summary="
           
           >
           
@@ -2620,7 +2803,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/&title= - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hhsqdw.github.io/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/&title=MongoDB - Hexo&summary="
           
           >
           
@@ -2653,17 +2836,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/10/19/hello-world/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Oct 6, 2024</p>
-          <p class='content'>
+        <a class='prev' href='/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>CompletableFuture异步编排</p>
+          <p class='content'>简介
+CompletableFuture是java.utils.concurrent里的一个类
 
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get an...</p>
+作用：把串行执行的代码变为并行执行，提高代码执行速度
+
+
+快速上手创建异步编排对象12345pu...</p>
         </a>
       
       
-        <a class='next' href='/2024/09/20/articles/Mybatis/Mybatis/'>
-          <p class='title'>Mybatis学习记录<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Mybatis简介Mybatis是一个持久层的框架，支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。可以使用XML或注解...</p>
+        <a class='next' href='/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/'>
+          <p class='title'>分布式事物锁<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>分布式锁解决司机抢单因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题
+**解决方案
+
+第一种 设置数据库事务的隔离级别，设置为Serializable，效率低下
+
+第二种 使用乐观锁解决...</p>
         </a>
       
     </div>
@@ -2679,7 +2871,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/10/06/articles/Mybatis/test2/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2721,7 +2913,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#association-%E4%B8%8E-collection"><span class="toc-text">association 与 collection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#association"><span class="toc-text">association</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#collection"><span class="toc-text">collection</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javaType-%E4%B8%8E-ofType"><span class="toc-text">javaType 与 ofType</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AF%BC%E5%85%A5-MongoDB-%E5%AE%98%E6%96%B9-GPG-%E5%AF%86%E9%92%A5"><span class="toc-text">1. 导入 MongoDB 官方 GPG 密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0-MongoDB-%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="toc-text">2. 添加 MongoDB 软件源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9B%B4%E6%96%B0%E5%8C%85%E7%B4%A2%E5%BC%95"><span class="toc-text">3. 更新包索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85-MongoDB-7-0-0"><span class="toc-text">4. 安装 MongoDB 7.0.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%94%81%E5%AE%9A-MongoDB-%E7%89%88%E6%9C%AC"><span class="toc-text">5. 锁定 MongoDB 版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%90%AF%E5%8A%A8-MongoDB-%E6%9C%8D%E5%8A%A1"><span class="toc-text">6. 启动 MongoDB 服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85%E7%BB%93%E6%9E%9C"><span class="toc-text">7. 验证安装结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">数据库操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C"><span class="toc-text">集合操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%93%8D%E4%BD%9C"><span class="toc-text">文档操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoRepository"><span class="toc-text">MongoRepository</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%96%B9%E6%B3%95"><span class="toc-text">普通方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E6%96%B9%E6%B3%95"><span class="toc-text">命名方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoTemplate"><span class="toc-text">MongoTemplate</span></a></li></ol>
     </div>
   </section>
 
@@ -2777,7 +2969,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3291,7 +3483,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2024/10/06/articles/Mybatis/test2/","wordCount":0,"datePublished":"2024-10-06T08:47:13.737Z","dateModified":"2024-10-06T08:56:50.736Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hhsqdw.github.io/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hhsqdw.github.io/2025/06/17/articles/Substitute driver/快速上手MongoDB/","name":"MongoDB"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"https://hhsqdw.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"https://hhsqdw.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://hhsqdw.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"MongoDB","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hhsqdw.github.io/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://hhsqdw.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hhsqdw.github.io/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/","wordCount":0,"datePublished":"2025-06-16T16:00:00.000Z","dateModified":"2025-06-21T16:26:14.198Z","keywords":"project","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

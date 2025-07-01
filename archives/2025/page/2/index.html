@@ -1740,7 +1740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1749290936759),
+    lastupdate: new Date(1751358766271),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2521,6 +2521,124 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/13/articles/每日一篇/JVM垃圾回收器/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/13/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/"  itemprop="url">
+        JVM垃圾回收器
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        **Java分配对象的过程以及新生代和老年代划分的目的
+创建一个新的对象实例时，jvm首先会在堆内存分配内存空间，大部分情况下，新对象都会分配到新生代的Eden区，新生代有三个区，一个Eden区和两个survivor区，当Eden区满了以后会进行Minor GC（新生代GC，是指新生代的垃圾收集，一般Eden区满了就执行，非常频繁，回收速度快），在GC的过程中存活的对象会在两个survivo...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-13T00:00:00+08:00">2025-05-13</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/13/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/12/articles/每日一篇/SpringApplication.run 执行后的四个阶段/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/12/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringApplication.run%20%E6%89%A7%E8%A1%8C%E5%90%8E%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5/"  itemprop="url">
+        SpringApplication.run 执行后的四个阶段
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        四阶段分别为：服务构建、环境准备、容器创建和填充容器
+服务构建
+
+首先把传入的资源加载器、主方法类记录到内存中，然后逐一判断对应的服务类是否存在来确定web服务的类型
+默认是基于servlet的web服务，如tomcat，还有响应式非阻塞服务reactive，如spring-webflux，还有什么都不是的none
+
+
+确定完选择哪个web服务后就是加载初始化类了，会去读取META-INF&...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-12T00:00:00+08:00">2025-05-12</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/12/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/SpringApplication.run%20%E6%89%A7%E8%A1%8C%E5%90%8E%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%98%B6%E6%AE%B5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/11/articles/每日一篇/SpringBoot启动流程/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
@@ -2878,7 +2996,7 @@ ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/04/17/articles/Substitute driver/校园闪送项目笔记/">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/04/17/articles/Substitute driver/我来开！项目笔记/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2896,7 +3014,7 @@ ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/17/articles/Substitute%20driver/%E6%A0%A1%E5%9B%AD%E9%97%AA%E9%80%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"  itemprop="url">
+      <a href="/2025/04/17/articles/Substitute%20driver/%E6%88%91%E6%9D%A5%E5%BC%80%EF%BC%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"  itemprop="url">
         校园闪送项目笔记
       </a>
     </h2>
@@ -2919,7 +3037,7 @@ ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，
       </div>
       
         <div>
-          <a class='readmore' href='/2025/04/17/articles/Substitute%20driver/%E6%A0%A1%E5%9B%AD%E9%97%AA%E9%80%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/' itemprop="url">
+          <a class='readmore' href='/2025/04/17/articles/Substitute%20driver/%E6%88%91%E6%9D%A5%E5%BC%80%EF%BC%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2984,145 +3102,6 @@ ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，
       
         <div>
           <a class='readmore' href='/2025/02/21/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/17.%E5%BC%80%E6%BA%90%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8/%E5%BC%80%E6%BA%90%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/02/20/articles/MarsCode学习笔记/16.Go性能优化及自动内存管理/性能优化及自动内存管理/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/20/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/16.Go%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"  itemprop="url">
-        性能优化及自动内存管理
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        &#x3D;&#x3D;这里主要讲的是Go语言&#x3D;&#x3D;，太概念了，这知识根本不入脑
-性能优化提升软件系统处理能力，减少不必要的消耗，充分发掘计算机算力
-性能优化的作用
-用户体验：带来用户体验的提升 - 让刷抖音更丝滑，让双十一购物不再卡顿
-资源高效利用：降低成本，提高效率 - 很小的优化乘以海量机器会是显著的性能提升和成本节约
-
-性能优化的层面
-业务层优化
-针对特定场景，具体...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-02-20T00:00:00+08:00">2025-02-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/02/20/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/16.Go%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/02/18/articles/MarsCode学习笔记/15.微服务架构/微服务架构/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/02/18/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15.%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/"  itemprop="url">
-        微服务架构
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        了解微服务架构
-
-优势：
-
-开发效率高、2. 业务独立设计、3. 自下而上、4. 故障隔离
-
-
-劣势：
-
-治理、运维难度高、2. 观测挑战、3. 安全性、4. 分布式系统的问题
-
-
-
-核心要素
-服务治理
-
-服务注册、2. 服务发现、3. 负载均衡、4. 扩缩容、5. 流量治理、6. 稳定性治理
-
-
-可观测性
-
-日志采集、2. 日志分析、3. 监控打点、4. 监控大盘、5. 异常报警、6. 链...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-02-18T00:00:00+08:00">2025-02-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/02/18/articles/MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15.%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/' itemprop="url">
             Read More
           </a>
         </div>
