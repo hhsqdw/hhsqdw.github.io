@@ -5901,4 +5901,169 @@ Bucket：存储对象的桶，可类比一下Object：对象，包含以下三�
         <tag>字节青训营</tag>
       </tags>
   </entry>
+  <entry>
+    <title>快速上手LangChain4j</title>
+    <url>/2025/07/04/articles/LangChain4j/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/</url>
+    <content><![CDATA[LangChain4j入门创建一个Maven项目创建空项目并且导入依赖&lt;properties&gt;      &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;      &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;      &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;      &lt;spring-boot.version&gt;3.2.6&lt;/spring-boot.version&gt;      &lt;knife4j.version&gt;4.3.0&lt;/knife4j.version&gt;      &lt;mybatis-plus.version&gt;3.5.11&lt;/mybatis-plus.version&gt;      &lt;langchain4j.version&gt;1.0.0-beta3&lt;/langchain4j.version&gt;  &lt;/properties&gt;&lt;dependencies&gt;	&lt;!-- web应用程序核心依赖 --&gt;	&lt;dependency&gt;		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;		&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;	&lt;/dependency&gt;	&lt;!-- 编写和运行测试用例 --&gt;	&lt;dependency&gt;		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;		&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;		&lt;scope&gt;test&lt;/scope&gt;	&lt;/dependency&gt;	&lt;!-- 前后端分离中的后端接口测试工具 --&gt;	&lt;dependency&gt;		&lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;		&lt;artifactId&gt;knife4j-openapi3-jakarta-spring-boot-starter&lt;/artifactId&gt;		&lt;version&gt;$&#123;knife4j.version&#125;&lt;/version&gt;	&lt;/dependency&gt;&lt;/dependencies&gt;&lt;dependencyManagement&gt;	&lt;dependencies&gt;		&lt;!--引入SpringBoot依赖管理清单--&gt;		&lt;dependency&gt;			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;			&lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;			&lt;version&gt;$&#123;spring-boot.version&#125;&lt;/version&gt;			&lt;type&gt;pom&lt;/type&gt;			&lt;scope&gt;import&lt;/scope&gt;		&lt;/dependency&gt;	&lt;/dependencies&gt;&lt;/dependencyManagement&gt;
+
+配置文件先随便写点，写个端口让他跑起来先
+application.properties
+# web 服务端口  server.port=8080
+
+
+启动类注意写 @SpringBootApplication
+@SpringBootApplication  public class Main &#123;      public static void main(String[] args) &#123;          SpringApplication.run(Main.class, args);      &#125;  &#125;
+
+启动启动类访问 http://localhost:8080/doc.html 查看程序能否成功运行
+接入大模型参考文档： https://docs.langchain4j.dev/get-started
+导入依赖&lt;!-- 基于open-ai的langchain4j接口：ChatGPT、deepseek都是open-ai标准下的大模型 --&gt;  &lt;dependency&gt;      &lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;      &lt;artifactId&gt;langchain4j-open-ai&lt;/artifactId&gt;      &lt;version&gt;1.1.0&lt;/version&gt;  &lt;/dependency&gt; &lt;dependencyManagement&gt;    &lt;dependencies&gt;        &lt;!--引入langchain4j依赖管理清单--&gt;        &lt;dependency&gt;            &lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;            &lt;artifactId&gt;langchain4j-bom&lt;/artifactId&gt;            &lt;version&gt;$&#123;langchain4j.version&#125;&lt;/version&gt;            &lt;type&gt;pom&lt;/type&gt;            &lt;scope&gt;import&lt;/scope&gt;        &lt;/dependency&gt;    &lt;/dependencies&gt; &lt;/dependencyManagement&gt;
+
+创建测试用例@SpringBootTest  public class LangChain4jTest &#123;        @Test      public void testGPTDemo() &#123;          OpenAiChatModel model = OpenAiChatModel.builder()                  .baseUrl(&quot;http://langchain4j.dev/demo/openai/v1&quot;)                  .apiKey(&quot;demo&quot;)                  .modelName(&quot;gpt-4o-mini&quot;)                  .build();            String answer = model.chat(&quot;你是谁呀&quot;);          System.out.println(answer);      &#125;  &#125;
+
+SpringBoot整合参考文档： https://docs.langchain4j.dev/tutorials/spring-boot-integration
+替换依赖连接Springboot依赖是 langchain4j-&#123;integration-name&#125;-spring-boot-starter
+我们这将原来的 langchain4j-open-ai 替换成 langchain4j-open-ai-spring-boot-starter
+&lt;!-- 基于open-ai的langchain4j接口：ChatGPT、deepseek都是open-ai标准下的大模型 --&gt;  &lt;dependency&gt;      &lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;      &lt;artifactId&gt;langchain4j-open-ai-spring-boot-starter&lt;/artifactId&gt;  &lt;/dependency&gt;
+
+编写配置文件# web 端口  server.port=8080    langchain4j.open-ai.chat-model.base-url=http://langchain4j.dev/demo/openai/v1  langchain4j.open-ai.chat-model.api-key=demo  langchain4j.open-ai.chat-model.model-name=gpt-4o-mini  # 应用程序发送给大模型的请求日志和响应日志  langchain4j.open-ai.chat-model.log-requests=true  langchain4j.open-ai.chat-model.log-responses=true  # 设置系统日志为debug级别  logging.level.root=debug
+
+创建测试用例@Autowired  private OpenAiChatModel openAiChatModel;    @Test  public void testSpringBoot() &#123;      String answer = openAiChatModel.chat(&quot;我是谁？&quot;);      System.out.println(answer);  &#125;
+
+
+介入其他大模型大模型排行榜 https://superclueai.com/
+LangChain4j支持接入的大模型 https://docs.langchain4j.dev/integrations/language-models/
+注：deepseek和openAI使用的都是同一套标准，所以后续deepseek使用的是openAI的接口
+接入DeepSeek获取开发参数
+访问官网： https://www.deepseek.com/ 右上角有个API 开放平台注册账号，注册后获取base_url（在接口文档找到）和api_key
+
+* deepseek-chat 模型指向 DeepSeek-V3-0324， 通过指定 model=&#39;deepseek-chat&#39; 调用。
+* deepseek-reasoner 模型指向 DeepSeek-R1-0528， 通过指定 model=&#39;deepseek-reasoner&#39; 调用。
+修改配置文件# web 端口  server.port=8080    langchain4j.open-ai.chat-model.base-url=https://api.deepseek.com  langchain4j.open-ai.chat-model.api-key=[API key]langchain4j.open-ai.chat-model.model-name=deepseek-chat  # 应用程序发送给大模型的请求日志和响应日志  langchain4j.open-ai.chat-model.log-requests=true  langchain4j.open-ai.chat-model.log-responses=true  # 设置系统日志为debug级别  logging.level.root=debug
+
+接入ollama在ollama上部署DeepSeek官网：https://ollama.com/
+
+下载并安装ollama： OllamaSetup.exe
+查看模型列表，选择要部署的模型，模型列表： https://ollama.com/search
+执行命令：ollama run deepseek-r1:1.5b 运行大模型
+
+引入依赖&lt;!-- 接入ollama --&gt; &lt;dependency&gt;	 &lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;	 &lt;artifactId&gt;langchain4j-ollama-spring-boot-starter&lt;/artifactId&gt; &lt;/dependency&gt;
+
+修改配置文件langchain4j.ollama.chat-model.base-url=http://localhost:11434  langchain4j.ollama.chat-model.model-name=deepseek-r1:1.5b  langchain4j.ollama.chat-model.log-requests=true  langchain4j.ollama.chat-model.log-responses=true
+创建测试用例@Autowired  private OllamaChatModel ollamaChatModel;    @Test  public void testOllama() &#123;      String answer = ollamaChatModel.chat(&quot;你是谁？&quot;);      System.out.println(answer);  &#125;
+
+接入阿里百炼
+支持接入的模型列表： https://help.aliyun.com/zh/model-studio/models 
+模型广场： https://bailian.console.aliyun.com/?productCode=p_efm#/model-market
+
+导入依赖LangChain4j参考文档： https://docs.langchain4j.dev/integrations/language-models/dashscope#plain-java
+&lt;!-- 接入阿里云百炼平台 --&gt;  &lt;dependency&gt;      &lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;      &lt;artifactId&gt;langchain4j-community-dashscope-spring-boot-starter&lt;/artifactId&gt;  &lt;/dependency&gt;		&lt;!--引入百炼依赖管理清单--&gt;		&lt;dependency&gt;			&lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;			&lt;artifactId&gt;langchain4j-community-bom&lt;/artifactId&gt;			&lt;version&gt;$&#123;langchain4j.version&#125;&lt;/version&gt;			&lt;type&gt;pom&lt;/type&gt;			&lt;scope&gt;import&lt;/scope&gt;		&lt;/dependency&gt;	&lt;/dependencies&gt;&lt;/dependencyManagement&gt;
+
+修改配置文件#阿里百炼平台langchain4j.community.dashscope.chat-model.api-key=API_KEYlangchain4j.community.dashscope.chat-model.model-name=qwen-max
+
+测试通义千问@Autowired  private QwenChatModel qwenChatModel;    @Test  public void testDashScopeQwen() &#123;      String chat = qwenChatModel.chat(&quot;你是谁&quot;);      System.out.println(chat);  &#125;
+
+测试通义万象@Test  public void testDashScopeWanx() &#123;      WanxImageModel model = WanxImageModel.builder()              .modelName(&quot;wanx2.1-t2i-plus&quot;)              .apiKey(&quot;sk-ab194af7f1a9411396d4510c14f6cc45&quot;)              .build();      Response&lt;Image&gt; generate = model.generate(&quot;学院二本的java程序员找不到实习工作而苦恼，&quot; +              &quot;而985、211的java程序员却找到了实习工作而在欢呼雀跃&quot;);      URI url = generate.content().url();      System.out.println(url);  &#125;
+
+测试deepseek配置文件
+#集成百炼-deepseek  langchain4j.open-ai.chat-model.base-url=https://dashscope.aliyuncs.com/compatible-mode/v1  langchain4j.open-ai.chat-model.api-key=$&#123;DASH_SCOPE_API_KEY&#125;  langchain4j.open-ai.chat-model.model-name=deepseek-v3  #温度系数：取值范围通常在 0 到 1 之间。值越高，模型的输出越随机、富有创造性；  # 值越低，输出越确定、保守。这里设置为 0.9，意味着模型会有一定的随机性，生成的回复可能会比较多样化。  langchain4j.open-ai.chat-model.temperature=0.9
+
+人工智能服务AIService
+为大语言模型格式化输入内容
+解析大语言模型的输出结果
+聊天记忆 Chat memory
+
+创建AIService导入依赖&lt;!--langchain4j高级功能--&gt;  &lt;dependency&gt;      &lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;      &lt;artifactId&gt;langchain4j-spring-boot-starter&lt;/artifactId&gt;  &lt;/dependency&gt;
+
+创建接口public interface Assistant &#123;      String chat(String userMessage);  &#125;
+
+测试用例@Autowired  private QwenChatModel qwenChatModel;    @Test  public void testChat() &#123;      Assistant assistant = AiServices.create(Assistant.class, qwenChatModel);      String answer = assistant.chat(&quot;你是谁？&quot;);      System.out.println(answer);  &#125;
+
+@AiService
+使用注解开发
+
+接口改成
+@AiService(wiringMode = EXPLICIT, chatModel = &quot;qwenChatModel&quot;)  public interface Assistant &#123;      String chat(String userMessage);  &#125;
+
+
+测试用例@Autowired  private Assistant assistant;    @Test  public void testAssistant() &#123;      String answer = assistant.chat(&quot;我是谁？&quot;);      System.out.println(answer);  &#125;
+
+聊天记忆 Chat memory聊天记忆的简单实现
+就是把每一次的问问题都把上一次问的再问一遍
+
+@Autowiredprivate QwenChatModel qwenChatModel;@Testpublic void testChatMemory2() &#123;	//第一轮对话	UserMessage userMessage1 = UserMessage.userMessage(&quot;我是环环&quot;);	ChatResponse chatResponse1 = qwenChatModel.chat(userMessage1);	AiMessage aiMessage1 = chatResponse1.aiMessage();	//输出大语言模型的回复	System.out.println(aiMessage1.text());	//第二轮对话	UserMessage userMessage2 = UserMessage.userMessage(&quot;你知道我是谁吗&quot;);	ChatResponse chatResponse2 = qwenChatModel.chat(Arrays.asList(userMessage1, 	aiMessage1, userMessage2));	AiMessage aiMessage2 = chatResponse2.aiMessage();	//输出大语言模型的回复	System.out.println(aiMessage2.text());&#125;
+
+使用ChatMemory实现聊天记忆@Test  public void testChatMemory() &#123;        MessageWindowChatMemory messageWindowChatMemory = MessageWindowChatMemory.withMaxMessages(10);        Assistant build = AiServices              .builder(Assistant.class)              .chatLanguageModel(qwenChatModel)              .chatMemory(messageWindowChatMemory)              .build();        String answer1 = build.chat(&quot;我是呵帅&quot;);      System.out.println(answer1);      String answer2 = build.chat(&quot;我是谁？&quot;);      System.out.println(answer2);  &#125;
+
+使用AIService实现聊天记忆编写接口
+跟之前差不多，就是多了个 chatMemory，这个 chatMemory 需要我们注册成 bean
+
+@AiService(          wiringMode = EXPLICIT,          chatModel = &quot;qwenChatModel&quot;,          chatMemory = &quot;chatMemory&quot;)  public interface MemoryChatAssistant &#123;      String chat(String input);  &#125;
+
+配置ChatMemory@Configuration  public class MemoryChatAssistantConfig &#123;      @Bean      MessageWindowChatMemory chatMemory() &#123;          return MessageWindowChatMemory.withMaxMessages(10);      &#125;  &#125;
+
+测试用例@Autowired  private MemoryChatAssistant memoryChatAssistant;    @Test  public void testChatMemory3() &#123;      String answer = memoryChatAssistant.chat(&quot;我是呵帅&quot;);      System.out.println(answer);      String answer2 = memoryChatAssistant.chat(&quot;我是谁？&quot;);      System.out.println(answer2);    &#125;
+
+隔离聊天记忆
+在多并发情况下，聊天记录会混乱，因此我们需要为每个用户的新聊天或者不同的用户区分聊天记忆
+
+编写接口@AiService(chatModel = &quot;qwenChatModel&quot;,          wiringMode = EXPLICIT,          chatMemoryProvider = &quot;chatMemoryProvider&quot;)  public interface SeparateChatAssistant &#123;      String chat(@MemoryId int memoryId, @UserMessage String userMessage);  &#125;
+注册bean因为 ChatMemoryProvider 是一个函数式接口，memoryId 是在 ChatMemoryProvider 里的方法参数
+@Bean  ChatMemoryProvider chatMemoryProvider() &#123;      return memoryId -&gt; MessageWindowChatMemory.builder().id(memoryId).maxMessages(10).build();  &#125;
+测试用例@Autowired  private SeparateChatAssistant separateChatAssistant;    @Test  public void testSeparateChat() &#123;      String answer = separateChatAssistant.chat(1, &quot;我是呵帅&quot;);      System.out.println(answer);      String answer2 = separateChatAssistant.chat(2,&quot;我是谁？&quot;);      System.out.println(answer2);      String answer3 = separateChatAssistant.chat(1,&quot;我是谁？&quot;);      System.out.println(answer3);  &#125;
+
+
+持久化聊天记忆 PersistenceMongoDB安装
+服务器： mongodb-windows-x86_64-8.0.6-signed.msi https://www.mongodb.com/try/download/community 
+命令行客户端 ： mongosh-2.5.0-win32-x64.zip https://www.mongodb.com/try/download/shell 
+图形客户端： mongodb-compass-1.39.3-win32-x64.exe https://www.mongodb.com/try/download/compass
+
+整合SpringBoot导入依赖&lt;!-- Spring Boot Starter Data MongoDB --&gt;  &lt;dependency&gt;      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;      &lt;artifactId&gt;spring-boot-starter-data-mongodb&lt;/artifactId&gt;  &lt;/dependency&gt;
+
+添加配置#MongoDB连接配置spring.data.mongodb.uri=mongodb://localhost:27017/chat_memory_db
+
+创建实体类@Data  @AllArgsConstructor  @NoArgsConstructor  @Document(&quot;chat_messages&quot;)  public class ChatMessages &#123;      //唯一标识，映射到 MongoDB 文档的 _id 字段      @Id      private ObjectId messageId;        private String content; //存储当前聊天记录列表的json字符串  &#125;
+
+CRUD@SpringBootTest  public class MongoCrudTest &#123;        @Autowired      private MongoTemplate mongoTemplate;        @Test      public void testInsert() &#123;          ChatMessages chatMessages = new ChatMessages();          chatMessages.setContent(&quot;Hello World!&quot;);          mongoTemplate.insert(chatMessages);      &#125;        @Test      public void testFindById() &#123;          ChatMessages byId = mongoTemplate.findById(&quot;686a34609919e078f94e57d6&quot;, ChatMessages.class);          System.out.println(byId);      &#125;        @Test      public void testUpdate() &#123;          Criteria criteria = Criteria.where(&quot;_id&quot;).is(&quot;686a34609919e078f94e57d6&quot;);          Query query = Query.query(criteria);          Update update = new Update();          update.set(&quot;content&quot;, &quot;New Hello World!&quot;);            // 修改或新增          mongoTemplate.updateFirst(query, update, ChatMessages.class);      &#125;        @Test      public void testRemove() &#123;          Criteria criteria = Criteria.where(&quot;_id&quot;).is(&quot;686a34609919e078f94e57d6&quot;);          Query query = new Query(criteria);          mongoTemplate.remove(query, ChatMessages.class);      &#125;  &#125;
+
+持久化聊天更改实体类@Data  @AllArgsConstructor  @NoArgsConstructor  @Document(&quot;chat_messages&quot;)  public class ChatMessages &#123;      //唯一标识，映射到 MongoDB 文档的 _id 字段      @Id      private ObjectId messageId;        private String memoryId;        private String content; //存储当前聊天记录列表的json字符串  &#125;
+
+创建持久化类
+创建一个类实现ChatMemoryStore接口
+
+@Component  public class MongoChatMemoryStore implements ChatMemoryStore &#123;     @Autowired      private MongoTemplate mongoTemplate;          @Override      public List&lt;ChatMessage&gt; getMessages(Object memoryId) &#123;          Criteria criteria = Criteria.where(&quot;memoryId&quot;).is(memoryId);          Query query = new Query(criteria);          ChatMessages chatMessages = mongoTemplate.findOne(query, ChatMessages.class);          if(chatMessages == null) return new LinkedList&lt;&gt;();          return ChatMessageDeserializer.messagesFromJson(chatMessages.getContent());      &#125;          @Override      public void updateMessages(Object memoryId, List&lt;ChatMessage&gt; messages) &#123;          Criteria criteria = Criteria.where(&quot;memoryId&quot;).is(memoryId);          Query query = new Query(criteria);          Update update = new Update();          update.set(&quot;content&quot;, ChatMessageSerializer.messagesToJson(messages));          //根据query条件能查询出文档，则修改文档；否则新增文档          mongoTemplate.upsert(query, update, ChatMessages.class);      &#125;          @Override      public void deleteMessages(Object memoryId) &#123;          Criteria criteria = Criteria.where(&quot;memoryId&quot;).is(memoryId);          Query query = new Query(criteria);          mongoTemplate.remove(query, ChatMessages.class);      &#125;  &#125;
+
+修改配置类添加MongoChatMemoryStore对象的配置
+@Autowired  private MongoChatMemoryStore mongoChatMemoryStore;    @Bean  ChatMemoryProvider chatMemoryProvider() &#123;      return memoryId -&gt; MessageWindowChatMemory              .builder()              .id(memoryId)              .maxMessages(10)              .chatMemoryStore(mongoChatMemoryStore)              .build();  &#125;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+  </entry>
 </search>
