@@ -5903,7 +5903,7 @@ Bucket：存储对象的桶，可类比一下Object：对象，包含以下三�
   </entry>
   <entry>
     <title>快速上手LangChain4j</title>
-    <url>/2025/07/04/articles/LangChain4j/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/</url>
+    <url>/2025/07/04/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/</url>
     <content><![CDATA[LangChain4j入门创建一个Maven项目创建空项目并且导入依赖&lt;properties&gt;      &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;      &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;      &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;      &lt;spring-boot.version&gt;3.2.6&lt;/spring-boot.version&gt;      &lt;knife4j.version&gt;4.3.0&lt;/knife4j.version&gt;      &lt;mybatis-plus.version&gt;3.5.11&lt;/mybatis-plus.version&gt;      &lt;langchain4j.version&gt;1.0.0-beta3&lt;/langchain4j.version&gt;  &lt;/properties&gt;&lt;dependencies&gt;	&lt;!-- web应用程序核心依赖 --&gt;	&lt;dependency&gt;		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;		&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;	&lt;/dependency&gt;	&lt;!-- 编写和运行测试用例 --&gt;	&lt;dependency&gt;		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;		&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;		&lt;scope&gt;test&lt;/scope&gt;	&lt;/dependency&gt;	&lt;!-- 前后端分离中的后端接口测试工具 --&gt;	&lt;dependency&gt;		&lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;		&lt;artifactId&gt;knife4j-openapi3-jakarta-spring-boot-starter&lt;/artifactId&gt;		&lt;version&gt;$&#123;knife4j.version&#125;&lt;/version&gt;	&lt;/dependency&gt;&lt;/dependencies&gt;&lt;dependencyManagement&gt;	&lt;dependencies&gt;		&lt;!--引入SpringBoot依赖管理清单--&gt;		&lt;dependency&gt;			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;			&lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;			&lt;version&gt;$&#123;spring-boot.version&#125;&lt;/version&gt;			&lt;type&gt;pom&lt;/type&gt;			&lt;scope&gt;import&lt;/scope&gt;		&lt;/dependency&gt;	&lt;/dependencies&gt;&lt;/dependencyManagement&gt;
 
 配置文件先随便写点，写个端口让他跑起来先
@@ -6034,6 +6034,304 @@ CRUD@SpringBootTest  public class MongoCrudTest &#123;        @Autowired      pr
 
 修改配置类添加MongoChatMemoryStore对象的配置
 @Autowired  private MongoChatMemoryStore mongoChatMemoryStore;    @Bean  ChatMemoryProvider chatMemoryProvider() &#123;      return memoryId -&gt; MessageWindowChatMemory              .builder()              .id(memoryId)              .maxMessages(10)              .chatMemoryStore(mongoChatMemoryStore)              .build();  &#125;
+
+提示词 Prompt系统提示词
+@SystemMessage 设定角色，塑造AI助手的专业身份，明确助手的能力范围
+
+@SystemMessage在SeparateChatAssistant类的chat方法上添加@SystemMessage注解
+@SystemMessage(&quot;你是我的好朋友，请用东北话回答问题。&quot;)//系统消息提示词String chat(@MemoryId int memoryId, @UserMessage String userMessage);
+
+
+@SystemMessage 的内容将在后台转换为 SystemMessage 对象，并与 UserMessage 一起发送给大语言模型（LLM）。
+SystemMessaged 的内容只会发送给大模型一次，如果你修改了 SystemMessage 的内容，新的SystemMessage 会被发送给大模型，之前的聊天记忆会失效。
+如果要显示今天的日期，我们需要在提示词中添加当前日期的占位符
+
+@SystemMessage(&quot;你是我的好朋友，请用粤语回答问题。今天是&#123;&#123;current_date&#125;&#125;&quot;)//系统消息提示词 String chat(@MemoryId int memoryId, @UserMessage String userMessage);
+
+从资源中加载提示模板
+@SystemMessage 注解还可以从资源中加载提示模板：
+@SystemMessage(fromResource = &quot;my-prompt-template.txt&quot;) String chat(@MemoryId int memoryId, @UserMessage String userMessage);
+
+my-prompt-template.txt
+你是我的好朋友，请用粤语回答问题，回答问题的时候适当添加表情符号。  今天是 &#123;&#123;current_date&#125;&#125;。
+
+用户提示词
+@UserMessage：获取用户输入
+
+@UserMessage
+在 MemoryChatAssistant 的 chat 方法中添加注解
+每次都会将问题作为提示词@UserMessage(&quot;你是我的好朋友，请用上海话回答问题，并且添加一些表情符号。 &#123;&#123;it&#125;&#125;&quot;) //&#123;&#123;it&#125;&#125;表示这里String chat(String input);
+
+测试@Autowired  private MemoryChatAssistant memoryChatAssistant;    @Test  public void testChatMemory3() &#123;      String answer = memoryChatAssistant.chat(&quot;我是呵帅&quot;);      System.out.println(answer);      String answer2 = memoryChatAssistant.chat(&quot;我18岁&quot;);      System.out.println(answer2);      String answer3 = memoryChatAssistant.chat(&quot;你知道我是谁吗&quot;);      System.out.println(answer3);  &#125;
+
+指定参数名称配置@V
+@V 明确指定传递的参数名称
+
+@UserMessage(&quot;你是我的好朋友，请用上海话回答问题，并且添加一些表情符号。&#123;&#123;message&#125;&#125;&quot;) String chat(@V(&quot;message&quot;) String userMessage);
+
+多个参数的情况
+如果有两个或两个以上的参数，我们必须要用@V
+
+在 SeparateChatAssistant 中定义方法 chat2
+@UserMessage(&quot;你是我的好朋友，请用粤语跟我交谈，并且添加一些表情符号。 &#123;&#123;message&#125;&#125;&quot;)String chat2(@MemoryId int memoryId, @V(&quot;message&quot;) String input);
+
+@UserMessage 中的内容每次都会被和用户问题组织在一起发送给大模型
+@Test  public void testSeparateChat() &#123;      String answer = separateChatAssistant.chat2(4, &quot;我是呵帅&quot;);      System.out.println(answer);      String answer2 = separateChatAssistant.chat2(5,&quot;我是谁？&quot;);      System.out.println(answer2);      String answer3 = separateChatAssistant.chat2(4,&quot;我是谁？&quot;);      System.out.println(answer3);  &#125;
+
+@SystemMessage和@V
+可以将 @SystemMessage 和 @V 结合使用
+
+在 SeparateChatAssistant 中添加方法 chat3
+@SystemMessage(fromResource = &quot;my-prompt-template2.txt&quot;)  String chat3(          @MemoryId int memoryId,          @UserMessage String userMessage,          @V(&quot;username&quot;) String username,          @V(&quot;age&quot;) int age);
+
+创建提示词模板my-prompt-template2.txt，添加占位符
+你是我的好帮手，我是&#123;&#123;username&#125;&#125;，我的年龄是&#123;&#123;age&#125;&#125;，请用粤语回答问题，回答问题的时候适当添加表情符号，或者文字表情。  今天是 &#123;&#123;current_date&#125;&#125;。
+
+测试
+@Test  public void testUserInfo() &#123;      String answer = separateChatAssistant.chat3(6, &quot;我是谁，我多大了&quot;, &quot;小明&quot;, 18);      System.out.println(answer);  &#125;
+
+Function Calling 函数调用
+Function Calling 函数调用 也叫 Tools 工具
+
+快速入门创建工具类@Component  public class CalculatorTools &#123;        @Tool      double sum(double a, double b) &#123;          System.out.println(&quot;调用加法运算&quot;);          return a + b;      &#125;      @Tool      double squareRoot(double x) &#123;          System.out.println(&quot;调用平方根运算&quot;);          return Math.sqrt(x);      &#125;  &#125;
+
+在接口配值工具类@AiService(chatModel = &quot;qwenChatModel&quot;,          wiringMode = EXPLICIT,          chatMemoryProvider = &quot;chatMemoryProvider&quot;,          tools = &quot;calculatorTools&quot;)
+
+@Tool 注解的可选字段@Tool 注解有两个可选字段：
+
+name（工具名称）：工具的名称。如果未提供该字段，方法名会作为工具的名称。
+value（工具描述）：工具的描述信息。
+
+根据工具的不同，即使没有任何描述，大语言模型可能也能很好地理解它（例如， add(a, b) 就很直 观），但通常最好提供清晰且有意义的名称和描述。这样，大语言模型就能获得更多信息，以决定是否 调用给定的工具以及如何调用。
+@P 注解方法参数可以选择使用 @P 注解进行标注，有两个字段：
+
+value：参数的描述信息。
+required：表示该参数是否为必需项，默认值为 true 。
+
+@ToolMemoryId
+如果你的AIService方法中有一个参数使用 @MemoryId 注解，那么你也可以使用 @ToolMemoryId 注解 @Tool 方法中的一个参数。
+简单来说就是就是在 @Tools 方法中获取 @MemoryId 的
+
+检索增强生成 RAG让大模型回答专业领域的知识微调大模型
+在现有大模型的基础上，使用小规模的特定任务数据进行再次训练，调整模型参数，让模型更精确地处 理特定领域或任务的数据。更新需重新训练，计算资源和时间成本高。
+
+应用场景：适合知识库稳定、对生成内容准确性和风格要求高的场景，如对上下文理解和语言生成 质量要求高的文学创作、专业文档生成等。
+RAG
+Retrieval-Augmented Generation 检索增强生成
+
+将原始问题以及提示词信息发送给大语言模型之前，先通过外部知识库检索相关信息，然后将检索结果 和原始问题一起发送给大模型，大模型依据外部知识库再结合自身的训练数据，组织自然语言回答问 题。通过这种方式，大语言模型可以获取到特定领域的相关信息，并能够利用这些信息进行回复。
+
+
+应用场景：适用于知识库规模大且频繁更新的场景，如企业客服、实时新闻查询、法律和医疗领域 的最新知识问答等。
+RAG常用方法
+全文（关键词）搜索。这种方法通过将问题和提示词中的关键词与知识库文档数据库进行匹配来搜 索文档。根据这些关键词在每个文档中的出现频率和相关性对搜索结果进行排序。
+向量搜索，也被称为 “语义搜索”。文本通过 嵌入模型 被转换为 数字向量。然后，它根据查询向量 与文档向量之间的余弦相似度或其他相似性 &#x2F; 距离度量来查找和排序文档，从而捕捉更深层次的语 义含义。
+混合搜索。结合多种搜索方法（例如，全文搜索 + 向量搜索）通常可以提高搜索的效果。
+
+向量搜索 vector search向量Vectors：
+
+可以将向量理解为从空间中的一个点到另一个点的移动。例如，在下图中，我们可以看到一些二维空间中的向量
+
+维度 Dimensions：
+
+每个数值向量都有 x 和 y 坐标（或者在多维系统中是 x、y、z，…）。x、y、z… 是这个向量 空间的轴，称为维度。对于我们想要表示为向量的一些非数值实体，我们首先需要决定这些维度，并为 每个实体在每个维度上分配一个值
+向量的每个维度代表数据的不同特性，维度越多对事务的描述越精确
+
+相似度 Similarity：
+
+如果用户搜索 “轿车Car” ，你希望能够返回所有与 结果。向量搜索就是实现这个目标的一种方法。
+每个向量都有一个长度和方向。
+由于向量通常用于描述语义意义，仅仅看长度通常无法满足需求。大多数相似度测量要么仅依赖于方 向，要么同时考虑方向和大小。
+
+文档加载器 Document Loader测试用例@SpringBootTestpublic class RAGTest &#123;	@Test	public void testReadDocument() &#123;		//使用FileSystemDocumentLoader读取指定目录下的知识库文档		//并使用默认的文档解析器TextDocumentParser对文档进行解析		Document document = FileSystemDocumentLoader.loadDocument(&quot;E:/knowledge/测试.txt&quot;);		System.out.println(document.text());	&#125;&#125;
+
+// 加载单个文档Document document = FileSystemDocumentLoader.loadDocument(&quot;E:/knowledge/file.txt&quot;, new TextDocumentParser()); // 从一个目录中加载所有文档List&lt;Document&gt; documents = FileSystemDocumentLoader.loadDocuments(&quot;E:/knowledge&quot;, new TextDocumentParser()); // 从一个目录中加载所有的.txt文档PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(&quot;glob:*.txt&quot;); List&lt;Document&gt; documents = FileSystemDocumentLoader.loadDocuments(&quot;E:/knowledge&quot;, pathMatcher, new TextDocumentParser()); // 从一个目录及其子目录中加载所有文档List&lt;Document&gt; documents = FileSystemDocumentLoader.loadDocumentsRecursively(&quot;E:/knowledge&quot;, new TextDocumentParser());
+
+文档解析器 Document Parser文档可以是各种格式的文件，比如 PDF、DOC、TXT 等等。为了解析这些不同格式的文件，有一个 “文档 解析器”（DocumentParser）接口，并且我们的库中包含了该接口的几种实现方式：
+导入依赖&lt;!--解析pdf文档--&gt;&lt;dependency&gt;	&lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;	&lt;artifactId&gt;langchain4j-document-parser-apache-pdfbox&lt;/artifactId&gt;&lt;/dependency&gt;
+
+测试用例@Testpublic void testParsePDF() &#123;	Document document = FileSystemDocumentLoader.loadDocument(&quot;E:/knowledge/医院信息.pdf&quot;,new ApachePdfBoxDocumentParser());	System.out.println(document);&#125;
+
+文档分割器 Document Splitter测试向量转换和向量存储
+Embedding (Vector) Stores 常见的意思是 “嵌入（向量）存储” 。
+在机器学习和自然语言处理领域， Embedding 指的是将数据（如文本、图像等）转换为低维稠密向量表示的过程，这些向量能够保留数据 的关键特征。
+而 Stores 表示存储，即用于存储这些嵌入向量的系统或工具。它们可以高效地存储和检索 向量数据，支持向量相似性搜索，在文本检索、推荐系统、图像识别等任务中发挥着重要作用。
+
+Langchain4j支持的向量存储：https://docs.langchain4j.dev/integrations/embedding-stores/
+导入依赖
+&lt;!--简单的rag实现--&gt;&lt;dependency&gt;	&lt;groupId&gt;dev.langchain4j&lt;/groupId&gt;	&lt;artifactId&gt;langchain4j-easy-rag&lt;/artifactId&gt;&lt;/dependency&gt;
+
+
+@Test  public void testDocumentSplitter() &#123;      // 读取文档      Document document = FileSystemDocumentLoader.loadDocument(&quot;D:/BaiduNetdiskDownload/资料(2)/knowledge/人工智能.md&quot;);      // 创建内存中的向量存储      InMemoryEmbeddingStore&lt;TextSegment&gt; embeddingStore = new InMemoryEmbeddingStore&lt;&gt;();        DocumentByParagraphSplitter documentSplitter = new DocumentByParagraphSplitter(              300,              30,              //token分词器：按token计算              new HuggingFaceTokenizer());        // 处理文档并存储      EmbeddingStoreIngestor              .builder()              .embeddingStore(embeddingStore)              .documentSplitter(documentSplitter)              .build()              .ingest(document);            System.out.println(embeddingStore);  &#125;
+
+处理文档并存储里有三个子步骤：
+
+分割文档
+将长文档拆分成多个小片段（默认每个片段不超过 300 个单词，相邻片段重叠 30 个单词）。
+
+
+文本向量化
+将每个文本片段转换为数学向量（类似用坐标表示位置）。
+
+
+存储向量
+将每个文本片段和对应的向量存入内存数据库embeddingStore。
+
+
+
+token和token计算@Test  public void testTokenCount() &#123;  	String text = &quot;这是一个示例文本，用于测试 token 长度的计算。&quot;;  	UserMessage userMessage = UserMessage.userMessage(text);  	//计算 token 长度  //QwenTokenizer tokenizer = new QwenTokenizer(System.getenv(&quot;DASH_SCOPE_API_KEY&quot;),&quot;qwen-max&quot;);  	HuggingFaceTokenizer tokenizer = new HuggingFaceTokenizer();  	int count = tokenizer.estimateTokenCountInMessage(userMessage);  	System.out.println(&quot;token长度：&quot; + count);  &#125;
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>快速上手SpringAI 2.0</title>
+    <url>/2025/07/14/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpringAI%202.0/</url>
+    <content><![CDATA[前面那篇1.0没用，一点用没有，还得是CSDN大佬啊
+快速使用创建项目
+选择创建 Spring Initializr 项目，JDK最低要求17，不可低于17
+
+依赖选择
+
+SpringBoot版本需要高于3.X
+
+
+需要的依赖项：
+
+Lombok
+Spring Web
+MySQL Driver
+openAI
+
+
+
+最终的xml文件应为：
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;    &lt;groupId&gt;com.example&lt;/groupId&gt;    &lt;artifactId&gt;SpringAI_Study&lt;/artifactId&gt;    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;    &lt;name&gt;SpringAI_Study&lt;/name&gt;    &lt;description&gt;SpringAI_Study&lt;/description&gt;    &lt;properties&gt;        &lt;java.version&gt;17&lt;/java.version&gt;        &lt;spring-boot.version&gt;3.5.3&lt;/spring-boot.version&gt;        &lt;spring-ai.version&gt;1.0.0&lt;/spring-ai.version&gt;    &lt;/properties&gt;    &lt;!-- 添加仓库配置 --&gt;    &lt;repositories&gt;        &lt;repository&gt;            &lt;id&gt;maven-central&lt;/id&gt;            &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;        &lt;/repository&gt;        &lt;repository&gt;            &lt;id&gt;spring-milestones&lt;/id&gt;            &lt;url&gt;https://repo.spring.io/milestone&lt;/url&gt;        &lt;/repository&gt;    &lt;/repositories&gt;    &lt;dependencies&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;        &lt;/dependency&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;            &lt;artifactId&gt;spring-ai-starter-model-openai&lt;/artifactId&gt;        &lt;/dependency&gt;        &lt;dependency&gt;            &lt;groupId&gt;com.mysql&lt;/groupId&gt;            &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;            &lt;scope&gt;runtime&lt;/scope&gt;        &lt;/dependency&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;            &lt;artifactId&gt;lombok&lt;/artifactId&gt;            &lt;optional&gt;true&lt;/optional&gt;        &lt;/dependency&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;            &lt;scope&gt;test&lt;/scope&gt;        &lt;/dependency&gt;    &lt;/dependencies&gt;    &lt;!-- 关键：手动导入 BOM 管理版本 --&gt;    &lt;dependencyManagement&gt;        &lt;dependencies&gt;            &lt;!-- Spring Boot BOM --&gt;            &lt;dependency&gt;                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;                &lt;version&gt;$&#123;spring-boot.version&#125;&lt;/version&gt;                &lt;type&gt;pom&lt;/type&gt;                &lt;scope&gt;import&lt;/scope&gt;            &lt;/dependency&gt;            &lt;!-- Spring AI BOM --&gt;            &lt;dependency&gt;                &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;                &lt;artifactId&gt;spring-ai-bom&lt;/artifactId&gt;                &lt;version&gt;$&#123;spring-ai.version&#125;&lt;/version&gt;                &lt;type&gt;pom&lt;/type&gt;                &lt;scope&gt;import&lt;/scope&gt;            &lt;/dependency&gt;        &lt;/dependencies&gt;    &lt;/dependencyManagement&gt;    &lt;build&gt;        &lt;plugins&gt;            &lt;plugin&gt;                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;                &lt;version&gt;$&#123;spring-boot.version&#125;&lt;/version&gt;                &lt;configuration&gt;                    &lt;excludes&gt;                        &lt;exclude&gt;                            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;                            &lt;artifactId&gt;lombok&lt;/artifactId&gt;                        &lt;/exclude&gt;                    &lt;/excludes&gt;                &lt;/configuration&gt;            &lt;/plugin&gt;        &lt;/plugins&gt;    &lt;/build&gt;&lt;/project&gt;
+
+配置文件application.yaml
+spring:    application:      name: SpringAI_Study    ai:      openai:        base-url: https://dashscope.aliyuncs.com/compatible-mode/v1        api-key: sk-ab194af7f1a9411396d4510c14******        chat:          options:            model: qwen-max            temperature: 0.9
+
+开始编写代码配置类在项目内创建一个config包，在里面创建配置类，用于初始化使用指定的ChatClient模型
+import org.springframework.ai.chat.client.ChatClient;  import org.springframework.ai.chat.model.ChatModel;  import org.springframework.context.annotation.Bean;  import org.springframework.context.annotation.Configuration;    @Configuration  public class SpringAiConfig &#123;        @Bean      public ChatClient chatClient(ChatModel chatModel) &#123;          return ChatClient                  .builder(chatModel)                  .defaultSystem(&quot;你是一个Java大佬，精通各种框架和中间件，需要你解决用户的问题&quot;)                  .build();      &#125;  &#125;
+
+
+在这里 defaultSystem 就可以用来设置系统提示词，不用像1.0那里搞得这么麻烦
+
+Controller 类@RestController  @Slf4j  @RequiredArgsConstructor  public class ChatController &#123;        private final ChatClient chatClient;        @RequestMapping(value = &quot;/chat&quot;, produces = &quot;text/html;charset=UTF-8&quot;)      public Flux&lt;String&gt; chat(String message)&#123;          log.info(&quot;用户问：&#123;&#125;&quot;, message);          return chatClient                  .prompt()                  .user(message)                  .stream()  // 流式响应，可以换成call()                  .content();      &#125;  &#125;
+
+
+如果使用了 stream，要添加上 produces = &quot;text/html;charset=UTF-8&quot;，如果用的是call就不用
+
+实现连续对话ChatMemory 的配置@Configuration  public class MemoryConfig &#123;        @Bean      public ChatMemory chatMemory() &#123;          return MessageWindowChatMemory                  .builder()                  .chatMemoryRepository(new InMemoryChatMemoryRepository())                  .maxMessages(20)                  .build();      &#125;  &#125;
+
+
+很眼熟啊这里，感觉用起来跟langchain4j一模一样
+
+配置到ChatClient在LangChain4j里我们可以通过 @AIService 来配置，但是 SpringAI还没有做这个注解，所以这里需要通过 SpringAI 的 Advisor（顾问） 机制
+修改前面写的配置类
+@Configuration  public class SpringAiConfig &#123;        @Bean      public ChatClient chatClient(OpenAiChatModel chatModel, ChatMemory chatMemory) &#123;          return ChatClient                  .builder(chatModel)                  .defaultSystem(&quot;你是一个Java大佬，精通各种框架和中间件，需要你解决用户的问题&quot;)                  .defaultAdvisors(                          new SimpleLoggerAdvisor(),                          MessageChatMemoryAdvisor.builder(chatMemory).build()                  )                  .build();      &#125;  &#125;
+
+
+这里只加了两个Advisor，一个是记录大模型的请求、响应的日志 SimpleLoggerAdvisor
+另一个是刚刚编写的 ChatMemory
+
+因为配置了 SimpleLoggerAdvisor，所以需要在配置文件修改日志级别，不然看不到日志效果
+server:    port: 8080  spring:    application:      name: SpringAI_Study    ai:      openai:        base-url: https://dashscope.aliyuncs.com/compatible-mode        api-key: sk-ab194af7f1a9411396d4510c14f6cc45        chat:          options:            model: qwen-max            temperature: 0.9  logging:    level:      org.springframework.ai.chat.client.advisor: debug
+
+
+根据会话id区分对话上面我们配置了 ChatMemory 实现连续对话，但是我们换个浏览器问依旧还是同样的上下文
+修改前面的controller
+@RestController  @Slf4j  @RequiredArgsConstructor  public class ChatController &#123;        private final ChatClient chatClient;        @RequestMapping(value = &quot;/chat&quot;, produces = &quot;text/html;charset=UTF-8&quot;)      public Flux&lt;String&gt; chat(@RequestParam(&quot;message&quot;) String message, @RequestParam(&quot;userId&quot;) String userId)&#123;          log.info(&quot;用户问：&#123;&#125;&quot;, message);          return chatClient                  .prompt()                  .user(message)                  .advisors(a -&gt; a.param(ChatMemory.CONVERSATION_ID, userId))                  .stream()  // 流式响应，可以换成call()                  .content();      &#125;  &#125;
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Prompt、Agent、MCP是什么</title>
+    <url>/2025/07/28/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Prompt%E3%80%81Agent%E3%80%81MCP%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[PromptUserPrompt23年 OpenAI 刚发布 ChatGPT 的时候，AI看起来还是一个聊天框，我们通过聊天框发送的消息，然后AI模型生成一个回复，我们发的信息就叫用户提示词（UserPrompt）。
+SystemPrompt但是现实生活中，问每个人同一句话都可能得到不同的回复。比如我说：我饿了；爷爷奶奶可能会说：要不要煮点东西给你吃；朋友会说：别饿；女朋友会说：滚一边去，我也饿。但是AI没有这样的人设，所以只能给出一个通用的回复：饿了就吃饭。
+于是我们就希望给AI也加上一个人设，最直接的方法就是把人设信息和用户要说的话打包成一条 UserPrompt 发过去，比如你说：你是我朋友，我饿了；然后AI就会回答：别饿。
+但问题是，你扮演我的朋友这句话不是我们真正想说的内容，每次都要提及显得麻烦，于是我们将人设信息单独拎了出来，放在另一个Prompt里面，这就是系统提示词（SystemPrompt），像角色、性格、背景知识、语气等等这些不是直接由用户说出来的内容都可以放在 SystemPrompt 里。
+每次用户发送 UserPrompt 的时候，系统会自动把 SystemPrompt 也一起发给AI模型，这样整个对话就显得更加自然了。
+Agent上面说了这么多，说到底，AI还是一个聊天机器人，你问一个问题，他也只能给你一个回复，告诉你怎么做，实际动手的还是自己，如何让AI来帮我们完成，第一个做出尝试的是 AutoGPT。
+如果想要 AutoGPT 帮我们管理电脑中的文件，那我们得先写好一些文件的管理函数，比如说暂定 List_files 用来列出目录，Read_files 用来读取文件。然后把这些函数以及它们功能描述、使用方法注册到 AutoGPT 里，AutoGPT 会根据这些信息生成一个 SystemPrompt，告诉AI模型用户给了哪些工具，分别都是干什么的，以及AI如果想要使用它们该返回什么样的格式，最后把 SystemPrompt 连通用户的请求，如果AI足够的聪明，就会按照要求的格式返回一个调用某个函数的消息，AutoGPT 解析后就可以调用对应的函数，然后 AutoGPT 把调用的结果返回给AI，AI再决定下一步该做什么，直到任务完成为止。
+我们把 AutoGPT 这种负责在*模型、工具和最终用户直接传话的程序叫做 AI Agent，这些提供给AI调用的函数或者服务就叫 Agent Tool*。
+但是这种架构任然有点小问题，这套架构能够运行的前提是AI足够的聪明，虽然我们在 SystemPrompt 里面写清楚了AI该用什么格式返回，但还是可能因为AI返回格式不对的内容，为了处理这种情况，很多AI Agent会在发现返回结果格式不对时自动进行重试，但这种反复的重试不仅大大减少效率，并且加大浪费。
+Function Calling后来各大厂商推出一个叫做 Function Calling 的新功能，这个新功能的核心思想就是统一格式、规范描述。
+比如我们上面通过 SystemPrompt告诉AI有哪些工具以及返回的格式，但是这些描述是用自然语言编写的，只要AI看得懂就行，Function Calling 则对这些描述进行标准化，比如每个 Tool 都用一个 JSON 对象来定义工具名，工具名写在name字段、功能说明写在desc字段、所需参数写在params里面等等，然后这些 JSON 对象从 SystemPrompt 里面被剥离出来，单独放在一个字段里面，最后 Function Calling 也规定了使用工具时应该返回的格式，所以 SystemPrompt 里面的格式定义也可以删掉了。
+这样所有的工具描述放在同一个地方，所有的工具描述也依照相同的格式，如果AI依旧生成了错误的回复，因为回复的格式是固定的，所有AI服务端自己就能检测到，并且进行重试，这样不仅降低了用户端的开发难度，还节省了用户端重试带来的Token开销。
+但 Function Calling也有相对应的问题，就是没有统一的标准，每家企业的API定义都不一样，还有很多大模型都不支持 Function Calling。
+MCPAI Agent 跟 Agent Tools进行通信，最简单的是写在同一个程序里，直接函数调用，但是有些 Tools 非常通用，比如浏览网页，可能多个 Agent 都需要，但每个 Agent 都拷贝一份相同代码太麻烦了，于是大家把 Tool 变成服务统一托管，让所有的 Agent 都来调用，这就是 MCP。
+MCP 是一个通信协议，专门用来规范 Agent 和 Tool 服务之间是如何交换的，运行 Tool 的服务叫做 MCP Server，调用的 Agent 叫做 MCP Client，MCP规定了MCP Server如何和 MCP Client 通信，以及 MCP Server 要提供哪些接口，比如用来查询 MCP Server 中有哪些 Tool，以及功能、描述需要的参数、格式等接口，除了普通的 Tool 这种函数调用形式，MCP Server 也可以直接提供数据，提供类似文件读写的服务叫做 Resource，或者为 Agent 提供提示词的模板叫做 Prompt 。
+MCP Server 既可以和 Agent 在同一台机器上，通过标准输入输出进行通信，也可以部署在网络上，通过HTTP进行通信，MCP只负责帮 Agent 管理工具、资源和提示词
+]]></content>
+      <tags>
+        <tag>面试八股文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速上手SpringAI</title>
+    <url>/2025/07/13/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpringAI%20%201.0/</url>
+    <content><![CDATA[快速入门导入依赖&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;    &lt;artifactId&gt;springAi_deepseek&lt;/artifactId&gt;    &lt;properties&gt;        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;        &lt;!-- 明确指定Spring Boot和Spring AI版本 --&gt;        &lt;spring-boot.version&gt;3.2.0&lt;/spring-boot.version&gt;        &lt;spring-ai.version&gt;1.0.0-M5&lt;/spring-ai.version&gt;    &lt;/properties&gt;    &lt;!-- 仓库配置：确保依赖可下载 --&gt;    &lt;repositories&gt;        &lt;repository&gt;            &lt;id&gt;maven-central&lt;/id&gt;            &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;        &lt;/repository&gt;        &lt;repository&gt;            &lt;id&gt;spring-milestones&lt;/id&gt;            &lt;url&gt;https://repo.spring.io/milestone&lt;/url&gt;        &lt;/repository&gt;    &lt;/repositories&gt;    &lt;dependencies&gt;        &lt;!-- Spring Boot Web Starter（版本由下方BOM管理） --&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;        &lt;/dependency&gt;        &lt;!-- 复用OpenAI Starter兼容DeepSeek（版本由Spring AI BOM管理） --&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;            &lt;artifactId&gt;spring-ai-openai-spring-boot-starter&lt;/artifactId&gt;        &lt;/dependency&gt;        &lt;!-- Spring Boot Test Starter（版本由下方BOM管理） --&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;            &lt;scope&gt;test&lt;/scope&gt;        &lt;/dependency&gt;    &lt;/dependencies&gt;    &lt;!-- 关键：手动导入Spring Boot和Spring AI的BOM管理版本 --&gt;    &lt;dependencyManagement&gt;        &lt;dependencies&gt;            &lt;!-- Spring Boot的BOM，管理所有starter的版本 --&gt;            &lt;dependency&gt;                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;                &lt;version&gt;$&#123;spring-boot.version&#125;&lt;/version&gt;                &lt;type&gt;pom&lt;/type&gt;                &lt;scope&gt;import&lt;/scope&gt;            &lt;/dependency&gt;            &lt;!-- Spring AI的BOM，管理AI相关依赖版本 --&gt;            &lt;dependency&gt;                &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;                &lt;artifactId&gt;spring-ai-bom&lt;/artifactId&gt;                &lt;version&gt;$&#123;spring-ai.version&#125;&lt;/version&gt;                &lt;type&gt;pom&lt;/type&gt;                &lt;scope&gt;import&lt;/scope&gt;            &lt;/dependency&gt;        &lt;/dependencies&gt;    &lt;/dependencyManagement&gt;&lt;/project&gt;
+
+配置文件server.port=8899  spring.application.name=spring-ai-deepseek-demo    spring.ai.openai.api-key=sk-43745c46cd5a4d80821e998030******  spring.ai.openai.base-url=https://api.deepseek.com  spring.ai.openai.chat.options.model=deepseek-chat  spring.ai.openai.chat.options.temperature=0.7
+
+
+
+temperature参数用于控制生成文本的多样性。具体来说：
+‌值越高‌，生成的文本越多样化，但也可能包含更多的随机性和不可预测的内容。 ‌值越低‌，生成的文本越接近于确定性的结果，即生成的文本会更加一致和可预测。
+
+
+
+
+启动类@SpringBootApplication  public class SpringAiDemoApplication &#123;      public static void main(String[] args) &#123;          SpringApplication.run(SpringAiDemoApplication.class, args);      &#125;  &#125;
+
+controller@RestController  public class ChatDeepSeekController &#123;        @Autowired      private OpenAiChatModel openAiChatModel;        @GetMapping(&quot;/hello&quot;)      public String generate(@RequestParam(value = &quot;message&quot;, defaultValue = &quot;hello&quot;) String message)&#123;          String call = openAiChatModel.call(message);          System.out.println(&quot;call: &quot; + call);          return call;      &#125;  &#125;
+
+
+Spring AI的聊天模型ChatClient接口
+ChatClient 是一个接口，定义了与聊天服务交互的客户端。这个接口主要用于创建聊天客户端对象，设置请求规范，以及发起聊天请求。
+
+实现简单的对话
+用户输入设置用户消息的内容，通过SpringBoot AI封装的方法向 AI 模型发送请求，以字符串形式返回 AI 模型的响应。
+
+@RestController  public class ChatDeepSeekController &#123;        private final ChatClient chatClient;        public ChatDeepSeekController(ChatClient.Builder chatClientBuilder) &#123;          chatClient = chatClientBuilder.build();      &#125;        @GetMapping(&quot;/chat&quot;)      public String chat(@RequestParam(value = &quot;msg&quot;, defaultValue = &quot;hello&quot;) String message) &#123;          return chatClient                  .prompt()            // 提示词                  .user(message)       // 用户输入                  .call()              // 调用大模型                  .content();          // 返回文本      &#125;  &#125;
+
+
+实现角色预设
+配置默认角色
+@Configuration  public class AiConfig &#123;        @Bean      public ChatClient chatClient(ChatClient.Builder builder) &#123;          return builder                  .defaultSystem(&quot;你是一个已经毕业多年，有丰富工作经验的Java工程师，你的名字是呵帅&quot;)                  .build();      &#125;  &#125;
+
+编写controller
+@RestController  public class ChatDeepSeekController &#123;        @Autowired      private ChatClient chatClient;        @GetMapping(&quot;chatai&quot;)      public String chatAi(@RequestParam(&quot;msg&quot;) String msg) &#123;          return chatClient                  .prompt()                  .user(msg)                  .call()                  .content();      &#125;  &#125;
+
+实现流式响应
+非流式输出 call：等待大模型把回答结果全部生成后输出给用户；
+
+流式输出stream：逐个字符输出，一方面符合大模型生成方式的本质，另一方面当模型推理效率不是很高时，流式输出比起全部生成后再输出大大提高用户体验。
+
+
+
+controller&#x3D;@GetMapping(value = &quot;chatAiStream&quot;, produces = &quot;text/html;charset=UTF-8&quot;)  public Flux&lt;String&gt; chatAiStream(@RequestParam(&quot;msg&quot;) String msg)&#123;      return chatClient              .prompt()              .user(msg)              .stream()              .content();  &#125;
+
+ChatModel接口
+在ChatModel接口中，带有String参数的call()方法简化了实际的使用，避免了更复杂的Prompt和 ChatResponse类的复杂性。
+
+实现简单的对话@RestController  public class ChatModelController &#123;        @Autowired      private ChatModel chatModel;        @GetMapping(&quot;/chatModel01&quot;)      public String chatModel01(@RequestParam(&quot;msg&quot;) String msg) &#123;          return chatModel.call(msg);      &#125;        @GetMapping(&quot;/chatModel02&quot;)      public String chatModel02(@RequestParam(&quot;msg&quot;) String msg)&#123;          ChatResponse chatResponse = chatModel.call(                  new Prompt(                          msg,                          ChatOptions.                                  builder()                                  .model(&quot;deepseek-chat&quot;)                                  .temperature(0.8)                                  .build()                  )          );          return chatResponse.getResult().getOutput().getContent();      &#125;  &#125;
+
+提示词评价：难用，不如langchain4j
+@GetMapping(&quot;/chatModel03&quot;)  public String chatModel03(@RequestParam(&quot;name&quot;) String name,                            @RequestParam(&quot;voice&quot;) String voice) &#123;      String userText = &quot;给我推荐三个Java的框架&quot;;      UserMessage userMessage = new UserMessage(userText);      String systemText = &quot;你是一个Java高手，在Java行业已经工作多年，你非常喜欢帮助别人来了解这个行业相关的内容，你的名字是&#123;name&#125;，推荐框架的难度是&#123;voice&#125;。&quot;;      SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemText);      Message message = systemPromptTemplate.createMessage(Map.of(&quot;name&quot;, name, &quot;voice&quot;, voice));      Prompt prompt = new Prompt(userMessage, message);      ChatResponse chatResponse = chatModel.call(prompt);      List&lt;Generation&gt; results = chatResponse.getResults();      return results.stream().map(x-&gt;x.getOutput().getContent()).collect(Collectors.joining(&quot;&quot;));    &#125;
+
+Function Calling函数调用
+函数调用功能允许大语言模型在生成回答时触发预定义的外部函数，从而实现动态数据获取或业务逻辑操作（如查询数据库、调用 API 等）
+
+自定义Function@Configuration  public class CalculatorService &#123;      public record addOperation(int a, int b) &#123;        &#125;        public record subtractOperation(int n, int m) &#123;        &#125;        @Bean      @Description(&quot;加法运算&quot;)      public Function&lt;addOperation, Integer&gt; addOperation() &#123;          return op -&gt; &#123;              return op.a + op.b;          &#125;;      &#125;        @Bean      @Description(&quot;乘法运算&quot;)      public Function&lt;subtractOperation, Integer&gt; subtractOperation() &#123;          return op -&gt; &#123;              return op.n * op.m;          &#125;;      &#125;  &#125;
+
+
+
 
 
 

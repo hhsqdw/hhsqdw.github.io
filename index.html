@@ -1743,7 +1743,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1751793523491),
+    lastupdate: new Date(1753712134244),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2619,6 +2619,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
       
     
     
@@ -2626,7 +2632,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/07/04/articles/LangChain4j/快速上手LangChain4j/">
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/07/28/articles/每日一篇/Prompt、Agent、MCP是什么/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="呵帅的BLOG">
   </span>
@@ -2644,7 +2650,192 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/07/04/articles/LangChain4j/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/"  itemprop="url">
+      <a href="/2025/07/28/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Prompt%E3%80%81Agent%E3%80%81MCP%E6%98%AF%E4%BB%80%E4%B9%88/"  itemprop="url">
+        Prompt、Agent、MCP是什么
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        PromptUserPrompt23年 OpenAI 刚发布 ChatGPT 的时候，AI看起来还是一个聊天框，我们通过聊天框发送的消息，然后AI模型生成一个回复，我们发的信息就叫用户提示词（UserPrompt）。
+SystemPrompt但是现实生活中，问每个人同一句话都可能得到不同的回复。比如我说：我饿了；爷爷奶奶可能会说：要不要煮点东西给你吃；朋友会说：别饿；女朋友会说：滚一边去，我...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-07-28T00:00:00+08:00">2025-07-28</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/07/28/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Prompt%E3%80%81Agent%E3%80%81MCP%E6%98%AF%E4%BB%80%E4%B9%88/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/07/14/articles/AI/快速上手SpringAI 2.0/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/07/14/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpringAI%202.0/"  itemprop="url">
+        快速上手SpringAI 2.0
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        前面那篇1.0没用，一点用没有，还得是CSDN大佬啊
+快速使用创建项目
+选择创建 Spring Initializr 项目，JDK最低要求17，不可低于17
+
+依赖选择
+
+SpringBoot版本需要高于3.X
+
+
+需要的依赖项：
+
+Lombok
+Spring Web
+MySQL Driver
+openAI
+
+
+
+最终的xml文件应为：
+123456789101112131415161718...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-07-14T00:00:00+08:00">2025-07-14</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/07/14/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpringAI%202.0/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/07/13/articles/AI/快速上手SpringAI  1.0/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/07/13/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpringAI%20%201.0/"  itemprop="url">
+        快速上手SpringAI
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        快速入门导入依赖12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-07-13T00:00:00+08:00">2025-07-13</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/07/13/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpringAI%20%201.0/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/07/04/articles/AI/快速上手LangChain4j/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/07/04/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/"  itemprop="url">
         快速上手LangChain4j
       </a>
     </h2>
@@ -2665,7 +2856,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/2025/07/04/articles/LangChain4j/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/' itemprop="url">
+          <a class='readmore' href='/2025/07/04/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3052,179 +3243,6 @@ public class ClassB &#123;
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/22/articles/每日一篇/redis主从复制的理解/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/22/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3/"  itemprop="url">
-        redis主从复制的理解
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        主从复制本质上就是从一台服务器master上的数据拷贝到另一台服务器slave上，数据的复制是单向的，只能由主节点到从节点，redis里提供了全量复制和增量复制两种方法：
-
-全量复制：一般用于slave新构建的时候，slave会向master发送全量复制请求，然后master会拷贝当前数据快照给slave，slave丢弃旧的数据来加载新的数据，但需要注意redis并没有采用强一致性，所以会出...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-22T00:00:00+08:00">2025-05-22</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/22/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/21/articles/每日一篇/ArrayList 和 LinkedList 的区别/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/21/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/ArrayList%20%E5%92%8C%20LinkedList%20%E7%9A%84%E5%8C%BA%E5%88%AB/"  itemprop="url">
-        ArrayList 和 LinkedList 的区别
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-ArrayList基于动态数组实现的非线程安全的集合；LinkedList基于链表实现的非线程安全的集合。
-
-对于随机index访问的get和set方法，一般ArrayList的速度要优于LinkedList。因为ArrayList直接通过数组下标直接找到元素；LinkedList要移动指针遍历每个元素直到找到为止。
-
-新增和删除元素，一般LinkedList的速度要优于ArrayList...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-21T00:00:00+08:00">2025-05-21</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/21/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/ArrayList%20%E5%92%8C%20LinkedList%20%E7%9A%84%E5%8C%BA%E5%88%AB/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/20/articles/每日一篇/Kafka如何避免重复消费问题/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/20/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Kafka%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/"  itemprop="url">
-        Kafka如何避免重复消费问题
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        首先，kafka的块上会储存offset标记，kafka消费者通过offset标记来维护已经消费的数据，消费者每消费完一批数据时会更新offset值，来避免重复消费问题。
-默认情况，消费完以后会自动提交offset值避免重复消费，Kafka消费端自动提交的逻辑中默认了5秒的间隔，所以在consumer的消费过程中，如果5秒内被强行kill了或者宕机导致offset没有提交，会导致重复消费问题...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-20T00:00:00+08:00">2025-05-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/20/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Kafka%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3233,7 +3251,7 @@ ArrayList基于动态数组实现的非线程安全的集合；LinkedList基于�
       <div class="prev-next">
         
         <p class="current">
-          1 / 5
+          1 / 6
         </p>
         
           <a class="next" rel="next" href="/page/2/">

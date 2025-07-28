@@ -1743,7 +1743,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1751793523491),
+    lastupdate: new Date(1753712134244),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2524,6 +2524,179 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/22/articles/每日一篇/redis主从复制的理解/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/22/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3/"  itemprop="url">
+        redis主从复制的理解
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        主从复制本质上就是从一台服务器master上的数据拷贝到另一台服务器slave上，数据的复制是单向的，只能由主节点到从节点，redis里提供了全量复制和增量复制两种方法：
+
+全量复制：一般用于slave新构建的时候，slave会向master发送全量复制请求，然后master会拷贝当前数据快照给slave，slave丢弃旧的数据来加载新的数据，但需要注意redis并没有采用强一致性，所以会出...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-22T00:00:00+08:00">2025-05-22</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/22/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/21/articles/每日一篇/ArrayList 和 LinkedList 的区别/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/21/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/ArrayList%20%E5%92%8C%20LinkedList%20%E7%9A%84%E5%8C%BA%E5%88%AB/"  itemprop="url">
+        ArrayList 和 LinkedList 的区别
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        
+ArrayList基于动态数组实现的非线程安全的集合；LinkedList基于链表实现的非线程安全的集合。
+
+对于随机index访问的get和set方法，一般ArrayList的速度要优于LinkedList。因为ArrayList直接通过数组下标直接找到元素；LinkedList要移动指针遍历每个元素直到找到为止。
+
+新增和删除元素，一般LinkedList的速度要优于ArrayList...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-21T00:00:00+08:00">2025-05-21</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/21/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/ArrayList%20%E5%92%8C%20LinkedList%20%E7%9A%84%E5%8C%BA%E5%88%AB/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/20/articles/每日一篇/Kafka如何避免重复消费问题/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/20/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Kafka%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/"  itemprop="url">
+        Kafka如何避免重复消费问题
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        首先，kafka的块上会储存offset标记，kafka消费者通过offset标记来维护已经消费的数据，消费者每消费完一批数据时会更新offset值，来避免重复消费问题。
+默认情况，消费完以后会自动提交offset值避免重复消费，Kafka消费端自动提交的逻辑中默认了5秒的间隔，所以在consumer的消费过程中，如果5秒内被强行kill了或者宕机导致offset没有提交，会导致重复消费问题...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-20T00:00:00+08:00">2025-05-20</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/20/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Kafka%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/19/articles/每日一篇/什么是SpringMVC/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="呵帅的BLOG">
@@ -2924,192 +3097,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/04/30/articles/Substitute driver/规则引擎/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/30/articles/Substitute%20driver/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/"  itemprop="url">
-        规则引擎
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        规则引擎概述
-规则引擎，全称为业务规则管理系统，英文名为BRMS
-
-就是把业务里经常变动的代码给抽离出来，接收数据输入，解释业务规则，并根据业务规则做出业务决策
-
-主流产品：drools、VisualRules、iLog
-
-
-drools概述drools是一款由JBoss组织提供的基于Java语言开发的开源规则引擎，可以将复杂且多变的业务规则从硬编码中解放出来，以规则脚本的形式存放在文件或特...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-30T00:00:00+08:00">2025-04-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/30/articles/Substitute%20driver/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/04/18/articles/Substitute driver/mybatis-plus 组件策略/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/18/articles/Substitute%20driver/mybatis-plus%20%E7%BB%84%E4%BB%B6%E7%AD%96%E7%95%A5/"  itemprop="url">
-        mybatis-plus 组件策略
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        默认的组件策略 ASSIGN_ID 雪花算法
-mp有默认的组件策略 ASSIGN_ID，会生成一个唯一的值，包含数字
-
-雪花算法：使用一个64位的长型的数字作为全局唯一ID
-
-表对应类型 bigint 或者 varchar类型
-
-
-ASSIGN_UUID
-ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，包含数字和字母
-
-表对应字段的类型 varchar...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-18T00:00:00+08:00">2025-04-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/18/articles/Substitute%20driver/mybatis-plus%20%E7%BB%84%E4%BB%B6%E7%AD%96%E7%95%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/04/17/articles/Substitute driver/我来开！项目笔记/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/17/articles/Substitute%20driver/%E6%88%91%E6%9D%A5%E5%BC%80%EF%BC%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        校园闪送项目笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        搭建前端环境注册微信开发者账号打开微信公总平台，按照流程一步步注册：https://mp.weixin.qq.com/
-然后去申请开通三个我们项目会用到的接口![[Pasted image 20250417092751.png]]
-以及我们需要用到的插件![[Pasted image 20250417093027.png]]https://fuwu.weixin.qq.com/search?...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-17T00:00:00+08:00">2025-04-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/17/articles/Substitute%20driver/%E6%88%91%E6%9D%A5%E5%BC%80%EF%BC%81%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3124,7 +3111,7 @@ ASSIGN_ID 还有另一个相近的策略 ASSIGN_UUID，生成唯一的uuid值，
           </a>
         
         <p class="current">
-          2 / 4
+          2 / 5
         </p>
         
           <a class="next" rel="next" href="/archives/2025/page/3/">
