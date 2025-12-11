@@ -1743,7 +1743,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1753712134244),
+    lastupdate: new Date(1765475826490),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2625,9 +2625,398 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/12/04/articles/每日一篇/Java 中的 ConcurrentHashMap 1.7 和 1.8 有什么区别/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/12/04/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Java%20%E4%B8%AD%E7%9A%84%20ConcurrentHashMap%201.7%20%E5%92%8C%201.8%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"  itemprop="url">
+        Java 中的 ConcurrentHashMap 1.7 和 1.8 有什么区别
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        这两个版本的区别重点在锁的粒度
+ConcurrentHashMap 1.7Java 7 里使用的是分段锁 (Segment)，底层依旧是数组，将数组分成 16 个 Segment，每个 Segment 下都有一个 HashMap 和 一个 ReentrantLock
+不同线程访问不同 Segment 并不会触发锁，多线程访问同一个才会竞争，理论并发数默认 16
+ConcurrentHashM...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-12-04T00:00:00+08:00">2025-12-04</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/12/04/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Java%20%E4%B8%AD%E7%9A%84%20ConcurrentHashMap%201.7%20%E5%92%8C%201.8%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/12/03/articles/每日一篇/Java中的HashMap的原理/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/12/03/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Java%E4%B8%AD%E7%9A%84HashMap%E7%9A%84%E5%8E%9F%E7%90%86/"  itemprop="url">
+        Java中的HashMap的原理
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        说白了 HashMap 底层就是一个数组，然后组合了链表和红黑树
+怎么寻址当你存一个 Key-Value 的时候会计算出 key 的 hashcode，然后用哈希计算公式keyhashcode % (table.length - 1) 算出需要存放的位置
+处理哈希冲突按照上面说的寻址我们会发现，有概率两个元素用公式算出来的结果是一样的，这就是我们常说的哈希冲突，HashMap 里也设定好了解...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-12-03T00:00:00+08:00">2025-12-03</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/12/03/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/Java%E4%B8%AD%E7%9A%84HashMap%E7%9A%84%E5%8E%9F%E7%90%86/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/11/15/articles/AI智能体/RAG 的概念及使用/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/11/15/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/RAG%20%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BD%BF%E7%94%A8/"  itemprop="url">
+        RAG
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        RAG 概念什么是 RAGRAG 是一种结合信息检索技术和 AI 内容生成的混合结构，可以解决大模型的知识时效性限制和幻读问题
+简单来说就是让模型开卷考，让 AI 回答问题之前先查一下特定的知识库来获取信息，确保回答是基于资料而不是凭空捏造
+RAG 和传统 AI 模型的区别
+
+
+
+特性
+传统大语言模型
+RAG 增强模型
+
+
+
+知识时效性
+受训练数据截止日期限制
+可接入最新知识库
+
+
+领域专业...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-11-15T00:00:00+08:00">2025-11-15</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/11/15/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/RAG%20%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BD%BF%E7%94%A8/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/11/08/articles/AI智能体/Prompt 优化/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/11/08/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/Prompt%20%E4%BC%98%E5%8C%96/"  itemprop="url">
+        Token
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        基础提示技巧
+明确指定任务和角色
+为 AI 提供清晰的任务描述和角色定位，帮助模型理解背景和期望
+
+
+
+12系统：你是一位经验丰富的 Java 教师，擅长向初学者解释编程概念。用户：请解释 Java 中的列表推导式，包括基本语法和 2-3 个实用示例。
+
+
+提供详细说明和具体实例
+提供足够的上下文信息和期望的输出，减少模型的不确定性
+
+
+
+1234567请提供一个[计划]，针对[项目]，计划...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-11-08T00:00:00+08:00">2025-11-08</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/11/08/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/Prompt%20%E4%BC%98%E5%8C%96/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/11/06/articles/AI智能体/超级智能体/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/11/06/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD%E4%BD%93/"  itemprop="url">
+        超级智能体
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        后端项目初始化环境准备安装的 JDK 版本必须是 21 以上，最好是 21 ，因为支持使用虚拟线程
+**不能使用其他版本
+新建项目在 IDEA 中新建项目，选择 Spring Boot 模板，注意需要确保 Server URL 为 https://start.spring.io/
+![[Pasted image 20251106194511.png]]
+Spring Boot 版本选择 3....
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-11-06T00:00:00+08:00">2025-11-06</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/11/06/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD%E4%BD%93/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/11/06/articles/AI智能体/复习智能体的搭建/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="呵帅的BLOG">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="呵帅的BLOG">
+    <meta itemprop="description" content="呵帅">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/11/06/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/%E5%A4%8D%E4%B9%A0%E6%99%BA%E8%83%BD%E4%BD%93%E7%9A%84%E6%90%AD%E5%BB%BA/"  itemprop="url">
+        复习智能体搭建
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        程序调用 AI 大模型SDK 接入首先需要按照官方文档安装 SDK：安装SDK官方指南
+在选择 SDK 版本时，建议在 Maven 仓库查看最新的版本号：Maven 中央仓库版本信息
+
+在 pom.xml 中引入依赖：
+
+12345&lt;dependency&gt;    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;    &lt;artifactI...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-11-06T00:00:00+08:00">2025-11-06</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/11/06/articles/AI%E6%99%BA%E8%83%BD%E4%BD%93/%E5%A4%8D%E4%B9%A0%E6%99%BA%E8%83%BD%E4%BD%93%E7%9A%84%E6%90%AD%E5%BB%BA/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -2857,380 +3246,6 @@ openAI
       
         <div>
           <a class='readmore' href='/2025/07/04/articles/AI/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BLangChain4j/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/23/articles/Substitute driver/CompletableFuture异步编排/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/"  itemprop="url">
-        CompletableFuture异步编排
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        简介
-CompletableFuture是java.utils.concurrent里的一个类
-
-作用：把串行执行的代码变为并行执行，提高代码执行速度
-
-
-快速上手创建异步编排对象12345public static &lt;U&gt; CompletableFuture&lt;U&gt; supplyAsync(Supplier&lt;U&gt; supplier);public stat...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-06-23T00:00:00+08:00">2025-06-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/06/23/articles/Substitute%20driver/CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/17/articles/Substitute driver/快速上手MongoDB/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/"  itemprop="url">
-        MongoDB
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        概述
-MongoDB 与传统关系型数据库相比更加简单，架构为key-value结构
-MySQL数据库：数据库-表-记录MongoDB      ：数据库-集合-文档（记录）
-文档类似于JSON对象，结构成为BSON
-
-安装与启动1. 导入 MongoDB 官方 GPG 密钥首先需要导入 MongoDB 官方的 GPG 密钥，以便系统能够验证下载包的完整性。
-123curl -fsSL htt...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-06-17T00:00:00+08:00">2025-06-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/06/17/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BMongoDB/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/06/07/articles/Substitute driver/分布式事物锁/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/"  itemprop="url">
-        分布式事物锁
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        分布式锁解决司机抢单因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题
-**解决方案
-
-第一种 设置数据库事务的隔离级别，设置为Serializable，效率低下
-
-第二种 使用乐观锁解决，通过版本号进行控制
-
-第三种  加锁解决，学习过synchronized 及lock锁，本地锁，目前微服务架构，分布式部署方式。
-
-
-本地锁的局限性
-我们使用锁一般都是，synchronized 及...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-06-07T00:00:00+08:00">2025-06-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/06/07/articles/Substitute%20driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/31/articles/Substitute driver/快速上手xxl-job/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/"  itemprop="url">
-        快速上手xxl-job
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        XXL-JOB入门案例第一步下载XXL-JOB示例代码，解压，使用idea打开
-**项目组成：
-
-admin：调度中心
-core：公共依赖
-sample
-sample-frameless：不带框架的
-sample-springboot：带springboot框架的
-
-
-
-第二步创建XXL-JOB使用数据库和相关表
-在示例代码文件里面doc文件夹下的db里面有相关的sql语句，直接拉到数据库即...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-31T00:00:00+08:00">2025-05-31</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/31/articles/Substitute%20driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/27/articles/每日一篇/什么是循环依赖/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/"  itemprop="url">
-        什么是循环依赖
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        什么是循环依赖现在我们有两个类 ClassA 与 ClassB，但他们互相引用，直接或间接依赖对方，例如例如A类里有B的对象，B类中又有A的对象
-public class ClassA &#123;
-    private ClassB classB;
-    // 构造方法、getter 和 setter 等
-&#125;
-
-public class ClassB &#123;
-    p...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-27T00:00:00+08:00">2025-05-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/27/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://hhsqdw.github.io/2025/05/26/articles/每日一篇/什么是消息队列（Kafka）/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="呵帅的BLOG">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="呵帅的BLOG">
-    <meta itemprop="description" content="呵帅">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/26/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88Kafka%EF%BC%89/"  itemprop="url">
-        什么是消息队列（Kafka）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        模拟场景假如现在我需要维护两个服务A和B，B服务每秒能处理100个消息，但A服务每秒能发两百个消息
-结果我们也能想到，B服务非常容器就爆炸了，聪明的我一定能想到，我在B里面加一个队列来存放A发来的消息，用offset偏移量来记录消息的位置，B服务看能力来处理消息，不断更新offset值
-但这又产生了一个新问题，来不及处理的消息放在内存里，如果在服务B里面的消息没有处理完的情况下B服务关机或者...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-26T00:00:00+08:00">2025-05-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/26/articles/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%88Kafka%EF%BC%89/' itemprop="url">
             Read More
           </a>
         </div>
