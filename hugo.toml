@@ -130,3 +130,19 @@ enableEmoji = true
   [privacy.youtube]
     disable = false
     privacyEnhanced = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML"]
+
+[mediaTypes]
+  [mediaTypes."application/json"]
+    suffixes = ["json"]
+
+[outputFormats]
+  [outputFormats.JSON]
+    mediaType = "application/json"
+    isPlainText = true
+    notAlternative = true
+    baseName = "index"

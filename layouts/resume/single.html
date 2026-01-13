@@ -64,30 +64,7 @@
   <section class="page-content mw7 center">
     <article class="post-content pa0 ph4-l">
       <section class="post-body pt5 pb4">
-        <body class="bg-gray-50 font-sans text-gray-700">
-          <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-              <h1 class="text-xl md:text-2xl font-bold text-primary">Leo - Java后端</h1>
-              <nav class="hidden md:flex space-x-6">
-                <a href="#basic-info" class="text-gray-600 hover:text-primary transition-colors">基本信息</a>
-                <a href="#education" class="text-gray-600 hover:text-primary transition-colors">教育经历</a>
-                <a href="#projects" class="text-gray-600 hover:text-primary transition-colors">项目经历</a>
-                <a href="#skills" class="text-gray-600 hover:text-primary transition-colors">专业技能</a>
-              </nav>
-              <button id="menuBtn" class="md:hidden text-gray-600">
-                <i class="fa fa-bars text-xl"></i>
-              </button>
-            </div>
-            <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-              <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
-                <a href="#basic-info" class="py-2 text-gray-600 hover:text-primary transition-colors">基本信息</a>
-                <a href="#education" class="py-2 text-gray-600 hover:text-primary transition-colors">教育经历</a>
-                <a href="#projects" class="py-2 text-gray-600 hover:text-primary transition-colors">项目经历</a>
-                <a href="#skills" class="py-2 text-gray-600 hover:text-primary transition-colors">专业技能</a>
-              </div>
-            </div>
-          </header>
-
+        <div class="bg-gray-50 font-sans text-gray-700" style="min-height: 100vh;">
           <main class="container mx-auto px-4 py-8 md:py-12">
             <div class="max-w-4xl mx-auto">
               <section id="basic-info" class="resume-card">
@@ -210,29 +187,10 @@
           <footer class="bg-secondary text-white py-6">
             <div class="container mx-auto px-4 text-center">
               <p class="mb-2">Leo - Java后端</p>
-              <p class="text-gray-300 text-sm">© 2026 个人简历 | 邮箱：hhsqdmz@163.com</p>
+              <p class="text-gray-300 text-sm">© Leo 个人简历 | 邮箱：hhsqdmz@163.com</p>
             </div>
           </footer>
-
-          <script>
-            const menuBtn = document.getElementById('menuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (menuBtn) {
-              menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-            }
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-              anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (mobileMenu) mobileMenu.classList.add('hidden');
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                  window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
-                }
-              });
-            });
-          </script>
-        </body>
+        </div>
       </section>
     </article>
   </section>
