@@ -1,0 +1,127 @@
+baseURL = "https://hhsqdw.github.io/"
+theme = "hugo-apero"
+languageCode = "zh-CN"
+title = "Leo's Blog"
+author = "Leo"
+copyright = ""
+googleAnalytics = ""
+metaDataFormat = "yaml"
+footnoteReturnLinkContents = "&#8617;"
+
+[pagination]
+  pagerSize = 5
+preserveTaxonomyNames = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
+enableEmoji = true
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark.renderer]
+    unsafe = true
+    hardwraps = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 2
+    ordered = false
+  [markup.highlight]
+    style = "github"
+
+[params]
+  orgName = ""
+  orgLocal = ""
+  description = ""
+  favicon = "/img/favicon.ico"
+  logo = "/img/blogophonic-mark-dark.png"
+  mainSections = ["blog", "project"]
+  navallcaps = true
+  socialInHeader = false
+  socialInFooter = false
+  sharing_image = "/img/papillons.jpg"
+  twitter = ""
+
+  theme = "sky"
+  custom_theme = ""
+  customtextFontFamily = "Commissioner"
+  customheadingFontFamily = "Fraunces"
+  textFontFamily = "sans-serif"
+  headingFontFamily = "sans-serif"
+
+  comments = "utterances"
+
+  [params.utterances]
+    repo_name = "yourusername/your-repo"
+    issue_term = "pathname"
+    theme = "boxy-light"
+    label = "comments :crystal_ball:"
+
+  [params.math]
+    renderer = "katex"
+
+  [[params.social]]
+      icon      = "github"
+      icon_pack = "fab"
+      url       = "https://github.com/"
+  [[params.social]]
+      icon      = "rss"
+      icon_pack = "fas"
+      url       = "/blog/index.xml"
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[menu]
+  [[menu.header]]
+    name = "首页"
+    title = "首页"
+    url = "/"
+    weight = 1
+  [[menu.header]]
+    name = "博客"
+    title = "博客"
+    url = "/blog/"
+    weight = 2
+  [[menu.header]]
+    name = "项目"
+    title = "项目"
+    url = "/project/"
+    weight = 3
+  [[menu.header]]
+    name = "关于"
+    title = "关于"
+    url = "/about/"
+    weight = 4
+
+  # [[menu.footer]]
+  #   name = "联系方式"
+  #   title = "联系方式"
+  #   url = "/contact/"
+  #   weight = 1
+  # [[menu.footer]]
+  #   name = "许可证"
+  #   title = "许可证"
+  #   url = "/license/"
+  #   weight = 2
+
+[privacy]
+  [privacy.disqus]
+    disable = false
+  [privacy.googleAnalytics]
+    disable = true
+    anonymizeIP = true
+    respectDoNotTrack = true
+  [privacy.instagram]
+    disable = false
+    simple = true
+  [privacy.x]
+    disable = false
+    enableDNT = true
+    simple = false
+  [privacy.vimeo]
+    disable = false
+    enableDNT = true
+    simple = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true

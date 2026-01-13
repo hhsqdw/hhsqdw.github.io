@@ -1,0 +1,12 @@
+/* 1. 强力隐藏中间的 GitHub 和 RSS 图标 */
+.site-social-links,
+nav.social {
+    display: none !important;
+}
+
+/* 2. 强力隐藏左下角所有版权、主题声明文字 */
+footer.site-footer small,
+footer.site-footer .footer-inner,
+.site-footer .copyright {
+    display: none !important;
+}

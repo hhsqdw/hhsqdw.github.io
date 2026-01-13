@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "e42561f96888cd47",
+    "type": "split",
+    "children": [
+      {
+        "id": "f9cba26340e70361",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6fcdd60e8cc3f5dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "每日一篇/什么是消息队列（Kafka）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "什么是消息队列（Kafka）"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2d137c27ca1ac7fd",
+    "type": "split",
+    "children": [
+      {
+        "id": "6ab343956ef2b3c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de4c57cc659caabd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "a76c6d506bfbffc2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b34956920ffe4352",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "44798e2d0dfca62f",
+    "type": "split",
+    "children": [
+      {
+        "id": "ba38025beecc01cf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f2823ae938141efe",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Spring/SpringLeaning.md",
+                "collapseAll": false,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "SpringLeaning 的反向链接列表"
+            }
+          },
+          {
+            "id": "baece521a3bc923d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Mybatis/Mybatis.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Mybatis 的出链列表"
+            }
+          },
+          {
+            "id": "67ead0c19fef48e0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "9abdc99772c4adde",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "每日一篇/什么是消息队列（Kafka）.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "什么是消息队列（Kafka） 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 303.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "6fcdd60e8cc3f5dc",
+  "lastOpenFiles": [
+    "MarsCode学习笔记/5.Go/Go语言.md",
+    "AI智能体/RAG 的概念及使用.md",
+    "SpringCloud/SpringCloud.md",
+    "每日一篇/Java中的HashMap的原理.md",
+    "SpringMVC/SpringMVC.md",
+    "每日一篇/Java 中的 ConcurrentHashMap 1.7 和 1.8 有什么区别.md",
+    "AI智能体/超级智能体.md",
+    "AI智能体/复习智能体的搭建.md",
+    "AI智能体/Pasted image 20251117200454.png",
+    "AI智能体/Pasted image 20251117195905.png",
+    "AI智能体/Prompt 优化.md",
+    "AI智能体/多轮对话实现.md",
+    "AI智能体/Pasted image 20251106221406.png",
+    "AI智能体/Pasted image 20251106194721.png",
+    "AI智能体/Pasted image 20251106203306.png",
+    "AI智能体/Pasted image 20251106194433.png",
+    "AI智能体/Pasted image 20251106194511.png",
+    "Pasted image 20251106203306.png",
+    "Pasted image 20251106194721.png",
+    "Pasted image 20251106194511.png",
+    "每日一篇/redis主从复制的理解.md",
+    "AI智能体",
+    "新建文件夹",
+    "每日一篇/Kafka如何避免重复消费问题.md",
+    "每日一篇/Prompt、Agent、MCP是什么.md",
+    "AI/快速上手LangChain4j.md",
+    "AI/快速上手SpringAI 2.0.md",
+    "AI/快速上手SpringAI  1.0.md",
+    "Substitute driver/我来开！项目笔记.md",
+    "LangChain4j/快速上手LangChain4j.md",
+    "LangChain4j",
+    "每日一篇/什么是消息队列（Kafka）.md",
+    "MarsCode学习笔记/13.后端框架剖析/后端框架的剖析.md",
+    "MarsCode学习笔记/9.Go 框架三件套详解(Web RPC ORM)/Gorm 框架.md",
+    "Substitute driver/CompletableFuture异步编排.md",
+    "MarsCode学习笔记/1.Git/Git.md",
+    "Substitute driver/分布式事物锁.md",
+    "Substitute driver/莫名其妙的报错.md",
+    "Substitute driver/快速上手MongoDB.md",
+    "未命名",
+    "每日一篇",
+    "冷链监控系统",
+    "SpringCloud",
+    "MarsCode学习笔记/17.开源实践入门",
+    "MarsCode学习笔记/新建文件夹",
+    "MarsCode学习笔记/15.微服务架构/p8.png.crdownload",
+    "未命名.canvas",
+    "模板/未命名.canvas"
+  ]
+}
