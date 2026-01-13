@@ -88,10 +88,15 @@ enableEmoji = true
     url = "/project/"
     weight = 3
   [[menu.header]]
+    name = "简历"
+    title = "简历"
+    url = "/resume/"
+    weight = 4
+  [[menu.header]]
     name = "关于"
     title = "关于"
     url = "/about/"
-    weight = 4
+    weight = 5
 
   # [[menu.footer]]
   #   name = "联系方式"
