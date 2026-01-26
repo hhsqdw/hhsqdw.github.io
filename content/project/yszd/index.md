@@ -3,7 +3,7 @@ title: "云商智搭电商平台"
 subtitle: "基于 Spring AI 的智能购物系统"
 excerpt: "一个融合了 AI 智能助手的现代化电商平台，支持智能商品搜索、智能搭配推荐、对话式购物体验等创新功能。"
 date: 2025-01-20
-author: "黄翊豪"
+author: "Leo"
 draft: false
 tags:
   - Spring AI
