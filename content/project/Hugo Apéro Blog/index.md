@@ -14,14 +14,10 @@ categories:
   - Web应用
 layout: single
 links:
-- icon: github
-  icon_pack: fab
-  name: 源代码
-  url: https://github.com/yourusername/blog
 - icon: globe
   icon_pack: fas
   name: 在线预览
-  url: https://yourblog.com
+  url: https://blog.hhsqdmz.cn
 ---
 
 ## 项目概述
