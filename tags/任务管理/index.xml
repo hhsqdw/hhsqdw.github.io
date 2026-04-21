@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>任务管理 on Leo's Blog</title><link>https://hhsqdw.github.io/tags/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/</link><description>Recent content in 任务管理 on Leo's Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Mon, 24 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhsqdw.github.io/tags/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>DailyCheck 每日任务打卡</title><link>https://hhsqdw.github.io/project/dailycheck/</link><pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/project/dailycheck/</guid><description>&lt;h2 id="项目概述"&gt;项目概述
+ &lt;a href="#%e9%a1%b9%e7%9b%ae%e6%a6%82%e8%bf%b0"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;DailyCheck 是一个现代化的任务打卡 Web 应用，通过简洁直观的界面帮助用户管理每日任务和每周任务。系统采用前后端分离架构，后端基于 Spring Boot 3.2 + Spring Data JPA + PostgreSQL，前端采用 Vue 3 (Composition API) + TypeScript + Vite + Element Plus，实现了任务管理、打卡记录、状态自动刷新、统计分析等核心功能，并创新性地集成了鼓励语录系统。&lt;/p&gt;
+&lt;hr&gt;
+
+
+
+
+&lt;h2 id="核心亮点"&gt;核心亮点
+ &lt;a href="#%e6%a0%b8%e5%bf%83%e4%ba%ae%e7%82%b9"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+
+
+
+
+&lt;h3 id="自动状态刷新"&gt;自动状态刷新
+ &lt;a href="#%e8%87%aa%e5%8a%a8%e7%8a%b6%e6%80%81%e5%88%b7%e6%96%b0"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;每日任务&lt;/strong&gt;：每天 00:00 自动检查，重置为未完成状态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每周任务&lt;/strong&gt;：每周一 00:00 自动重置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;智能判断&lt;/strong&gt;：基于最后操作日期判断是否需要刷新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;定时任务&lt;/strong&gt;：后端 @Scheduled 定时器自动执行&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3 id="未完成提醒系统"&gt;未完成提醒系统
+ &lt;a href="#%e6%9c%aa%e5%ae%8c%e6%88%90%e6%8f%90%e9%86%92%e7%b3%bb%e7%bb%9f"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;过期检测&lt;/strong&gt;：启动时自动检测昨日/上周未完成任务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;鼓励语录&lt;/strong&gt;：随机生成一句鼓励性话语激励用户&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;友好提醒&lt;/strong&gt;：使用 Element Plus 通知组件展示&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3 id="完整任务管理"&gt;完整任务管理
+ &lt;a href="#%e5%ae%8c%e6%95%b4%e4%bb%bb%e5%8a%a1%e7%ae%a1%e7%90%86"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;任务类型&lt;/strong&gt;：支持每日任务和每周任务两种类型&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CRUD 操作&lt;/strong&gt;：创建、读取、更新、删除任务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;打卡记录&lt;/strong&gt;：记录每次打卡的日期和备注&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;软删除&lt;/strong&gt;：删除任务仅标记为不活跃，保留历史数据&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3 id="数据统计分析"&gt;数据统计分析
+ &lt;a href="#%e6%95%b0%e6%8d%ae%e7%bb%9f%e8%ae%a1%e5%88%86%e6%9e%90"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;完成率统计&lt;/strong&gt;：计算上周打卡成功率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;连续打卡&lt;/strong&gt;：统计每个任务的连续打卡天数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可视化图表&lt;/strong&gt;：使用 ECharts 展示统计数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;概览仪表盘&lt;/strong&gt;：今日/本周任务完成情况一目了然&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+
+
+
+&lt;h2 id="技术栈"&gt;技术栈
+ &lt;a href="#%e6%8a%80%e6%9c%af%e6%a0%88"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+
+
+
+
+&lt;h3 id="前端技术"&gt;前端技术
+ &lt;a href="#%e5%89%8d%e7%ab%af%e6%8a%80%e6%9c%af"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;技术&lt;/th&gt;
+ &lt;th&gt;版本&lt;/th&gt;
+ &lt;th&gt;用途&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Vue&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;3.4&lt;/td&gt;
+ &lt;td&gt;UI 框架 (Composition API)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;5.3&lt;/td&gt;
+ &lt;td&gt;类型安全&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Vite&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;5.0&lt;/td&gt;
+ &lt;td&gt;构建工具&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Element Plus&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;2.4&lt;/td&gt;
+ &lt;td&gt;UI 组件库&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Pinia&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;2.1&lt;/td&gt;
+ &lt;td&gt;状态管理&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Vue Router&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;4.2&lt;/td&gt;
+ &lt;td&gt;路由管理&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Axios&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;1.6&lt;/td&gt;
+ &lt;td&gt;HTTP 客户端&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;ECharts&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;5.6&lt;/td&gt;
+ &lt;td&gt;数据可视化&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Day.js&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;1.11&lt;/td&gt;
+ &lt;td&gt;日期处理&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+
+&lt;h3 id="后端技术"&gt;后端技术
+ &lt;a href="#%e5%90%8e%e7%ab%af%e6%8a%80%e6%9c%af"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;技术&lt;/th&gt;
+ &lt;th&gt;版本&lt;/th&gt;
+ &lt;th&gt;用途&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Spring Boot&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;3.2.2&lt;/td&gt;
+ &lt;td&gt;应用框架&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Spring Data JPA&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;td&gt;ORM 框架&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Spring Security&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;td&gt;安全框架&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;PostgreSQL&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;16+&lt;/td&gt;
+ &lt;td&gt;数据库&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;JWT&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;0.11.5&lt;/td&gt;
+ &lt;td&gt;认证令牌&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Java&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;17&lt;/td&gt;
+ &lt;td&gt;开发语言&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Lombok&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;1.18.30&lt;/td&gt;
+ &lt;td&gt;减少样板代码&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Maven&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;td&gt;构建工具&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+
+
+
+
+&lt;h2 id="核心功能详解"&gt;核心功能详解
+ &lt;a href="#%e6%a0%b8%e5%bf%83%e5%8a%9f%e8%83%bd%e8%af%a6%e8%a7%a3"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+
+
+
+
+&lt;h3 id="1-任务状态刷新机制"&gt;1. 任务状态刷新机制
+ &lt;a href="#1-%e4%bb%bb%e5%8a%a1%e7%8a%b6%e6%80%81%e5%88%b7%e6%96%b0%e6%9c%ba%e5%88%b6"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;系统通过两种方式触发状态刷新：&lt;/p&gt;</description></item></channel></rss>

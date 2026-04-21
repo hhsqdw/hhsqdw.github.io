@@ -1,0 +1,102 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=generator content="Hugo 0.154.2"><title>Blogs | Leo's Blog</title><meta name=description content><meta property="og:site_name" content="Leo's Blog"><meta property="og:title" content="Blogs | Leo's Blog"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://hhsqdw.github.io/blog/"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://hhsqdw.github.io/img/papillons.jpg"><meta property="twitter:card" content="summary_large_image"><meta name=twitter:image content="https://hhsqdw.github.io/img/papillons.jpg"><meta itemprop=name content="Blogs"><meta itemprop=datePublished content="2026-03-30T00:00:00+00:00"><meta itemprop=dateModified content="2026-03-30T00:00:00+00:00"><!--[if IE]><script src=//html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]--><link rel="shortcut icon" href=/img/favicon.ico type=image/x-icon><link rel=icon href=/img/favicon.ico type=image/x-icon><link rel=stylesheet href=/style.main.min.26de9476c6952c07f44db7df881a167176c24bef242d7ed407ff92e2ba7de89d.css integrity="sha256-Jt6UdsaVLAf0TbffiBoWcXbCS+8kLX7UB/+S4rp96J0=" media=screen><script src=/panelset.min.ed1ac24b6e16f4e2481e3d1d098ae66f5bc77438aef619e6e266d8ac5b00dc72.js type=text/javascript></script><script src=/main.min.6adff946633a0be72d36038ecab654d67158e0b6bc754f7f0d13deb7573c0575.js type=text/javascript></script></head><body><div class=grid-container><header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role=banner><nav class="site-nav db dt-l w-100" role=navigation><a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href=https://hhsqdw.github.io/ title=Home><img src=/img/blogophonic-mark-dark.png class="dib db-l h2 w-auto" alt="Leo's Blog"></a><div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked"><a class="link f6 f5-l dib pv1 ph2" href=/ title=首页>首页</a>
+<a class="link f6 f5-l dib pv1 ph2 active" href=/blog/ title=博客>博客</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/project/ title=项目>项目</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/resume/ title=简历>简历</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/about/ title=关于>关于</a></div></nav></header><div id=search-modal style=display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;align-items:flex-start;justify-content:center;padding-top:10vh><div style="background:#fff;border-radius:8px;width:90%;max-width:700px;max-height:80vh;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.3)"><div style="padding:1rem;border-bottom:1px solid #eee;display:flex;align-items:center;gap:1rem"><input type=text id=search-input placeholder="搜索博客文章...（按 Ctrl+F 打开/关闭，ESC 关闭）" style="flex:1;padding:.75rem 1rem;border:2px solid #165dff;border-radius:4px;font-size:1rem;outline:none">
+<span id=search-count style=color:#999;font-size:.9rem;white-space:nowrap></span></div><div id=search-results style="padding:1rem;max-height:calc(80vh - 80px);overflow-y:auto"></div></div></div><script src=/js/search.js></script><main class="page-main pa4" role=main><section class="blog-intro mw7 center mb5"><h2 class="f2 f1-ns lh-solid tc center fw4">Blogs</h2></section><section class="blog-content mw7 center"><article class="mv4 mv5-l bb"><div class="measure-wide center mb4 mb5-l"><header><h1 class="f3 mt0 mb2 lh-title underline fw4"><a href=/blog/%E5%AE%9E%E4%B9%A0/yonyou%E5%AE%9E%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/ class=db>yonyou实习笔记（一）</a></h1></header><p class="lh-copy mb4">在 yonyou 使用的是自研的 yonBIP框架，</p><footer></footer></div></article><article class="mv4 mv5-l bb"><div class="measure-wide center mb4 mb5-l"><header><h1 class="f3 mt0 mb2 lh-title underline fw4"><a href=/blog/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/java-%E4%B8%AD%E7%9A%84-concurrenthashmap-1.7-%E5%92%8C-1.8-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/ class=db>Java 中的 ConcurrentHashMap 1.7 和 1.8 有什么区别</a></h1></header><p class="lh-copy mb4"><p>这两个版本的区别重点在<strong>锁的粒度</strong></p><h4 id=concurrenthashmap-17>ConcurrentHashMap 1.7
+<a href=#concurrenthashmap-17></a></h4><p>Java 7 里使用的是分段锁 (Segment)，底层依旧是数组，将数组分成 16 个 <code>Segment</code>，每个 <code>Segment</code> 下都有一个 <code>HashMap</code> 和 一个 <code>ReentrantLock</code></p><p>不同线程访问不同 <code>Segment</code> 并不会触发锁，多线程访问同一个才会竞争，理论并发数默认 16</p><h4 id=concurrenthashmap-18>ConcurrentHashMap 1.8
+<a href=#concurrenthashmap-18></a></h4><p>Java 8 里去除了 <code>Segment</code>，采用跟 <code>HashMap</code> 相同的数据结构，<code>数组 + 链表 + 红黑树</code> ，并且将 <code>ReentrantLock</code> 换成了 <code>Synchronized</code></p><h5 id=cas>CAS
+<a href=#cas></a></h5><p><code>CAS</code> 能够保证无锁操作下的原子性，具体是三个参数：地址（V）、原本值（A）、修改值（B）</p><ul><li><p>线程先读取内存地址（V）获取值，记录到原本值（A）里</p></li><li><p>当线程准备更新地址（V）时，会先检查地址（V）当前值是否为记录的原本值（A）</p><ul><li><p>当前值和记录的原本值（A）相同，说明其他线程没有操作过，直接将地址值修改为修改值（B）</p></li><li><p>当前值和记录的原本值（A）不同，说明其他线程修改过 V 的值，当前线程更新失败，通常尝试自旋或者放弃</p></li></ul></li></ul><h5 id=18-插入>1.8 插入
+<a href=#18-%e6%8f%92%e5%85%a5></a></h5><p>插入时采用 <code>CAS</code> 插入方法，冲突才会使用 <code>Synchronized</code>，但只对链表/红黑树的头节点上锁</p><p>因为锁住了头节点基本等于锁住了整个链表/红黑树，其他线程依旧可以对其他 <code>bucket</code> 进行操作，并发度大大提升</p><h4 id=扩容的区别>扩容的区别
+<a href=#%e6%89%a9%e5%ae%b9%e7%9a%84%e5%8c%ba%e5%88%ab></a></h4><h5 id=java-7-中的扩容>Java 7 中的扩容
+<a href=#java-7-%e4%b8%ad%e7%9a%84%e6%89%a9%e5%ae%b9></a></h5><ul><li><strong>基于 <code>Segment</code></strong>：<code>ConcurrentHashMap</code> 是由多个 <code>Segment</code> 组成的，每个 <code>Segment</code> 里面都包含着一个 <code>HashMap</code>，但 <code>Segment</code> 的数量并不会扩容，扩容的是 <code>Segement</code> 内的 <code>HashMap</code>，当 <code>HashMap</code> 达到扩容因子时，会单独为这个 <code>Segment</code> 进行扩容，并不会对整个 <code>ConcurrentHashMap</code> 进行扩容</li><li><strong>扩容过程</strong>：每个 <code>Segment</code> 维护自己的扩容因子，当 <code>Segment</code> 里面的元素超过阈值时对该 <code>Segment</code> 进行扩容，扩容过程跟 <code>HashMap</code> 一致，不会影响整个 <code>ConcurrentHashMap</code></li></ul><h5 id=java-8-中的扩容>Java 8 中的扩容
+<a href=#java-8-%e4%b8%ad%e7%9a%84%e6%89%a9%e5%ae%b9></a></h5><ul><li><strong>全局扩容</strong>：整个 <code>ConcurrentHashMap</code> 的元素总数超过阈值时，整个 <code>ConcurrentHashMap</code> 进行扩容</li><li><strong>基于CAS进行扩容</strong>：<code>ConcurrentHashMap</code> 扩容跟 <code>HashMap</code> 基本一致，但是加上了 <code>CAS</code> 操作确保了线程安全。在扩容时，多个线程可以同时帮助扩容</li><li><strong>渐进式扩容</strong>：在 <strong>JDK 1.8</strong> 中引入了渐进式扩容，扩容时并不是一次将所有数据重新分配，而是多个线程共同参与，逐步迁移旧数据到新数组中，减低扩容开销。<ul><li>扩容时先把 <code>transferIndex</code> <strong>待迁移的旧数组下标范围标记</strong> 设为旧数组长度，线程通过 <code>CAS</code> “抢占” 一段下标范围（比如从 <code>transferIndex</code> 取 16 个下标）；</li><li>线程迁移自己抢占的下标范围内的元素，迁移完后再 CAS 抢占新的范围，直到所有下标迁移完成；</li><li>“分段抢占、并行迁移”，避免单线程一次性迁移所有数据的开销。</li><li>简单来说就算维护一个 <code>transferIndex</code>，线程循环 <code>CAS</code> 争夺下标，如果下标已经分配完了说明已经扩容完成</li></ul></li></ul></p><footer></footer></div></article><article class="mv4 mv5-l bb"><div class="measure-wide center mb4 mb5-l"><header><h1 class="f3 mt0 mb2 lh-title underline fw4"><a href=/blog/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87/java%E4%B8%AD%E7%9A%84hashmap%E7%9A%84%E5%8E%9F%E7%90%86/ class=db>Java中的HashMap的原理</a></h1></header><p class="lh-copy mb4"><p>说白了 <code>HashMap</code> 底层就是一个<strong>数组</strong>，然后组合了<strong>链表</strong>和<strong>红黑树</strong></p><h4 id=怎么寻址>怎么寻址
+<a href=#%e6%80%8e%e4%b9%88%e5%af%bb%e5%9d%80></a></h4><p>当你存一个 <code>Key-Value</code> 的时候会计算出 <code>key</code> 的 <code>hashcode</code>，然后用哈希计算公式
+<code>keyhashcode % (table.length - 1)</code> 算出需要存放的位置</p><h4 id=处理哈希冲突>处理哈希冲突
+<a href=#%e5%a4%84%e7%90%86%e5%93%88%e5%b8%8c%e5%86%b2%e7%aa%81></a></h4><p>按照上面说的寻址我们会发现，有概率两个元素用公式算出来的结果是一样的，这就是我们常说的哈希冲突，<code>HashMap</code> 里也设定好了解决方法：</p><ul><li><strong>链表</strong>：Java 7 及以前是把他们放在一起，用链表装着<ul><li>在 java 7 及以前链表使用的是头插法，即每次出现哈希冲突时，新的节点会插入到链表的头节点，老节点以此往后，在多线程环境下，头插法可能导致链表形成环，特别是在并发扩容时 <code>rehashing</code> 。当多个线程同时执行 <code>put()</code> 操作时，如果线程 A 正在进行头插，线程 B 也在同一时刻操作链表，可能导致链表结构出现环路，从而引发死循环，最终导致程序卡死或无限循环。</li><li>但在 java 8 的时候改为尾插法，即新的节点插入到链表的尾部，保持链表的流畅度</li></ul></li><li><strong>红黑树</strong>：<ul><li>Java 8 后做了优化，如果同一个下标的元素太多了（超过八个），则将链表转换成红黑树</li><li>红黑树是一个自动平衡二叉树，能够将最坏情况下的查找复杂度从O(n) 变成 O(logn)</li><li>如果数中的数量低于6，红黑树将会转换回链表，以减少不必要的开销</li></ul></li></ul><h4 id=扩容机制>扩容机制
+<a href=#%e6%89%a9%e5%ae%b9%e6%9c%ba%e5%88%b6></a></h4><p><code>HashMap</code> 默认长度是16，<code>HashMap</code> 有<strong>扩容因子</strong>（默认是0.75），意思是当元素超过 <code>长度 * 0.75 </code>时将会自动扩容。</p><p>默认长度是 16，扩容因子是 0.75，这个组合是性能和空间之间找到的平衡。如果扩容因子过高，虽然空间利用更高了，但是更容易出现哈希冲突，影响效率；如果扩容因子过低，哈希冲突出现概率减少，但是空间利用率低。</p><p>扩容就算将容量翻倍，然后把位置重新计算一遍，放进新的数组。</p><h4 id=hashcode-和-equals-的重要性>HashCode() 和 equals() 的重要性
+<a href=#hashcode-%e5%92%8c-equals-%e7%9a%84%e9%87%8d%e8%a6%81%e6%80%a7></a></h4><p><code>HashMap</code> 的 <code>key</code> 必须实现 <code>HashCode()</code> 和 <code>equals()</code> 方法。</p></p><footer></footer></div></article><article class="mv4 mv5-l bb"><div class="measure-wide center mb4 mb5-l"><header><h1 class="f3 mt0 mb2 lh-title underline fw4"><a href=/blog/ai%E6%99%BA%E8%83%BD%E4%BD%93/rag-%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E4%BD%BF%E7%94%A8/ class=db>RAG</a></h1></header><p class="lh-copy mb4"><h2 id=rag-概念>RAG 概念
+<a href=#rag-%e6%a6%82%e5%bf%b5><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><h3 id=什么是-rag>什么是 RAG
+<a href=#%e4%bb%80%e4%b9%88%e6%98%af-rag><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><p>RAG 是一种结合信息检索技术和 AI 内容生成的混合结构，可以解决大模型的知识时效性限制和幻读问题</p><p>简单来说就是让模型开卷考，让 AI 回答问题之前先查一下特定的知识库来获取信息，确保回答是基于资料而不是凭空捏造</p><p>RAG 和传统 AI 模型的区别</p><table><thead><tr><th>特性</th><th>传统大语言模型</th><th>RAG 增强模型</th></tr></thead><tbody><tr><td>知识时效性</td><td>受训练数据截止日期限制</td><td>可接入最新知识库</td></tr><tr><td>领域专业性</td><td>泛化知识⁠，专业深度有限</td><td>可接入专业领域知识</td></tr><tr><td>响应准‌确性</td><td>可能产生 “幻觉”</td><td>基于检索的事​实依据</td></tr><tr><td>可控性</td><td>依赖原始训练</td><td>可通过知‎识库定制输出</td></tr><tr><td>资源消耗</td><td>较高（需要大模型参‌数）</td><td>模型可更小，结合外部知识</td></tr></tbody></table><h3 id=rag-的工作流程>RAG 的工作流程
+<a href=#rag-%e7%9a%84%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><ul><li>文档收集和切割</li><li>向量转换和存储</li><li>文档过滤和检索</li><li>检查增强和关联</li></ul><h4 id=文档收集和切割>文档收集和切割
+<a href=#%e6%96%87%e6%a1%a3%e6%94%b6%e9%9b%86%e5%92%8c%e5%88%87%e5%89%b2></a></h4><p>文档收集：从各种来源（网页、PDF、数据库等）收集原始文档</p></p><footer></footer></div></article><article class="mv4 mv5-l bb"><div class="measure-wide center mb4 mb5-l"><header><h1 class="f3 mt0 mb2 lh-title underline fw4"><a href=/blog/ai%E6%99%BA%E8%83%BD%E4%BD%93/prompt-%E4%BC%98%E5%8C%96/ class=db>Token</a></h1></header><p class="lh-copy mb4"><h2 id=基础提示技巧>基础提示技巧
+<a href=#%e5%9f%ba%e7%a1%80%e6%8f%90%e7%a4%ba%e6%8a%80%e5%b7%a7><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><ul><li>明确指定任务和角色<ul><li>为 AI 提供清晰的任务描述和角色定位，帮助模型理解背景和期望</li></ul></li></ul><pre tabindex=0><code>系统：你是一位经验丰富的 Java 教师，擅长向初学者解释编程概念。
+用户：请解释 Java 中的列表推导式，包括基本语法和 2-3 个实用示例。
+</code></pre><ul><li>提供详细说明和具体实例<ul><li>提供足够的上下文信息和期望的输出，减少模型的不确定性</li></ul></li></ul><pre tabindex=0><code>请提供一个[计划]，针对[项目]，计划包括
+1. ***
+2. ***
+<p>示例格式：</p>
+<ol>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+</ol>
+<p></code></pre><ul></p><li>使用结构化格式引导思维<ul><li>通过列表、表格等格式，使指令更容易理解，输出更有条理</li></ul></li></ul><pre tabindex=0><code>分析下面项目的优缺点
+项目：****
+<p>请使用表格格式回答，包含下列：</p>
+<ul>
+<li>优势（最少三项）</li>
+<li>对每项优势的具体分析</li>
+<li>劣势（最少三项）</li>
+<li>对每项劣势的具体分析</li>
+<li>对应建议
+</code></pre><ul></li></ul><li>明确输出格式要求<ul><li>指定格式，长度，样式，使得输出更符合期望</li></ul></li></ul><pre tabindex=0><code>撰写一篇关于 Java 的学习路线推荐，要求:
+- 使用通俗易懂的语言，适合非专业阅读
+- 包含5个小标题，每个标题下2-3段文字
+- 总字数控制在800字左右
+- 结尾提供3个可行的个人行动建议
+</code></pre><h2 id=进阶提示技巧>进阶提示技巧
+<a href=#%e8%bf%9b%e9%98%b6%e6%8f%90%e7%a4%ba%e6%8a%80%e5%b7%a7><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><ul><li>思维链提示法（‌Chain-of-​Thought）<ul><li>引导模型展示推导过程，逐步思考问题，提高复杂问题的准确性</li></ul></li></ul><pre tabindex=0><code>问题：一个商店售卖T恤，每件15元。如果购买5件以上可以享受8折优惠。小明买了7件T恤，他需要支付多少钱？
+<p>请一步步思考解决这个问题:</p>
+<ol>
+<li>首先计算7件T恤的原价</li>
+<li>确定是否符合折扣条件</li>
+<li>如果符合，计算折扣后的价格</li>
+<li>得出最终支付金额
+</code></pre><ul></li></ol><li>少样本学习（F‌ew-Shot L​earning）<ul><li>提供几个样本，帮助模型理解任务模式和期望输出</li></ul></li></ul><pre tabindex=0><code>我将给你几个代码，请你按照相同的方式解析错误所在
+<p>输入：“system.out.print(&quot;hello world&quot;);”
+输出：“错误所在：system，应该修改为 System，因为是调用 System 库”
+</code></pre><ul></p><li>分步骤指导（Step-by-Step）<ul><li>将复杂问题分解为可管理的步骤，确保模型完成的每个环节正确</li></ul></li></ul><pre tabindex=0><code>请帮我创建一个简单的网站落地页设计方案，按照以下步骤:
+<p>步骤1: 分析目标受众(考虑年龄、职业、需求等因素)
+步骤2: 确定页面核心信息(主标题、副标题、价值主张)
+步骤3: 设计页面结构(至少包含哪些区块)
+步骤4: 制定视觉引导策略(颜色、图像建议)
+步骤5: 设计行动召唤(CTA)按钮和文案
+</code></pre><ul></p><li>自我评估和修正<ul><li>让模型评估自己的输出并进行改进，提高准确性和质量</li></ul></li></ul><pre tabindex=0><code>解决以下概率问题:
+从一副标准扑克牌中随机抽取两张牌，求抽到至少一张红桃的概率。
+<p>首先给出你的解答，然后:</p>
+<ol>
+<li>检查你的推理过程是否存在逻辑错误</li>
+<li>验证你使用的概率公式是否正确</li>
+<li>检查计算步骤是否有误</li>
+<li>如果发现任何问题，提供修正后的解答
+</code></pre><ul></li></ol><li>知识检索和引用<ul><li>引导模型检索相关信息并明确引用信息来源，提高可靠性</li></ul></li></ul><pre tabindex=0><code>请讲解 SpringBoot 在执行的时候的启动流程。在回答中:
+1. 提供 SpringBoot 的官方解释
+2. 给出分别是哪几个组件
+3. 描述执行的先后顺序
+<p>对于任何可能需要具体数据或研究支持的陈述，请明确指出这些信息的来源，并说明这些信息的可靠性。
+</code></pre><ul></p><li>多视角分析<ul><li>引导模型从不同角度、立场或专业视角分析问题，提供全面见解</li></ul></li></ul><pre tabindex=0><code>分析&#34;城市应该禁止私家车进入市中心&#34;这一提议:
+<p>请从以下4个不同角度分析:</p>
+<ol>
+<li>环保专家视角</li>
+<li>经济学家视角</li>
+<li>市中心商户视角</li>
+<li>通勤居民视角</li>
+</ol>
+<p>对每个视角:</p>
+<ul>
+<li>提供支持该提议的2个论点</li>
+<li>提供反对该提议的2个论点</li>
+<li>分析可能的折中方案
+</code></pre><ul></li></ul><li>多模态思维<ul><li>结合不同表⁠达形式进行思考，如‌文字描述、图表结构​、代码逻辑等</li></ul></li></ul><pre tabindex=0><code>设计一个智能家居系统的基础架构:
+<ol>
+<li>首先用文字描述系统的主要功能和组件</li>
+<li>然后创建一个系统架构图(用ASCII或文本形式表示)</li>
+<li>接着提供用户交互流程</li>
+<li>最后简述实现这个系统可能面临的技术挑战</li>
+</ol>
+<p>尝试从不同角度思考:功能性、用户体验、技术实现、安全性等。
+</code></pre></p></p><footer></footer></div></article><div class="list-pagination w-100"><ul class="paginate list pl0 tc dt w-100 ma0"><li class="dtc w-25 tl v-mid"><span class="previous pa2 db fw6">&larr; Newer</span></li><li class="dtc w-50 v-mid"><span class="page_number fw6 f7 ttu tracked">1 of 12</span></li><li class="dtc w-25 tr v-mid"><a href=/blog/page/2/ class="next pa2 db fw6" aria-label=Next>Older &rarr;</a></li></ul></div></section></main><footer class="site-footer pv4 bt b--transparent ph5" role=contentinfo><nav class="db dt-l w-100"><div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0"></div></nav><script>var i,text,code,codes=document.getElementsByTagName("code");for(let e=0;e<codes.length;){if(code=codes[e],code.parentNode.tagName!=="PRE"&&code.childElementCount===0&&(text=code.textContent,/^\$[^$]/.test(text)&&/[^$]\$$/.test(text)&&(text=text.replace(/^\$/,"\\(").replace(/\$$/,"\\)"),code.textContent=text),/^\\\((.|\s)+\\\)$/.test(text)||/^\\\[(.|\s)+\\\]$/.test(text)||/^\$(.|\s)+\$$/.test(text)||/^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text))){code.outerHTML=code.innerHTML;continue}e++}</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css integrity=sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js integrity=sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous onload=renderMathInElement(document.body)></script></footer></div></body></html>

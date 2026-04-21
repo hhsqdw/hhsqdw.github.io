@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo - Java后端开发简历</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 8px solid var(--primary-color);
+        }
+
+        /* 头部信息 */
+        header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-main h1 {
+            margin: 0;
+            font-size: 32px;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+
+        .header-main p {
+            margin: 5px 0 0;
+            font-size: 18px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .contact-info div { margin-bottom: 3px; }
+
+        /* 通用区块样式 */
+        section { margin-bottom: 30px; }
+
+        h2 {
+            font-size: 18px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: #f8f9fa;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .item { margin-bottom: 20px; }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .item-sub-header {
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li { margin-bottom: 6px; font-size: 14.5px; }
+
+        .tech-stack {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-category { font-size: 14px; }
+        .skill-category strong { color: var(--primary-color); }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; align-items: flex-start; }
+            .contact-info { text-align: left; margin-top: 15px; }
+            .item-header { flex-direction: column; }
+            .resume-container { padding: 20px; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .resume-container { box-shadow: none; border: none; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+    <header>
+        <div class="header-main">
+            <h1>LEO</h1> <p>Java 后端开发工程师</p>
+        </div>
+        <div class="contact-info">
+            <div>📍 广东广州 [cite: 3]</div>
+            <div>📧 hhsqdmz@163.com [cite: 1]</div>
+            <div>🔗 blog.hhsqdmz.cn [cite: 4]</div>
+        </div>
+    </header>
+
+    <section>
+        <h2>● 教育经历</h2>
+        <div class="item">
+            <div class="item-header">
+                <span>广东白云学院</span> [cite: 6]
+                <span>2023/09 - 2027/06</span> [cite: 10]
+            </div>
+            <div class="item-sub-header">计算机科学与技术 · 本科</div> [cite: 9]
+            <div style="font-size: 14px;">
+                <strong>荣誉/奖项：</strong> 第十六届蓝桥杯 JAVA 程序设计二等奖、第五届算法设计竞赛二等奖、CET-4 [cite: 12]
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>● 工作经验</h2>
+        <div class="item">
+            <div class="item-header">
+                <span>用友网络科技股份有限公司</span> [cite: 14]
+                <span>2026/01 - 2026/04</span> [cite: 16]
+            </div>
+            <div class="item-sub-header">Java 后端开发 (客开一组)</div> [cite: 15]
+            <ul>
+                <li><strong>实习背景：</strong> 参与 YonBIP 企业级供应链系统开发，负责采购/销售/库存模块与第三方 TMS 系统的集成。 [cite: 17]</li>
+                <li><strong>高可用优化：</strong> 设计基于本地消息表 + 指数退避算法的自动补偿方案，实现网络抖动下的故障自愈。 [cite: 19, 21]</li>
+                <li><strong>状态机与幂等：</strong> 通过状态模式重构校验逻辑，引入分布式锁 + 数据库乐观锁，使业务异常率显著降低。 [cite: 20]</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>● 项目经历</h2>
+        <div class="item">
+            <div class="item-header">
+                <span>云驰 - 智能车主管家</span> [cite: 23]
+                <span>2024/11 - 2025/03</span> [cite: 27]
+            </div>
+            <span class="tech-stack">Spring Cloud Alibaba, MyBatis-Plus, Redis, RabbitMQ</span> [cite: 25]
+            <ul>
+                <li>利用 <strong>CompletableFuture</strong> 实现线程异步编排，大幅提升页面平均加载速度。 [cite: 28]</li>
+                <li>采用 RabbitMQ 手动 ACK 与死信队列保障消息可靠性，结合 Redis 实现消费端幂等控制。 [cite: 29]</li>
+                <li>基于 AOP 实现统一权限校验，并在 Gateway 层集成 <strong>Sentinel</strong> 进行流量防护。 [cite: 30]</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span>视界职通 —— 就业数据可视化系统</span> [cite: 31]
+                <span>2025/07 - 2025/10</span> [cite: 33]
+            </div>
+            <span class="tech-stack">SpringBoot, MyBatis-Plus, Spring AI, MongoDB</span> [cite: 32]
+            <ul>
+                <li>搭建基于 MongoDB 的 <strong>RAG 知识库</strong>，设计 Vector + Keyword 两阶段检索方案，提升回答准确率。 [cite: 37]</li>
+                <li>基于 Tool Calling 实现 Agentic 工作流，通过优化 Prompt 约束大幅降低大模型幻觉率。 [cite: 38, 39]</li>
+                <li>集成 aspose-words 实现高性能简历模板填充，通过缓存技术支撑高峰期高并发导出。 [cite: 40]</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>● 专业技能</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <strong>开发：</strong> 熟悉 RESTful API 设计、ApiPost、Swagger。 [cite: 42]
+            </div>
+            <div class="skill-category">
+                <strong>数据库：</strong> 熟悉 MySQL (B+树, MVCC) 与 Redis 分布式场景应用。 [cite: 43]
+            </div>
+            <div class="skill-category">
+                <strong>微服务：</strong> 掌握 Spring Cloud Alibaba 生态及 RabbitMQ 可靠投递。 [cite: 44]
+            </div>
+            <div class="skill-category">
+                <strong>AI 智能体：</strong> 熟悉 Spring AI、LangChain4j，具备 RAG 构建经验。 [cite: 45]
+            </div>
+            <div class="skill-category">
+                <strong>工程化：</strong> 了解 Linux 常用命令、Docker 部署及 AOP 编程规范。 [cite: 46]
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

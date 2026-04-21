@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Project on Leo's Blog</title><link>https://hhsqdw.github.io/tags/project/</link><description>Recent content in Project on Leo's Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhsqdw.github.io/tags/project/index.xml" rel="self" type="application/rss+xml"/><item><title>CompletableFuture异步编排</title><link>https://hhsqdw.github.io/blog/substitute-driver/completablefuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/</link><pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/completablefuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/</guid><description>&lt;h4 id="简介"&gt;简介
+ &lt;a href="#%e7%ae%80%e4%bb%8b"&gt;&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CompletableFuture是java.utils.concurrent里的一个类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作用：把串行执行的代码变为并行执行，提高代码执行速度&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3 id="快速上手"&gt;快速上手
+ &lt;a href="#%e5%bf%ab%e9%80%9f%e4%b8%8a%e6%89%8b"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+
+
+
+
+&lt;h4 id="创建异步编排对象"&gt;创建异步编排对象
+ &lt;a href="#%e5%88%9b%e5%bb%ba%e5%bc%82%e6%ad%a5%e7%bc%96%e6%8e%92%e5%af%b9%e8%b1%a1"&gt;&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;supplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Supplier&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;supplier&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;supplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Supplier&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;supplier&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Executor&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;runAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Runnable&lt;span style="color:#fff"&gt; &lt;/span&gt;runnable&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;runAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Runnable&lt;span style="color:#fff"&gt; &lt;/span&gt;runnable&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Executor&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;h4 id="线程串行方法"&gt;线程串行方法
+ &lt;a href="#%e7%ba%bf%e7%a8%8b%e4%b8%b2%e8%a1%8c%e6%96%b9%e6%b3%95"&gt;&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;// 使线程串行执行，无入参，无返回值&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenRun&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Runnable&lt;span style="color:#fff"&gt; &lt;/span&gt;action&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenRunAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Runnable&lt;span style="color:#fff"&gt; &lt;/span&gt;action&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenRunAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Runnable&lt;span style="color:#fff"&gt; &lt;/span&gt;action&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Executor&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;// 使线程串行执行，有入参，无返回值&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenAccept&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Consumer&lt;span style="color:#0550ae"&gt;&amp;lt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;super&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;T&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;action&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenAcceptAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Consumer&lt;span style="color:#0550ae"&gt;&amp;lt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;super&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;T&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;action&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenAcceptAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Consumer&lt;span style="color:#0550ae"&gt;&amp;lt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;super&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;T&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;action&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Executor&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;// 使线程串行执行，有入参，有返回值&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenApply&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Function&lt;span style="color:#0550ae"&gt;&amp;lt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;super&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;T&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#0550ae"&gt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;extends&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;fn&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenApplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Function&lt;span style="color:#0550ae"&gt;&amp;lt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;super&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;T&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#0550ae"&gt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;extends&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;fn&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;thenApplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;Function&lt;span style="color:#0550ae"&gt;&amp;lt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;super&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;T&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#0550ae"&gt;?&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;extends&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;U&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;fn&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Executor&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;h4 id="多任务组合"&gt;多任务组合
+ &lt;a href="#%e5%a4%9a%e4%bb%bb%e5%8a%a1%e7%bb%84%e5%90%88"&gt;&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;allOf&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;?&amp;gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;...&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;cfs&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;h4 id="代码实例"&gt;代码实例
+ &lt;a href="#%e4%bb%a3%e7%a0%81%e5%ae%9e%e4%be%8b"&gt;&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;class&lt;/span&gt; &lt;span style="color:#1f2328"&gt;CompletableFutureTest5&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;@SneakyThrows&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;void&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;main&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;String&lt;span style="color:#0550ae"&gt;[]&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;args&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;//动态获取服务器核数&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;int&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;processors&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Runtime&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;getRuntime&lt;/span&gt;&lt;span style="color:#1f2328"&gt;().&lt;/span&gt;&lt;span style="color:#1f2328"&gt;availableProcessors&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;ThreadPoolExecutor&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;new&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;ThreadPoolExecutor&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;processors&lt;span style="color:#0550ae"&gt;+&lt;/span&gt;1&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;// 核心线程个数 io:2n ,cpu: n+1 n:内核数据&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;processors&lt;span style="color:#0550ae"&gt;+&lt;/span&gt;1&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;0&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;TimeUnit&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;SECONDS&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;new&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;ArrayBlockingQueue&lt;span style="color:#0550ae"&gt;&amp;lt;&amp;gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;10&lt;span style="color:#1f2328"&gt;),&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Executors&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;defaultThreadFactory&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(),&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;new&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;ThreadPoolExecutor&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;AbortPolicy&lt;/span&gt;&lt;span style="color:#1f2328"&gt;()&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;String&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;future01&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;supplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(()&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;-&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;任务1&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;String&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;future02&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;supplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(()&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;-&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;任务2&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;String&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;future03&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;supplyAsync&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(()&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;-&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;try&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Thread&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;sleep&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;3000&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;catch&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;InterruptedException&lt;span style="color:#fff"&gt; &lt;/span&gt;e&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;e&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;printStackTrace&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;return&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;任务3&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;},&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;executor&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;// 串联起若干个线程任务, 没有返回值&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;Void&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;all&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;CompletableFuture&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;allOf&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;future01&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;future02&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;future03&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;// 等待所有线程执行完成&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;// .join()和.get()都会阻塞并获取线程的执行情况&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;// .join()会抛出未经检查的异常，不会强制开发者处理异常 .get()会抛出检查异常，需要开发者处理&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;all&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;join&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;all&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;get&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>MongoDB</title><link>https://hhsqdw.github.io/blog/substitute-driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmongodb/</link><pubDate>Tue, 17 Jun 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmongodb/</guid><description>&lt;h1 id="概述"&gt;概述
+ &lt;a href="#%e6%a6%82%e8%bf%b0"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;MongoDB 与传统关系型数据库相比更加简单，架构为key-value结构&lt;/li&gt;
+&lt;li&gt;MySQL数据库：数据库-表-记录
+MongoDB ：数据库-集合-文档（记录）&lt;/li&gt;
+&lt;li&gt;文档类似于JSON对象，结构成为BSON&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h1 id="安装与启动"&gt;安装与启动
+ &lt;a href="#%e5%ae%89%e8%a3%85%e4%b8%8e%e5%90%af%e5%8a%a8"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+
+
+
+
+&lt;h2 id="1-导入-mongodb-官方-gpg-密钥"&gt;1. 导入 MongoDB 官方 GPG 密钥
+ &lt;a href="#1-%e5%af%bc%e5%85%a5-mongodb-%e5%ae%98%e6%96%b9-gpg-%e5%af%86%e9%92%a5"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;首先需要导入 MongoDB 官方的 GPG 密钥，以便系统能够验证下载包的完整性。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -fsSL https://pgp.mongodb.com/server-7.0.asc &lt;span style="color:#1f2328"&gt;|&lt;/span&gt; &lt;span style="color:#0a3069"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg &lt;span style="color:#0a3069"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --dearmor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;h2 id="2-添加-mongodb-软件源"&gt;2. 添加 MongoDB 软件源
+ &lt;a href="#2-%e6%b7%bb%e5%8a%a0-mongodb-%e8%bd%af%e4%bb%b6%e6%ba%90"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;将 MongoDB 的软件源添加到系统的源列表中，这样就可以通过包管理器直接下载 MongoDB。&lt;/p&gt;</description></item><item><title>分布式事物锁</title><link>https://hhsqdw.github.io/blog/substitute-driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/</link><pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/</guid><description>&lt;h1 id="分布式锁解决司机抢单"&gt;分布式锁解决司机抢单
+ &lt;a href="#%e5%88%86%e5%b8%83%e5%bc%8f%e9%94%81%e8%a7%a3%e5%86%b3%e5%8f%b8%e6%9c%ba%e6%8a%a2%e5%8d%95"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;因为上面写的司机抢单并没有考虑并发，类似于电商的超卖问题&lt;/p&gt;
+&lt;p&gt;**解决方案&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;第一种 设置数据库事务的隔离级别&lt;/strong&gt;，设置为Serializable，效率低下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;第二种 使用乐观锁解决&lt;/strong&gt;，通过版本号进行控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;第三种 加锁解决&lt;/strong&gt;，学习过synchronized 及lock锁，本地锁，目前微服务架构，分布式部署方式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h2 id="本地锁的局限性"&gt;本地锁的局限性
+ &lt;a href="#%e6%9c%ac%e5%9c%b0%e9%94%81%e7%9a%84%e5%b1%80%e9%99%90%e6%80%a7"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;我们使用锁一般都是，synchronized 及lock锁，这些都是本地锁，只在当前jvm生效，在微服务里面就是只有当个微服务生效&lt;/li&gt;
+&lt;li&gt;举例演示
+TestController&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;@Tag&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;name&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;测试接口&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;@RestController&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;@RequestMapping&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;/order/test&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;class&lt;/span&gt; &lt;span style="color:#1f2328"&gt;TestController&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;@Autowired&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;private&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;TestService&lt;span style="color:#fff"&gt; &lt;/span&gt;testService&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;@GetMapping&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;testLock&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Result&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;testLock&lt;/span&gt;&lt;span style="color:#1f2328"&gt;()&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;testService&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;testLock&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;return&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Result&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;ok&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TestServiceImpl&lt;/p&gt;</description></item><item><title>快速上手xxl-job</title><link>https://hhsqdw.github.io/blog/substitute-driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bxxl-job/</guid><description>&lt;h2 id="xxl-job入门案例"&gt;XXL-JOB入门案例
+ &lt;a href="#xxl-job%e5%85%a5%e9%97%a8%e6%a1%88%e4%be%8b"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+
+
+
+
+&lt;h3 id="第一步"&gt;第一步
+ &lt;a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;下载XXL-JOB示例代码，解压，使用idea打开&lt;/p&gt;
+&lt;p&gt;**项目组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;admin：调度中心&lt;/li&gt;
+&lt;li&gt;core：公共依赖&lt;/li&gt;
+&lt;li&gt;sample
+&lt;ul&gt;
+&lt;li&gt;sample-frameless：不带框架的&lt;/li&gt;
+&lt;li&gt;sample-springboot：带springboot框架的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h3 id="第二步"&gt;第二步
+ &lt;a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;创建XXL-JOB使用数据库和相关表&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Redis常见的几个问题</title><link>https://hhsqdw.github.io/blog/substitute-driver/redis%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/</link><pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/redis%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/</guid><description>&lt;h1 id="缓存雪崩"&gt;缓存雪崩
+ &lt;a href="#%e7%bc%93%e5%ad%98%e9%9b%aa%e5%b4%a9"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;当大量缓存在同一时间失效或者过期，亦或者Redis故障宕机时，如果此时有大量用户数据访问，Redis 无法处理，于是全部请求都会直接访问数据库，导致数据库压力剧增，严重会导致数据库宕机，从而出现更严重的问题&lt;/p&gt;
+&lt;p&gt;常见解决方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;给各数据设置不相同的过期时间，尽量让他们不要在同一时间过期&lt;/li&gt;
+&lt;li&gt;设置互斥锁，当发现需要查找的数据在Redis中找不到，就加上一个互斥锁，保证一个时间只有规定的次数查询数据库来构建缓存&lt;/li&gt;
+&lt;li&gt;如果是宕机，那我们可以用熔断来解决，或者是拒绝服务&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h1 id="缓存击穿"&gt;缓存击穿
+ &lt;a href="#%e7%bc%93%e5%ad%98%e5%87%bb%e7%a9%bf"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;缓存击穿跟缓存雪崩很相似，可以认为缓存击穿是缓存雪崩其中之一&lt;/p&gt;
+&lt;p&gt;如果缓存中某个热点数据过期了，此时大量的数据请求访问了该数据，就无法从缓存中读取，直接访问数据库，数据库很容易被高并发的请求冲垮，这就是缓存击穿问题。&lt;/p&gt;
+&lt;p&gt;常见解决方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;互斥锁方案，保证同一时间只有一个业务线程更新缓存&lt;/li&gt;
+&lt;li&gt;不给热点数据设置过期时间，由后台异步更新缓存，或者在热点数据准备要过期前，提前通知后台线程更新缓存以及重新设置过期时间；&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h1 id="缓存穿透"&gt;缓存穿透
+ &lt;a href="#%e7%bc%93%e5%ad%98%e7%a9%bf%e9%80%8f"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;当用户访问的数据不存在，导致请求在访问缓存时，发现缓存缺失，再去访问数据库时，发现数据库中也没有要访问的数据，那么此时大量的请求都落在数据库中，导致数据库压力骤增&lt;/p&gt;
+&lt;p&gt;常见解决方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;限制非法请求，进行参数校验，对于不合法的参数请求直接抛出异常返回给客户端。&lt;/li&gt;
+&lt;li&gt;缓存空值或者默认值，当发现缓存穿透的现象时，可以针对查询的数据，在缓存中设置一个空值或者默认值，这样后续请求就可以从缓存中读取到空值或者默认值，返回给应用，使其不会继续查询数据库&lt;/li&gt;
+&lt;li&gt;使用布隆过滤器，过滤器说数据不存在，那么数据库中一定不会有这个数据。如果说数据存在，并不一定证明数据库中存在这个数据，有误判的几率，只不过几率非常小。（底层是hash，有极小概率误判）&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>莫名其妙的报错</title><link>https://hhsqdw.github.io/blog/substitute-driver/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%8A%A5%E9%94%99/</link><pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%8A%A5%E9%94%99/</guid><description>&lt;p&gt;太吓人了可恶，今天写完运行的时候报了两个错&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;D:\Desktop\hhsqdmz\Project\Substitute driver\代码\daijia-parent\service-client\service-map-client\src\main\java\com\atguigu\daijia\map\client\MapFeignClient.java:19:5
+java: 找不到符号
+ 符号: 类 Result
+ 位置: 接口 com.atguigu.daijia.map.client.MapFeignClient
+
+D:\Desktop\hhsqdmz\Project\Substitute driver\代码\daijia-parent\service-client\service-map-client\src\main\java\com\atguigu\daijia\map\client\MapFeignClient.java:3:40 java: 程序包com.atguigu.daijia.common.result不存在
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后我按照报错原因按个排插，看了半天没发现问题，最后我使用了最原始的方法：回溯&lt;/p&gt;
+&lt;p&gt;我按照步骤挨个回退，一路删删删，最后发现问题居然是ALT+Enter，快速的加入了一个依赖在最外层父项目，然后那个依赖本身就存在，两个相同的依赖导致出错，并且报错原因和真实原因毫不相关&lt;/p&gt;
+&lt;p&gt;气煞我也！&lt;/p&gt;</description></item><item><title>规则引擎</title><link>https://hhsqdw.github.io/blog/substitute-driver/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/</link><pubDate>Wed, 30 Apr 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/</guid><description>&lt;h1 id="规则引擎概述"&gt;规则引擎概述
+ &lt;a href="#%e8%a7%84%e5%88%99%e5%bc%95%e6%93%8e%e6%a6%82%e8%bf%b0"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;规则引擎，全称为&lt;strong&gt;业务规则管理系统&lt;/strong&gt;，英文名为BRMS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;就是把业务里经常变动的代码给抽离出来，接收数据输入，解释业务规则，并根据业务规则做出业务决策&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主流产品：drools、VisualRules、iLog&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h1 id="drools"&gt;drools
+ &lt;a href="#drools"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+
+
+
+
+&lt;h2 id="概述"&gt;概述
+ &lt;a href="#%e6%a6%82%e8%bf%b0"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;drools是一款由JBoss组织提供的基于Java语言开发的开源规则引擎，可以将复杂且多变的业务规则从硬编码中解放出来，以规则脚本的形式存放在文件或特定的存储介质中(例如存放在数据库中)，使得业务规则的变更不需要修改项目代码、重启服务器就可以在线上环境立即生效。&lt;/p&gt;
+&lt;p&gt;drools官网地址：https://drools.org/&lt;/p&gt;
+&lt;p&gt;drools源码下载地址：https://github.com/kiegroup/drools&lt;/p&gt;
+
+
+
+
+&lt;h2 id="基础使用"&gt;基础使用
+ &lt;a href="#%e5%9f%ba%e7%a1%80%e4%bd%bf%e7%94%a8"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+
+
+
+
+&lt;h3 id="创建spring-boot工程"&gt;创建spring boot工程
+ &lt;a href="#%e5%88%9b%e5%bb%baspring-boot%e5%b7%a5%e7%a8%8b"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+
+
+
+
+&lt;h3 id="引入drools依赖"&gt;引入drools依赖
+ &lt;a href="#%e5%bc%95%e5%85%a5drools%e4%be%9d%e8%b5%96"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;project&lt;/span&gt; &lt;span style="color:#1f2328"&gt;xmlns=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;xmlns:xsi=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span style="color:#0550ae"&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.example&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;drools&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0-SNAPSHOT&lt;span style="color:#0550ae"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;parent&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter-parent&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.0.5&lt;span style="color:#0550ae"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;relativePath/&amp;gt;&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;!-- lookup parent from repository --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/parent&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;java.version&amp;gt;&lt;/span&gt;17&lt;span style="color:#0550ae"&gt;&amp;lt;/java.version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;drools.version&amp;gt;&lt;/span&gt;8.41.0.Final&lt;span style="color:#0550ae"&gt;&amp;lt;/drools.version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter-test&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span style="color:#0550ae"&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.drools&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;drools-core&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${drools.version}&lt;span style="color:#0550ae"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.drools&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;drools-compiler&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${drools.version}&lt;span style="color:#0550ae"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.drools&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;drools-decisiontables&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${drools.version}&lt;span style="color:#0550ae"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.drools&lt;span style="color:#0550ae"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;drools-mvel&lt;span style="color:#0550ae"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${drools.version}&lt;span style="color:#0550ae"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;h3 id="创建drools配置类"&gt;创建drools配置类
+ &lt;a href="#%e5%88%9b%e5%bb%badrools%e9%85%8d%e7%bd%ae%e7%b1%bb"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;@Configuration&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;class&lt;/span&gt; &lt;span style="color:#1f2328"&gt;DroolsConfig&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;private&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;final&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieServices&lt;span style="color:#fff"&gt; &lt;/span&gt;kieServices&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieServices&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;Factory&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;get&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;//制定规则文件的路径&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;private&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;static&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;final&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;String&lt;span style="color:#fff"&gt; &lt;/span&gt;RULES_CUSTOMER_RULES_DRL&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;rules/order.drl&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;@Bean&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;public&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieContainer&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6639ba"&gt;kieContainer&lt;/span&gt;&lt;span style="color:#1f2328"&gt;()&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;//获得Kie容器对象&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieFileSystem&lt;span style="color:#fff"&gt; &lt;/span&gt;kieFileSystem&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieServices&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;newKieFileSystem&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieFileSystem&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;write&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;ResourceFactory&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;newClassPathResource&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;RULES_CUSTOMER_RULES_DRL&lt;span style="color:#1f2328"&gt;));&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieBuilder&lt;span style="color:#fff"&gt; &lt;/span&gt;kieBuilder&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieServices&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;newKieBuilder&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;kieFileSystem&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieBuilder&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;buildAll&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieModule&lt;span style="color:#fff"&gt; &lt;/span&gt;kieModule&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieBuilder&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;getKieModule&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;KieContainer&lt;span style="color:#fff"&gt; &lt;/span&gt;kieContainer&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieServices&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;newKieContainer&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;kieModule&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;getReleaseId&lt;/span&gt;&lt;span style="color:#1f2328"&gt;());&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;return&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;kieContainer&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义了一个 &lt;code&gt;KieContainer&lt;/code&gt;的&lt;code&gt;Bean&lt;/code&gt; ，&lt;code&gt;KieContainer&lt;/code&gt;用于通过加载应用程序的&lt;code&gt;/resources&lt;/code&gt;文件夹下的规则文件来构建规则引擎。&lt;/p&gt;</description></item><item><title>mybatis-plus 组件策略</title><link>https://hhsqdw.github.io/blog/substitute-driver/mybatis-plus-%E7%BB%84%E4%BB%B6%E7%AD%96%E7%95%A5/</link><pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/mybatis-plus-%E7%BB%84%E4%BB%B6%E7%AD%96%E7%95%A5/</guid><description>&lt;h2 id="默认的组件策略-assign_id-雪花算法"&gt;默认的组件策略 ASSIGN_ID 雪花算法
+ &lt;a href="#%e9%bb%98%e8%ae%a4%e7%9a%84%e7%bb%84%e4%bb%b6%e7%ad%96%e7%95%a5-assign_id-%e9%9b%aa%e8%8a%b1%e7%ae%97%e6%b3%95"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;mp有默认的组件策略 &lt;code&gt;ASSIGN_ID&lt;/code&gt;，会生成一个唯一的值，包含数字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;雪花算法：使用一个64位的长型的数字作为全局唯一ID&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表对应类型 bigint 或者 varchar类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h2 id="assign_uuid"&gt;ASSIGN_UUID
+ &lt;a href="#assign_uuid"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ASSIGN_ID&lt;/code&gt; 还有另一个相近的策略 &lt;code&gt;ASSIGN_UUID&lt;/code&gt;，生成唯一的uuid值，包含数字和字母&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表对应字段的类型 varchar(32) 类型，实体类字段对应 String&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;h2 id="自增策略-auto"&gt;自增策略 AUTO
+ &lt;a href="#%e8%87%aa%e5%a2%9e%e7%ad%96%e7%95%a5-auto"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;想要主键自增需要配置以下操作&lt;/p&gt;</description></item><item><title>校园闪送项目笔记</title><link>https://hhsqdw.github.io/blog/substitute-driver/%E6%88%91%E6%9D%A5%E5%BC%80%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</link><pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/blog/substitute-driver/%E6%88%91%E6%9D%A5%E5%BC%80%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="搭建前端环境"&gt;搭建前端环境
+ &lt;a href="#%e6%90%ad%e5%bb%ba%e5%89%8d%e7%ab%af%e7%8e%af%e5%a2%83"&gt;&lt;/a&gt;
+&lt;/h1&gt;
+
+
+
+
+&lt;h2 id="注册微信开发者账号"&gt;注册微信开发者账号
+ &lt;a href="#%e6%b3%a8%e5%86%8c%e5%be%ae%e4%bf%a1%e5%bc%80%e5%8f%91%e8%80%85%e8%b4%a6%e5%8f%b7"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;打开微信公总平台，按照流程一步步注册：&lt;code&gt;https://mp.weixin.qq.com/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后去申请开通三个我们项目会用到的接口
+![[Pasted image 20250417092751.png]]&lt;/p&gt;
+&lt;p&gt;以及我们需要用到的插件
+![[Pasted image 20250417093027.png]]
+
+&lt;a href="https://fuwu.weixin.qq.com/search?tab=3&amp;amp;type=&amp;amp;serviceType=3&amp;amp;page=1&amp;amp;kw=" target="_blank" rel="noopener"&gt;https://fuwu.weixin.qq.com/search?tab=3&amp;type=&amp;serviceType=3&amp;page=1&amp;kw=&lt;/a&gt;腾讯位置服务地图选点
+fuwu.weixin.qq.com/search?tab=3&amp;amp;type=&amp;amp;serviceType=3&amp;amp;page=1&amp;amp;kw=微信同声传译&lt;/p&gt;
+
+
+
+
+&lt;h2 id="安装-nodejs-和微信开发者工具"&gt;安装 node.js 和微信开发者工具
+ &lt;a href="#%e5%ae%89%e8%a3%85-nodejs-%e5%92%8c%e5%be%ae%e4%bf%a1%e5%bc%80%e5%8f%91%e8%80%85%e5%b7%a5%e5%85%b7"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;下载node.js：&lt;code&gt;https://nodejs.org/en/download&lt;/code&gt; 版本选择16.20.0
+![[Pasted image 20250417093149.png]]&lt;/p&gt;
+&lt;p&gt;微信开发者工具也是点击下载一步步走就行&lt;/p&gt;</description></item></channel></rss>

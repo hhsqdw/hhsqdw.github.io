@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>API网关 on Leo's Blog</title><link>https://hhsqdw.github.io/tags/api%E7%BD%91%E5%85%B3/</link><description>Recent content in API网关 on Leo's Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hhsqdw.github.io/tags/api%E7%BD%91%E5%85%B3/index.xml" rel="self" type="application/rss+xml"/><item><title>New API - AI 网关与资产管理系统</title><link>https://hhsqdw.github.io/project/new-api/</link><pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate><guid>https://hhsqdw.github.io/project/new-api/</guid><description>&lt;h2 id="项目概述"&gt;项目概述
+ &lt;a href="#%e9%a1%b9%e7%9b%ae%e6%a6%82%e8%bf%b0"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;New API&lt;/strong&gt; 是一个企业级的 LLM API 网关与资产管理系统。该项目通过统一的接口聚合了全球 40+ 家主流 AI 服务商（包括 OpenAI、Claude、Google Gemini、Azure、AWS Bedrock 等），为企业和开发者提供一站式的 AI 能力接入方案。&lt;/p&gt;
+&lt;p&gt;作为 
+&lt;a href="https://github.com/songquanpeng/one-api" target="_blank" rel="noopener"&gt;One API&lt;/a&gt; 的增强版分支，New API 在保持完全数据兼容的基础上，新增了大量企业级功能，包括智能路由、格式转换、多租户管理、支付计费系统等。&lt;/p&gt;
+&lt;hr&gt;
+
+
+
+
+&lt;h2 id="核心功能"&gt;核心功能
+ &lt;a href="#%e6%a0%b8%e5%bf%83%e5%8a%9f%e8%83%bd"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h2&gt;
+
+
+
+
+&lt;h3 id="-多提供商聚合"&gt;🌐 多提供商聚合
+ &lt;a href="#-%e5%a4%9a%e6%8f%90%e4%be%9b%e5%95%86%e8%81%9a%e5%90%88"&gt;&lt;svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"&gt;
+ &lt;path d="M0 0h24v24H0z" fill="currentColor"&gt;&lt;/path&gt;
+ &lt;path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"&gt;&lt;/path&gt;
+ &lt;/svg&gt;&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;支持 &lt;strong&gt;40+&lt;/strong&gt; 家 AI 服务商，覆盖主流 LLM、图像生成、音频处理等能力：&lt;/p&gt;</description></item></channel></rss>

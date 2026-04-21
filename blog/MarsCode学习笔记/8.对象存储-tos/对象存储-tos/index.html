@@ -1,0 +1,48 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=generator content="Hugo 0.154.2"><title>对象存储 | Leo's Blog</title><meta name=description content><meta property="og:site_name" content="Leo's Blog"><meta property="og:title" content="对象存储 | Leo's Blog"><meta property="og:description" content><meta property="og:type" content="page"><meta property="og:url" content="https://hhsqdw.github.io/blog/marscode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-tos/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8-tos/"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://hhsqdw.github.io/img/papillons.jpg"><meta property="twitter:card" content="summary_large_image"><meta name=twitter:image content="https://hhsqdw.github.io/img/papillons.jpg"><meta itemprop=name content="对象存储"><meta itemprop=description content="我在青训营看完这章对象存储TOS感觉对理论性的知识有了一定了解吧，太理论了，让我复述一遍可能都做不到
+我在网上查阅资料后得知
+T：Tencent，表示这是腾讯云提供的服务。
+O：Object，表示对象存储（Object Storage），是一种存储非结构化数据的技术。
+S：Storage，表示存储服务。
+首先开头以抖音短视频为例 架构大概分为 片源 -> 转码 -> 审核 -> 播放
+但是短视频系统要承载非常多的用户访问量，根据未来的可能的用户数量，做了简单数学计算，结果发现存储量非常之大：
+每天: 432块4tb磁盘
+每月：12960块4tb磁盘
+每年： 157680块4tb盘
+对于这么大的访问量，我们需要一个合适的存储去承载数据，这个储存需要满足以下三个条件：
+海量
+易用
+便宜
+然后列举了四个存储系统
+单机存储——>不支持海量，适合的数据类型（单击文件）——>不行
+单机数据库——> 不支持海量,只支持结构化和半结构化数据——>不行
+分布式数据库——>支持海量，但是单条记录存储的容量太少——>不行
+分布式存储——> 大数据计算中间结果/视频/图片——>行
+分布式文件系统（HDFS）
+海量：支持PB——>EB海量存储
+易用：伪Posix文件接口，开发略微复杂，非云原生，搭建维护麻烦，视频、图片相关生态接入略微复杂
+便宜：使用普通x86服务器，成本低
+分布式对象存储TOS
+海量：支持>eb海量存储
+易用：RestFul HTTP接口，开发极其简单，云原生，按需申请使用
+便宜：使用普通x86服务器，具备冷热数据分级存储能力，成本更低
+TOS 的接口
+Mkdirs创建文件夹 Append：写 GET：下载对象 HEAD：查看对象上传 PUT：上传对象 DELETE：删除对象 TOS 中Bucket/Object语义
+Bucket：存储对象的桶，可类比一下 Object：对象，包含以下三个部分 key:对象的名字，可类比于Map的key Data：对象的内容，例如视频、图片内容 MetaData：对象的一些元信息"><meta itemprop=datePublished content="2025-02-06T00:00:00+00:00"><meta itemprop=dateModified content="2025-02-06T00:00:00+00:00"><meta itemprop=wordCount content="56"><meta itemprop=keywords content="字节青训营"><!--[if IE]><script src=//html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]--><link rel="shortcut icon" href=/img/favicon.ico type=image/x-icon><link rel=icon href=/img/favicon.ico type=image/x-icon><link rel=stylesheet href=/style.main.min.26de9476c6952c07f44db7df881a167176c24bef242d7ed407ff92e2ba7de89d.css integrity="sha256-Jt6UdsaVLAf0TbffiBoWcXbCS+8kLX7UB/+S4rp96J0=" media=screen><script src=/panelset.min.ed1ac24b6e16f4e2481e3d1d098ae66f5bc77438aef619e6e266d8ac5b00dc72.js type=text/javascript></script><script src=/main.min.6adff946633a0be72d36038ecab654d67158e0b6bc754f7f0d13deb7573c0575.js type=text/javascript></script></head><body><div class=grid-container><header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role=banner><nav class="site-nav db dt-l w-100" role=navigation><a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href=https://hhsqdw.github.io/ title=Home><img src=/img/blogophonic-mark-dark.png class="dib db-l h2 w-auto" alt="Leo's Blog"></a><div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked"><a class="link f6 f5-l dib pv1 ph2" href=/ title=首页>首页</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/blog/ title=博客>博客</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/project/ title=项目>项目</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/resume/ title=简历>简历</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/about/ title=关于>关于</a></div></nav></header><div id=search-modal style=display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;align-items:flex-start;justify-content:center;padding-top:10vh><div style="background:#fff;border-radius:8px;width:90%;max-width:700px;max-height:80vh;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.3)"><div style="padding:1rem;border-bottom:1px solid #eee;display:flex;align-items:center;gap:1rem"><input type=text id=search-input placeholder="搜索博客文章...（按 Ctrl+F 打开/关闭，ESC 关闭）" style="flex:1;padding:.75rem 1rem;border:2px solid #165dff;border-radius:4px;font-size:1rem;outline:none">
+<span id=search-count style=color:#999;font-size:.9rem;white-space:nowrap></span></div><div id=search-results style="padding:1rem;max-height:calc(80vh - 80px);overflow-y:auto"></div></div></div><script src=/js/search.js></script><main class="page-main pa4" role=main><section class="page-content mw7 center"><article class="post-content pa0 ph4-l"><header class=post-header><h1 class="f1 lh-solid measure-narrow mb3 fw4">对象存储</h1></header><section class="post-body pt5 pb4"><p>我在青训营看完这章对象存储TOS感觉对理论性的知识有了一定了解吧，太理论了，让我复述一遍可能都做不到</p><p>我在网上查阅资料后得知</p><ul><li><p><strong>T</strong>：<strong>Tencent</strong>，表示这是腾讯云提供的服务。</p></li><li><p><strong>O</strong>：<strong>Object</strong>，表示对象存储（Object Storage），是一种存储非结构化数据的技术。</p></li><li><p><strong>S</strong>：<strong>Storage</strong>，表示存储服务。</p></li></ul><p>首先开头以抖音短视频为例
+<img src=MarsCode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%20TOS/p1.png alt></p><p>架构大概分为 片源 -> 转码 -> 审核 -> 播放</p><p>但是短视频系统要承载非常多的用户访问量，根据未来的可能的用户数量，做了简单数学计算，结果发现存储量非常之大：</p><ul><li><p>每天: 432块4tb磁盘</p></li><li><p>每月：12960块4tb磁盘</p></li><li><p>每年： 157680块4tb盘</p></li></ul><p>对于这么大的访问量，我们需要一个合适的存储去承载数据，这个储存需要满足以下三个条件：</p><ul><li><p>海量</p></li><li><p>易用</p></li><li><p>便宜</p></li></ul><p>然后列举了四个存储系统</p><ul><li><p>单机存储——>不支持海量，适合的数据类型（单击文件）——>不行</p></li><li><p>单机数据库——> 不支持海量,只支持结构化和半结构化数据——>不行</p></li><li><p>分布式数据库——>支持海量，但是单条记录存储的容量太少——>不行</p></li><li><p>分布式存储——> 大数据计算中间结果/视频/图片——>行</p></li></ul><p>分布式文件系统（HDFS）</p><ul><li><p>海量：支持PB——>EB海量存储</p></li><li><p>易用：伪Posix文件接口，开发略微复杂，非云原生，搭建维护麻烦，视频、图片相关生态接入略微复杂</p></li><li><p>便宜：使用普通x86服务器，成本低</p></li></ul><p>分布式对象存储TOS</p><ul><li><p>海量：支持>eb海量存储</p></li><li><p>易用：RestFul HTTP接口，开发极其简单，云原生，按需申请使用</p></li><li><p>便宜：使用普通x86服务器，具备冷热数据分级存储能力，成本更低</p></li></ul><p>TOS 的接口</p><pre tabindex=0><code>Mkdirs创建文件夹
+Append：写
+GET：下载对象
+HEAD：查看对象上传
+PUT：上传对象
+DELETE：删除对象
+</code></pre><p>TOS 中Bucket/Object语义</p><pre tabindex=0><code>Bucket：存储对象的桶，可类比一下
+Object：对象，包含以下三个部分
+key:对象的名字，可类比于Map的key
+Data：对象的内容，例如视频、图片内容
+MetaData：对象的一些元信息
+</code></pre><details closed class="f6 fw7 input-reset"><dl class="f6 lh-copy"><dt class=fw7>Posted on:</dt><dd class="fw5 ml0">February 6, 2025</dd></dl><dl class="f6 lh-copy"><dt class=fw7>Length:</dt><dd class="fw5 ml0">1 minute read, 56 words</dd></dl><dl class="f6 lh-copy"><dt class=fw7>Tags:</dt><dd class="fw5 ml0"><a href=https://hhsqdw.github.io/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5>字节青训营</a></dd></dl><dl class="f6 lh-copy"><dt class=fw7>See Also:</dt><dd class="fw5 ml0"><a href=/blog/marscode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15.%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/>微服务架构</a></dd><dd class="fw5 ml0"><a href=/blog/marscode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/%E5%AE%9A%E6%97%B6%E8%AE%A1%E5%88%92/>定时计划</a></dd><dd class="fw5 ml0"><a href=/blog/marscode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13.%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%89%96%E6%9E%90/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E7%9A%84%E5%89%96%E6%9E%90/>后端框架的剖析</a></dd></dl></details></section><footer class=post-footer><div class="post-pagination dt w-100 mt4 mb2"><a class="prev dtc pr2 tl v-top fw6" href=https://hhsqdw.github.io/blog/marscode%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/9.go-%E6%A1%86%E6%9E%B6%E4%B8%89%E4%BB%B6%E5%A5%97%E8%AF%A6%E8%A7%A3web-rpc-orm/gorm-%E6%A1%86%E6%9E%B6/>&larr; Go 框架三件套</a>
+<a class="next dtc pl2 tr v-top fw6" href=https://hhsqdw.github.io/blog/springboot/springboot/>SpringBoot学习笔记 &rarr;</a></div></footer></article></section></main><footer class="site-footer pv4 bt b--transparent ph5" role=contentinfo><nav class="db dt-l w-100"><div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0"></div></nav><script>var i,text,code,codes=document.getElementsByTagName("code");for(let e=0;e<codes.length;){if(code=codes[e],code.parentNode.tagName!=="PRE"&&code.childElementCount===0&&(text=code.textContent,/^\$[^$]/.test(text)&&/[^$]\$$/.test(text)&&(text=text.replace(/^\$/,"\\(").replace(/\$$/,"\\)"),code.textContent=text),/^\\\((.|\s)+\\\)$/.test(text)||/^\\\[(.|\s)+\\\]$/.test(text)||/^\$(.|\s)+\$$/.test(text)||/^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text))){code.outerHTML=code.innerHTML;continue}e++}</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css integrity=sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js integrity=sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous onload=renderMathInElement(document.body)></script></footer></div></body></html>

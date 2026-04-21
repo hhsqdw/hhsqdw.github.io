@@ -1,0 +1,350 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=generator content="Hugo 0.154.2"><title>规则引擎 | Leo's Blog</title><meta name=description content><meta property="og:site_name" content="Leo's Blog"><meta property="og:title" content="规则引擎 | Leo's Blog"><meta property="og:description" content><meta property="og:type" content="page"><meta property="og:url" content="https://hhsqdw.github.io/blog/substitute-driver/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://hhsqdw.github.io/img/papillons.jpg"><meta property="twitter:card" content="summary_large_image"><meta name=twitter:image content="https://hhsqdw.github.io/img/papillons.jpg"><meta itemprop=name content="规则引擎"><meta itemprop=description content='规则引擎概述 规则引擎，全称为业务规则管理系统，英文名为BRMS
+就是把业务里经常变动的代码给抽离出来，接收数据输入，解释业务规则，并根据业务规则做出业务决策
+主流产品：drools、VisualRules、iLog
+drools 概述 drools是一款由JBoss组织提供的基于Java语言开发的开源规则引擎，可以将复杂且多变的业务规则从硬编码中解放出来，以规则脚本的形式存放在文件或特定的存储介质中(例如存放在数据库中)，使得业务规则的变更不需要修改项目代码、重启服务器就可以在线上环境立即生效。
+drools官网地址：https://drools.org/
+drools源码下载地址：https://github.com/kiegroup/drools
+基础使用 创建spring boot工程 引入drools依赖 <?xml version="1.0" encoding="UTF-8"?> <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"> <modelVersion>4.0.0</modelVersion> <groupId>org.example</groupId> <artifactId>drools</artifactId> <version>1.0-SNAPSHOT</version> <parent> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-parent</artifactId> <version>3.0.5</version> <relativePath/> <!-- lookup parent from repository --> </parent> <properties> <java.version>17</java.version> <drools.version>8.41.0.Final</drools.version> </properties> <dependencies> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter</artifactId> </dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-test</artifactId> <scope>test</scope> </dependency> <dependency> <groupId>org.drools</groupId> <artifactId>drools-core</artifactId> <version>${drools.version}</version> </dependency> <dependency> <groupId>org.drools</groupId> <artifactId>drools-compiler</artifactId> <version>${drools.version}</version> </dependency> <dependency> <groupId>org.drools</groupId> <artifactId>drools-decisiontables</artifactId> <version>${drools.version}</version> </dependency> <dependency> <groupId>org.drools</groupId> <artifactId>drools-mvel</artifactId> <version>${drools.version}</version> </dependency> </dependencies> </project> 创建drools配置类 @Configuration public class DroolsConfig { private static final KieServices kieServices = KieServices.Factory.get(); //制定规则文件的路径 private static final String RULES_CUSTOMER_RULES_DRL = "rules/order.drl"; @Bean public KieContainer kieContainer() { //获得Kie容器对象 KieFileSystem kieFileSystem = kieServices.newKieFileSystem(); kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_CUSTOMER_RULES_DRL)); KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem); kieBuilder.buildAll(); KieModule kieModule = kieBuilder.getKieModule(); KieContainer kieContainer = kieServices.newKieContainer(kieModule.getReleaseId()); return kieContainer; } } 定义了一个 KieContainer的Bean ，KieContainer用于通过加载应用程序的/resources文件夹下的规则文件来构建规则引擎。'><meta itemprop=datePublished content="2025-04-30T00:00:00+00:00"><meta itemprop=dateModified content="2025-04-30T00:00:00+00:00"><meta itemprop=wordCount content="697"><meta itemprop=keywords content="Project"><!--[if IE]><script src=//html5shiv.googlecode.com/svn/trunk/html5.js></script><![endif]--><link rel="shortcut icon" href=/img/favicon.ico type=image/x-icon><link rel=icon href=/img/favicon.ico type=image/x-icon><link rel=stylesheet href=/style.main.min.26de9476c6952c07f44db7df881a167176c24bef242d7ed407ff92e2ba7de89d.css integrity="sha256-Jt6UdsaVLAf0TbffiBoWcXbCS+8kLX7UB/+S4rp96J0=" media=screen><script src=/panelset.min.ed1ac24b6e16f4e2481e3d1d098ae66f5bc77438aef619e6e266d8ac5b00dc72.js type=text/javascript></script><script src=/main.min.6adff946633a0be72d36038ecab654d67158e0b6bc754f7f0d13deb7573c0575.js type=text/javascript></script></head><body><div class=grid-container><header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role=banner><nav class="site-nav db dt-l w-100" role=navigation><a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href=https://hhsqdw.github.io/ title=Home><img src=/img/blogophonic-mark-dark.png class="dib db-l h2 w-auto" alt="Leo's Blog"></a><div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked"><a class="link f6 f5-l dib pv1 ph2" href=/ title=首页>首页</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/blog/ title=博客>博客</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/project/ title=项目>项目</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/resume/ title=简历>简历</a>
+<a class="link f6 f5-l dib pv1 ph2" href=/about/ title=关于>关于</a></div></nav></header><div id=search-modal style=display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;align-items:flex-start;justify-content:center;padding-top:10vh><div style="background:#fff;border-radius:8px;width:90%;max-width:700px;max-height:80vh;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.3)"><div style="padding:1rem;border-bottom:1px solid #eee;display:flex;align-items:center;gap:1rem"><input type=text id=search-input placeholder="搜索博客文章...（按 Ctrl+F 打开/关闭，ESC 关闭）" style="flex:1;padding:.75rem 1rem;border:2px solid #165dff;border-radius:4px;font-size:1rem;outline:none">
+<span id=search-count style=color:#999;font-size:.9rem;white-space:nowrap></span></div><div id=search-results style="padding:1rem;max-height:calc(80vh - 80px);overflow-y:auto"></div></div></div><script src=/js/search.js></script><main class="page-main pa4" role=main><section class="page-content mw7 center"><article class="post-content pa0 ph4-l"><header class=post-header><h1 class="f1 lh-solid measure-narrow mb3 fw4">规则引擎</h1></header><section class="post-body pt5 pb4"><h1 id=规则引擎概述>规则引擎概述
+<a href=#%e8%a7%84%e5%88%99%e5%bc%95%e6%93%8e%e6%a6%82%e8%bf%b0></a></h1><ul><li><p>规则引擎，全称为<strong>业务规则管理系统</strong>，英文名为BRMS</p></li><li><p>就是把业务里经常变动的代码给抽离出来，接收数据输入，解释业务规则，并根据业务规则做出业务决策</p></li><li><p>主流产品：drools、VisualRules、iLog</p></li></ul><h1 id=drools>drools
+<a href=#drools></a></h1><h2 id=概述>概述
+<a href=#%e6%a6%82%e8%bf%b0><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><p>drools是一款由JBoss组织提供的基于Java语言开发的开源规则引擎，可以将复杂且多变的业务规则从硬编码中解放出来，以规则脚本的形式存放在文件或特定的存储介质中(例如存放在数据库中)，使得业务规则的变更不需要修改项目代码、重启服务器就可以在线上环境立即生效。</p><p>drools官网地址：https://drools.org/</p><p>drools源码下载地址：https://github.com/kiegroup/drools</p><h2 id=基础使用>基础使用
+<a href=#%e5%9f%ba%e7%a1%80%e4%bd%bf%e7%94%a8><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><h3 id=创建spring-boot工程>创建spring boot工程
+<a href=#%e5%88%9b%e5%bb%baspring-boot%e5%b7%a5%e7%a8%8b><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><h3 id=引入drools依赖>引入drools依赖
+<a href=#%e5%bc%95%e5%85%a5drools%e4%be%9d%e8%b5%96><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#57606a>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#0550ae>&lt;project</span> <span style=color:#1f2328>xmlns=</span><span style=color:#0a3069>&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
+</span></span><span style=display:flex><span>         <span style=color:#1f2328>xmlns:xsi=</span><span style=color:#0a3069>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style=display:flex><span>         <span style=color:#1f2328>xsi:schemaLocation=</span><span style=color:#0a3069>&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style=color:#0550ae>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;modelVersion&gt;</span>4.0.0<span style=color:#0550ae>&lt;/modelVersion&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;groupId&gt;</span>org.example<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;artifactId&gt;</span>drools<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;version&gt;</span>1.0-SNAPSHOT<span style=color:#0550ae>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;parent&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;groupId&gt;</span>org.springframework.boot<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;artifactId&gt;</span>spring-boot-starter-parent<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;version&gt;</span>3.0.5<span style=color:#0550ae>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;relativePath/&gt;</span> <span style=color:#57606a>&lt;!-- lookup parent from repository --&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;/parent&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;properties&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;java.version&gt;</span>17<span style=color:#0550ae>&lt;/java.version&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;drools.version&gt;</span>8.41.0.Final<span style=color:#0550ae>&lt;/drools.version&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;/properties&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;dependencies&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;groupId&gt;</span>org.springframework.boot<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;artifactId&gt;</span>spring-boot-starter<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;/dependency&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;groupId&gt;</span>org.springframework.boot<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;artifactId&gt;</span>spring-boot-starter-test<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;scope&gt;</span>test<span style=color:#0550ae>&lt;/scope&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;/dependency&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;groupId&gt;</span>org.drools<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;artifactId&gt;</span>drools-core<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;version&gt;</span>${drools.version}<span style=color:#0550ae>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;/dependency&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;groupId&gt;</span>org.drools<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;artifactId&gt;</span>drools-compiler<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;version&gt;</span>${drools.version}<span style=color:#0550ae>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;/dependency&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;groupId&gt;</span>org.drools<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;artifactId&gt;</span>drools-decisiontables<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;version&gt;</span>${drools.version}<span style=color:#0550ae>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;/dependency&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;groupId&gt;</span>org.drools<span style=color:#0550ae>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;artifactId&gt;</span>drools-mvel<span style=color:#0550ae>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#0550ae>&lt;version&gt;</span>${drools.version}<span style=color:#0550ae>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#0550ae>&lt;/dependency&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&lt;/dependencies&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#0550ae>&lt;/project&gt;</span>
+</span></span></code></pre></div><h3 id=创建drools配置类>创建drools配置类
+<a href=#%e5%88%9b%e5%bb%badrools%e9%85%8d%e7%bd%ae%e7%b1%bb><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#0550ae>@Configuration</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>class</span> <span style=color:#1f2328>DroolsConfig</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>private</span><span style=color:#fff> </span><span style=color:#cf222e>static</span><span style=color:#fff> </span><span style=color:#cf222e>final</span><span style=color:#fff> </span>KieServices<span style=color:#fff> </span>kieServices<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>KieServices<span style=color:#1f2328>.</span><span style=color:#1f2328>Factory</span><span style=color:#1f2328>.</span><span style=color:#1f2328>get</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#57606a>//制定规则文件的路径</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>private</span><span style=color:#fff> </span><span style=color:#cf222e>static</span><span style=color:#fff> </span><span style=color:#cf222e>final</span><span style=color:#fff> </span>String<span style=color:#fff> </span>RULES_CUSTOMER_RULES_DRL<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span><span style=color:#0a3069>&#34;rules/order.drl&#34;</span><span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#0550ae>@Bean</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>public</span><span style=color:#fff> </span>KieContainer<span style=color:#fff> </span><span style=color:#6639ba>kieContainer</span><span style=color:#1f2328>()</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#57606a>//获得Kie容器对象</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>KieFileSystem<span style=color:#fff> </span>kieFileSystem<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>kieServices<span style=color:#1f2328>.</span><span style=color:#1f2328>newKieFileSystem</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>kieFileSystem<span style=color:#1f2328>.</span><span style=color:#1f2328>write</span><span style=color:#1f2328>(</span>ResourceFactory<span style=color:#1f2328>.</span><span style=color:#1f2328>newClassPathResource</span><span style=color:#1f2328>(</span>RULES_CUSTOMER_RULES_DRL<span style=color:#1f2328>));</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>KieBuilder<span style=color:#fff> </span>kieBuilder<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>kieServices<span style=color:#1f2328>.</span><span style=color:#1f2328>newKieBuilder</span><span style=color:#1f2328>(</span>kieFileSystem<span style=color:#1f2328>);</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>kieBuilder<span style=color:#1f2328>.</span><span style=color:#1f2328>buildAll</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>KieModule<span style=color:#fff> </span>kieModule<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>kieBuilder<span style=color:#1f2328>.</span><span style=color:#1f2328>getKieModule</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>KieContainer<span style=color:#fff> </span>kieContainer<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>kieServices<span style=color:#1f2328>.</span><span style=color:#1f2328>newKieContainer</span><span style=color:#1f2328>(</span>kieModule<span style=color:#1f2328>.</span><span style=color:#1f2328>getReleaseId</span><span style=color:#1f2328>());</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#cf222e>return</span><span style=color:#fff> </span>kieContainer<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span></code></pre></div><ul><li><p>定义了一个 <code>KieContainer</code>的<code>Bean</code> ，<code>KieContainer</code>用于通过加载应用程序的<code>/resources</code>文件夹下的规则文件来构建规则引擎。</p></li><li><p>创建<code>KieFileSystem</code>实例并配置规则引擎并从应用程序的资源目录加载规则的 <code>DRL</code> 文件。</p></li><li><p>使用<code>KieBuilder</code>实例来构建 <code>drools</code> 模块。我们可以使用KieSerive单例实例来创建 <code>KieBuilder</code> 实例。</p></li><li><p>最后，使用 <code>KieService</code> 创建一个 <code>KieContainer</code> 并将其配置为 <code>spring bean</code></p></li></ul><h3 id=创建实体类>创建实体类
+<a href=#%e5%88%9b%e5%bb%ba%e5%ae%9e%e4%bd%93%e7%b1%bb><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>class</span> <span style=color:#1f2328>Order</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>private</span><span style=color:#fff> </span><span style=color:#cf222e>double</span><span style=color:#fff> </span>amount<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>private</span><span style=color:#fff> </span><span style=color:#cf222e>double</span><span style=color:#fff> </span>score<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>double</span><span style=color:#fff> </span><span style=color:#6639ba>getAmount</span><span style=color:#1f2328>()</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#cf222e>return</span><span style=color:#fff> </span>amount<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>void</span><span style=color:#fff> </span><span style=color:#6639ba>setAmount</span><span style=color:#1f2328>(</span><span style=color:#cf222e>double</span><span style=color:#fff> </span>amount<span style=color:#1f2328>)</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#cf222e>this</span><span style=color:#1f2328>.</span><span style=color:#1f2328>amount</span><span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>amount<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>double</span><span style=color:#fff> </span><span style=color:#6639ba>getScore</span><span style=color:#1f2328>()</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#cf222e>return</span><span style=color:#fff> </span>score<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>void</span><span style=color:#fff> </span><span style=color:#6639ba>setScore</span><span style=color:#1f2328>(</span><span style=color:#cf222e>double</span><span style=color:#fff> </span>score<span style=color:#1f2328>)</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#cf222e>this</span><span style=color:#1f2328>.</span><span style=color:#1f2328>score</span><span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>score<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span></code></pre></div><h3 id=创建规则文件>创建规则文件
+<a href=#%e5%88%9b%e5%bb%ba%e8%a7%84%e5%88%99%e6%96%87%e4%bb%b6><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><pre tabindex=0><code class=language-drl data-lang=drl>package com.hh.order;
+import com.hh.bean.Order
+
+//规则一：100元以下 不加分
+rule &#34;order_rule_1&#34;
+    when
+        $order:Order(amount &lt; 100)
+    then
+        $order.setScore(0);
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+
+//规则二：100元 - 500元 加100分
+rule &#34;order_rule_2&#34;
+    when
+        $order:Order(amount &gt;= 100 &amp;&amp; amount &lt; 500)
+    then
+         $order.setScore(100);
+         System.out.println(&#34;成功匹配到规则二：100元 - 500元 加100分&#34;);
+end
+
+//规则三：500元 - 1000元 加500分
+rule &#34;order_rule_3&#34;
+    when
+        $order:Order(amount &gt;= 500 &amp;&amp; amount &lt; 1000)
+    then
+         $order.setScore(500);
+         System.out.println(&#34;成功匹配到规则三：500元 - 1000元 加500分&#34;);
+end
+
+//规则四：1000元以上 加1000分
+rule &#34;order_rule_4&#34;
+    when
+        $order:Order(amount &gt;= 1000)
+    then
+         $order.setScore(1000);
+         System.out.println(&#34;成功匹配到规则四：1000元以上 加1000分&#34;);
+end
+</code></pre><h3 id=测试>测试
+<a href=#%e6%b5%8b%e8%af%95><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#0550ae>@SpringBootTest</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>class</span> <span style=color:#1f2328>DroolsDemosApplicationTests</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#0550ae>@Autowired</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>private</span><span style=color:#fff> </span>KieContainer<span style=color:#fff> </span>kieContainer<span style=color:#1f2328>;</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#0550ae>@Test</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#cf222e>public</span><span style=color:#fff> </span><span style=color:#cf222e>void</span><span style=color:#fff> </span><span style=color:#6639ba>test</span><span style=color:#1f2328>()</span><span style=color:#fff> </span><span style=color:#1f2328>{</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#57606a>//从Kie容器对象中获取会话对象</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>KieSession<span style=color:#fff> </span>session<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span>kieContainer<span style=color:#1f2328>.</span><span style=color:#1f2328>newKieSession</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#57606a>//Fact对象，事实对象</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>Order<span style=color:#fff> </span>order<span style=color:#fff> </span><span style=color:#0550ae>=</span><span style=color:#fff> </span><span style=color:#cf222e>new</span><span style=color:#fff> </span>Order<span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>order<span style=color:#1f2328>.</span><span style=color:#1f2328>setAmount</span><span style=color:#1f2328>(</span>1300<span style=color:#1f2328>);</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#57606a>//将Order对象插入到工作内存中</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>session<span style=color:#1f2328>.</span><span style=color:#1f2328>insert</span><span style=color:#1f2328>(</span>order<span style=color:#1f2328>);</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#57606a>//激活规则，由Drools框架自动进行规则匹配，如果规则匹配成功，则执行当前规则</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>session<span style=color:#1f2328>.</span><span style=color:#1f2328>fireAllRules</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span><span style=color:#57606a>//关闭会话</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>session<span style=color:#1f2328>.</span><span style=color:#1f2328>dispose</span><span style=color:#1f2328>();</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>        </span>System<span style=color:#1f2328>.</span><span style=color:#1f2328>out</span><span style=color:#1f2328>.</span><span style=color:#1f2328>println</span><span style=color:#1f2328>(</span><span style=color:#0a3069>&#34;订单金额：&#34;</span><span style=color:#fff> </span><span style=color:#0550ae>+</span><span style=color:#fff> </span>order<span style=color:#1f2328>.</span><span style=color:#1f2328>getAmount</span><span style=color:#1f2328>()</span><span style=color:#fff> </span><span style=color:#0550ae>+</span><span style=color:#fff> </span><span style=color:#0a3069>&#34;，添加积分：&#34;</span><span style=color:#fff> </span><span style=color:#0550ae>+</span><span style=color:#fff> </span>order<span style=color:#1f2328>.</span><span style=color:#1f2328>getScore</span><span style=color:#1f2328>());</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#fff>    </span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span><span style=display:flex><span><span style=color:#1f2328>}</span><span style=color:#fff>
+</span></span></span></code></pre></div><ul><li>使用drools规则引擎主要工作就是编写规则文件，在规则文件中定义跟业务相关的业务规则。规则定义好后就需要调用drools提供的API将数据提供给规则引擎进行规则模式匹配，规则引擎会执行匹配成功的规则并将计算的结果返回</li><li>使用规则引擎时业务规则可以做到动态管理，可以做到不重启服务情况下做调整</li></ul><h1 id=规则引擎构成>规则引擎构成
+<a href=#%e8%a7%84%e5%88%99%e5%bc%95%e6%93%8e%e6%9e%84%e6%88%90></a></h1><p>drools规则引擎由以下三部分构成：</p><ul><li>Working Memory（工作内存）</li><li>Rule Base（规则库）</li><li>Inference Engine（推理引擎）</li></ul><p>其中Inference Engine（推理引擎）又包括：</p><ul><li>Pattern Matcher（匹配器）     // 具体匹配哪一个规则，由这个完成</li><li>Agenda(议程)</li><li>Execution Engine（执行引擎）</li></ul><p><strong>Working Memory</strong>：工作内存，drools规则引擎会从Working Memory中获取数据并和规则文件中定义的规则进行模式匹配，所以我们开发的应用程序只需要将我们的数据插入到Working Memory中即可，例如上面调用kieSession.insert(order)就是将order对象插入到了工作内存中。</p><p><strong>Fact</strong>：事实，是指在drools 规则应用当中，将一个<strong>普通的JavaBean插入到Working Memory后的对象</strong>就是Fact对象，例如本案例中的Order对象就属于Fact对象。</p><p><strong>Rule Base</strong>：规则库，我们在规则文件中定义的规则都会被加载到规则库中。</p><p><strong>Pattern Matcher</strong>：匹配器，将Rule Base中的所有规则与Working Memory中的Fact对象进行模式匹配，匹配成功的规则将被激活并放入Agenda（议程）中。</p><p><strong>Agenda</strong>：议程，用于存放通过匹配器进行模式匹配后被激活的规则。</p><p><strong>Execution Engine</strong>：执行引擎，执行Agenda中被激活的规则。</p><h1 id=drools-基础语法>Drools 基础语法
+<a href=#drools-%e5%9f%ba%e7%a1%80%e8%af%ad%e6%b3%95></a></h1><h2 id=基础语法>基础语法
+<a href=#%e5%9f%ba%e7%a1%80%e8%af%ad%e6%b3%95><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><table><thead><tr><th>关键字</th><th>描述</th></tr></thead><tbody><tr><td>package</td><td>包名，只限于逻辑上的管理，同一个包名下的查询或者函数可以直接调用</td></tr><tr><td>import</td><td>用于导入类或者静态方法</td></tr><tr><td>global</td><td>全局变量</td></tr><tr><td>function</td><td>自定义函数</td></tr><tr><td>query</td><td>查询</td></tr><tr><td>rule end</td><td>规则体</td></tr><tr><td>Drools 支持的规则文件除了drl格式，还有Excel文件类型</td><td></td></tr></tbody></table><h2 id=规则体语法>规则体语法
+<a href=#%e8%a7%84%e5%88%99%e4%bd%93%e8%af%ad%e6%b3%95><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;ruleName&#34;
+    attributes
+    when
+        LHS 
+    then
+        RHS
+end
+</code></pre><p><strong>rule</strong>：关键字，表示规则开始，参数为规则的唯一名称。</p><p><strong>attributes</strong>：规则属性，是rule与when之间的参数，为可选项。</p><p><strong>when</strong>：关键字，后面跟规则的条件部分。</p><p><strong>LHS</strong>(Left Hand Side)：是规则的条件部分的通用名称。它由零个或多个条件元素组成。<strong>如果LHS为空，则它将被视为始终为true的条件元素</strong>。 （左手边）</p><p><strong>then</strong>：关键字，后面跟规则的结果部分。</p><p><strong>RHS</strong>(Right Hand Side)：是规则的后果或行动部分的通用名称。 （右手边）</p><p><strong>end</strong>：关键字，表示一个规则结束。</p><h2 id=pattern-模式匹配>Pattern 模式匹配
+<a href=#pattern-%e6%a8%a1%e5%bc%8f%e5%8c%b9%e9%85%8d><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><p>Drools中的匹配器可以将Rule Base中的所有规则与Working Memory中的Fact对象进行模式匹配，条件就叫做Pattern</p><p><strong>pattern的语法结构为：绑定变量名:Object(Field约束)</strong></p><p>例如：</p><pre tabindex=0><code class=language-drl data-lang=drl>//规则一：100元以下 不加分
+rule &#34;order_rule_1&#34;
+    when
+        $order:Order(amount &lt; 100)
+    then
+        $order.setScore(0);
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+</code></pre><p>通过上面的例子可以知道，匹配的条件为：</p><p>1、$order对应对象是一个Order这种类型的Fact对象&mdash;&ndash;类型约束</p><p>2、Fact对象的amount属性值必须小于100&mdash;&mdash;属性约束</p><p>以上条件必须同时满足当前规则才有可能被激活。</p><h2 id=比较运算符>比较运算符
+<a href=#%e6%af%94%e8%be%83%e8%bf%90%e7%ae%97%e7%ac%a6><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><table><thead><tr><th style=text-align:left>符号</th><th style=text-align:left>说明</th></tr></thead><tbody><tr><td style=text-align:left>contains</td><td style=text-align:left>检查一个Fact对象的某个属性值是否包含一个指定的对象值</td></tr><tr><td style=text-align:left>not contains</td><td style=text-align:left>检查一个Fact对象的某个属性值是否不包含一个指定的对象值</td></tr><tr><td style=text-align:left>memberOf</td><td style=text-align:left>判断一个Fact对象的某个属性是否在一个或多个集合中</td></tr><tr><td style=text-align:left>not memberOf</td><td style=text-align:left>判断一个Fact对象的某个属性是否不在一个或多个集合中</td></tr><tr><td style=text-align:left>matches</td><td style=text-align:left>判断一个Fact对象的属性是否与提供的标准的Java正则表达式进行匹配</td></tr><tr><td style=text-align:left>not matches</td><td style=text-align:left>判断一个Fact对象的属性是否不与提供的标准的Java正则表达式进行匹配</td></tr></tbody></table><h2 id=drools内置方法>Drools内置方法
+<a href=#drools%e5%86%85%e7%bd%ae%e6%96%b9%e6%b3%95><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><p>规则文件的<code>RHS</code>部分的主要作用是通过<strong>插入，删除或修改工作内存中的Fact数据</strong>，来达到控制规则引擎执行的目的。Drools提供了一些方法可以用来操作工作内存中的数据，<strong>操作完成后规则引擎会重新进行相关规则的匹配，</strong> 原来没有匹配成功的规则在我们修改数据完成后有可能就会匹配成功了。</p><h3 id=修改-update>修改 update
+<a href=#%e4%bf%ae%e6%94%b9-update><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><p>update方法的作用是更新工作内存中的数据，并让相关的规则重新匹配。**（要避免死循环）</p><p>**要注意 <code>;</code>号</p><p>以上面的order为例
+参数：</p><div class=highlight><pre tabindex=0 style=background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>order<span style=color:#1f2328>.</span><span style=color:#1f2328>setAmount</span><span style=color:#1f2328>(</span>30<span style=color:#1f2328>);</span><span style=color:#fff>
+</span></span></span></code></pre></div><p>规则：</p><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;order_rule&#34;
+	when
+		$order:Order(amount &lt; 100)
+	then
+		$order.setAmount(150);
+		update($order)
+		System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+
+rule &#34;order_rule2&#34;
+	when 
+		$order:Order(amount &gt;= 100 &amp;&amp; amount &lt;= 500)
+	then
+		$order.setScore(100);
+		System.out.println(&#34;成功匹配到规则二：100元 - 500元 加100分&#34;);
+end
+</code></pre><h3 id=添加-insert>添加 insert
+<a href=#%e6%b7%bb%e5%8a%a0-insert><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><p>insert方法的作用是向工作内存中插入数据，并让相关的规则重新匹配。</p><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;order_rule&#34;
+	when
+		$order:Order(amount &lt; 100)
+	then
+		Order order = new Order();
+		order.setAmount(30);
+		insert($order)
+		System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+
+rule &#34;order_rule2&#34;
+	when 
+		$order:Order(amount &gt;= 100 &amp;&amp; amount &lt;= 500)
+	then
+		$order.setScore(100);
+		System.out.println(&#34;成功匹配到规则二：100元 - 500元 加100分&#34;);
+end
+</code></pre><h3 id=删除-retract>删除 retract
+<a href=#%e5%88%a0%e9%99%a4-retract><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><p>retract方法的作用是删除工作内存中的数据，并让相关的规则重新匹配。</p><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;order_rule_1&#34;
+    when
+        $order:Order(amout &lt; 100)
+    then
+        retract($order)      //retract方法的作用是删除工作内存中的Fact对象，会导致相关规则重新匹配
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+</code></pre><h2 id=规则属性>规则属性
+<a href=#%e8%a7%84%e5%88%99%e5%b1%9e%e6%80%a7><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><table><thead><tr><th style=text-align:left>属性名</th><th style=text-align:left>说明</th></tr></thead><tbody><tr><td style=text-align:left>salience</td><td style=text-align:left>指定规则执行优先级</td></tr><tr><td style=text-align:left>dialect</td><td style=text-align:left>指定规则使用的语言类型，取值为java和mvel</td></tr><tr><td style=text-align:left>enabled</td><td style=text-align:left>指定规则是否启用</td></tr><tr><td style=text-align:left>date-effective</td><td style=text-align:left>指定规则生效时间</td></tr><tr><td style=text-align:left>date-expires</td><td style=text-align:left>指定规则失效时间</td></tr><tr><td style=text-align:left>activation-group</td><td style=text-align:left>激活分组，具有相同分组名称的规则只能有一个规则触发</td></tr><tr><td style=text-align:left>agenda-group</td><td style=text-align:left>议程分组，只有获取焦点的组中的规则才有可能触发</td></tr><tr><td style=text-align:left>timer</td><td style=text-align:left>定时器，指定规则触发的时间</td></tr><tr><td style=text-align:left>auto-focus</td><td style=text-align:left>自动获取焦点，一般结合agenda-group一起使用</td></tr><tr><td style=text-align:left>no-loop</td><td style=text-align:left>防止死循环</td></tr></tbody></table><h3 id=salience>salience
+<a href=#salience><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><ul><li>salience属性用于指定规则的执行优先级，<strong>取值类型为Integer</strong>。<strong>数值越大越优先执行</strong>。每个规则都有一个默认的执行顺序，<strong>如果不设置salience属性，规则体的执行顺序为由上到下</strong>。</li></ul><pre tabindex=0><code class=language-drl data-lang=drl>package com.order
+
+rule &#34;rule_1&#34;
+	salience 9
+    when
+        eval(true)
+    then
+        System.out.println(&#34;规则rule_1触发&#34;);
+end
+    
+rule &#34;rule_2&#34;
+	salience 10
+    when
+        eval(true)
+    then
+        System.out.println(&#34;规则rule_2触发&#34;);
+end
+
+rule &#34;rule_3&#34;
+	salience 7
+    when
+        eval(true)
+    then
+        System.out.println(&#34;规则rule_3触发&#34;);
+end
+</code></pre><h3 id=no-loop>no-loop
+<a href=#no-loop><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><ul><li><p>no-loop属性用于防止死循环，当规则通过update之类的函数修改了Fact对象时，可能使当前规则再次被激活从而导致死循环。取值类型为Boolean，默认值为false</p></li><li><p><strong>引擎默认不会重复触发同一规则​</strong>
+​例如这个例子，修改了与规则无关的值然后再次进入相同的规则，规则不会再次触发</p></li></ul><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;order_rule_1&#34;
+    when
+        $order:Order(amout &lt; 100)
+    then
+        $order.setScore(0);
+        update($order)
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+</code></pre><p>想要实现死循环应该修改与规则有关的值，如下</p><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;order_rule_1&#34;
+    when
+        $order:Order(amount &lt; 100)
+    then
+        $order.setAmount(0);
+        update($order)
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+</code></pre><ul><li>避免死循环：</li></ul><pre tabindex=0><code class=language-drl data-lang=drl>rule &#34;order_rule_1&#34;
+    no-loop true         //防止陷入死循环
+    when
+        $order:Order(amount &lt; 100)
+    then
+        $order.setAmount(0);
+        update($order)
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+</code></pre><h2 id=高级语法>高级语法
+<a href=#%e9%ab%98%e7%ba%a7%e8%af%ad%e6%b3%95><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h2><table><thead><tr><th style=text-align:left>关键字</th><th style=text-align:left>描述</th></tr></thead><tbody><tr><td style=text-align:left>package</td><td style=text-align:left>包名，只限于逻辑上的管理，同一个包名下的查询或者函数可以直接调用</td></tr><tr><td style=text-align:left>import</td><td style=text-align:left>用于导入类或者静态方法</td></tr><tr><td style=text-align:left>global</td><td style=text-align:left>全局变量</td></tr><tr><td style=text-align:left>function</td><td style=text-align:left>自定义函数</td></tr><tr><td style=text-align:left>query</td><td style=text-align:left>查询</td></tr><tr><td style=text-align:left>rule end</td><td style=text-align:left>规则体</td></tr></tbody></table><h3 id=global全局变量>global全局变量
+<a href=#global%e5%85%a8%e5%b1%80%e5%8f%98%e9%87%8f><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"/></svg></a></h3><ul><li><p>global关键字用于在规则文件中<strong>定义全局变量</strong>，它可以让应用程序的对象在规则文件中能够被访问。可以用来为规则文件提供数据或服务。</p></li><li><p>语法结构为：<strong>global 对象类型 对象名称</strong></p></li><li><p>注意：</p><ul><li>如果对象类型为<strong>包装类型</strong>时，在一个规则中改变了global的值，那么<strong>只针对当前规则有效</strong>，对其他规则中的global不会有影响。可以理解为它是当前规则代码中的global副本，规则内部修改不会影响全局的使用。</li><li>如果对象类型为<strong>集合类型或JavaBean</strong>时，在一个规则中改变了global的值，对java代码和所有规则都有效。</li></ul></li></ul><p>规则文件：</p><pre tabindex=0><code class=language-drl data-lang=drl>package com.hh.order
+import com.hh.bean.Order
+
+global com.hh.bean.Order order_global;
+
+//规则一：100元以下 不加分
+rule &#34;order_rule_1&#34;
+    no-loop true         //防止陷入死循环
+    when
+        $order:Order(amount &lt; 100)
+    then
+        order_global.setScore(10);
+        update($order)
+        System.out.println(&#34;成功匹配到规则一：100元以下 不加分&#34;);
+end
+</code></pre><p>测试：</p><pre tabindex=0><code class=language-drl data-lang=drl>@Test
+public void test1(){
+    //从Kie容器对象中获取会话对象
+    KieSession session = kieContainer.newKieSession();
+
+    //Fact对象，事实对象
+    Order order = new Order();
+    order.setAmout(30);
+
+    //全局变量
+    Order order2 = new Order();
+    session.setGlobal(&#34;order_global&#34;, order2);
+
+    //将Order对象插入到工作内存中
+    session.insert(order);
+
+    //激活规则，由Drools框架自动进行规则匹配，如果规则匹配成功，则执行当前规则
+    session.fireAllRules();
+    //关闭会话
+    session.dispose();
+
+    System.out.println(&#34;订单金额：&#34; + order.getAmout());
+    System.out.println(&#34;添加积分：&#34; + order2.getScore());
+}
+</code></pre><details closed class="f6 fw7 input-reset"><dl class="f6 lh-copy"><dt class=fw7>Posted on:</dt><dd class="fw5 ml0">April 30, 2025</dd></dl><dl class="f6 lh-copy"><dt class=fw7>Length:</dt><dd class="fw5 ml0">4 minute read, 697 words</dd></dl><dl class="f6 lh-copy"><dt class=fw7>Tags:</dt><dd class="fw5 ml0"><a href=https://hhsqdw.github.io/tags/project>project</a></dd></dl><dl class="f6 lh-copy"><dt class=fw7>See Also:</dt><dd class="fw5 ml0"><a href=/blog/substitute-driver/completablefuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/>CompletableFuture异步编排</a></dd><dd class="fw5 ml0"><a href=/blog/substitute-driver/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmongodb/>MongoDB</a></dd><dd class="fw5 ml0"><a href=/blog/substitute-driver/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9%E9%94%81/>分布式事物锁</a></dd></dl></details></section><footer class=post-footer><div class="post-pagination dt w-100 mt4 mb2"><a class="prev dtc pr2 tl v-top fw6" href=https://hhsqdw.github.io/blog/substitute-driver/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%8A%A5%E9%94%99/>&larr; 莫名其妙的报错</a>
+<a class="next dtc pl2 tr v-top fw6" href=https://hhsqdw.github.io/blog/substitute-driver/mybatis-plus-%E7%BB%84%E4%BB%B6%E7%AD%96%E7%95%A5/>mybatis-plus 组件策略 &rarr;</a></div></footer></article></section></main><footer class="site-footer pv4 bt b--transparent ph5" role=contentinfo><nav class="db dt-l w-100"><div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0"></div></nav><script>var i,text,code,codes=document.getElementsByTagName("code");for(let e=0;e<codes.length;){if(code=codes[e],code.parentNode.tagName!=="PRE"&&code.childElementCount===0&&(text=code.textContent,/^\$[^$]/.test(text)&&/[^$]\$$/.test(text)&&(text=text.replace(/^\$/,"\\(").replace(/\$$/,"\\)"),code.textContent=text),/^\\\((.|\s)+\\\)$/.test(text)||/^\\\[(.|\s)+\\\]$/.test(text)||/^\$(.|\s)+\$$/.test(text)||/^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text))){code.outerHTML=code.innerHTML;continue}e++}</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css integrity=sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js integrity=sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous onload=renderMathInElement(document.body)></script></footer></div></body></html>
